@@ -1,0 +1,93 @@
+\ProvidesPackage{mynewcommand}
+
+%マクロ定義
+
+% カッコ
+\newcommand{\paren}[1]{\left( #1 \right)}
+\newcommand{\bracket}[1]{\left\{ #1 \right\}}
+\newcommand{\anglebracket}[1]{\left[ #1 \right]}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\expect}[1]{\left\langle #1 \right\rangle}
+
+\newcommand{\ex}[1]{\mathrm{e}^{#1}}
+\newcommand{\im}{\mathrm{i}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\bvec}[1]{\mbox{\boldmath $#1$}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\mat}[1]{\left( \begin{matrix} #1 \end{matrix} \right)}
+\newcommand{\case}[1]{\left\{\begin{matrix} #1 \end{matrix}\right.}
+
+\newcommand{\argmax}{\mathop{\rm arg~max}\limits}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+
+%\newcommand{\uline}{\ul}{}
+
+\newcommand{\al}{\alpha}
+\newcommand{\be}{\beta}
+\newcommand{\ep}{\epsilon}
+\newcommand{\var}{\varepsilon}
+\newcommand{\ome}{\omega}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cZ}{\mathcal{Z}}
+\newcommand{\mybf}[1]{\text{\mbox{\boldmath $ #1 $}}}
+\newcommand{\ctext}[1]{\raise0.2ex\hbox{\textcircled{\scriptsize{#1}}}}%丸数字
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\aeq}{&=}
+\newcommand{\aeqe}{&\equiv}
+\newcommand{\aeqdef}{&\coloneqq}
+\newcommand{\dif}[3][]{\dfrac{\dd^{#1}#2}{\dd#3^{#1}}}
+\newcommand{\pif}[3][]{\dfrac{\partial^{#1}#2}{\partial#3^{#1}}}
+
+\newcommand{\mytiny}[1]{{\tiny #1}\normalsize}
+\newcommand{\myscriptsize}[1]{{\scriptsize #1}\normalsize}
+\newcommand{\myfootnotesize}[1]{{\footnotesize #1}\normalsize}
+\newcommand{\mysmall}[1]{{\small #1}\normalsize}
+\newcommand{\mylarge}[1]{{\large #1}\normalsize}
+\newcommand{\myLarge}[1]{{\Large #1}\normalsize}
+\newcommand{\myLARGE}[1]{{\LARGE #1}\normalsize}
+\newcommand{\myhuge}[1]{{\huge #1}\normalsize}
+\newcommand{\myHuge}[1]{{\Huge #1}\normalsize}
+\newcommand{\memo}[1]{\textcolor{red}{\myLarge{#1}}}
+
+%数式括弧
+\newcommand{\myfbox}[1]{\scalebox{1.3}{\fbox{$ #1 $}}}
+\newcommand{\mydoublebox}[1]{\scalebox{1.3}{\doublebox{$ #1 $}}}
+\newcommand{\myovalbox}[1]{\scalebox{1.3}{\ovalbox{$ #1 $}}}
+\newcommand{\myOvalbox}[1]{\scalebox{1.3}{\Ovalbox{$ #1 $}}}
+\newcommand{\myshadowbox}[1]{\scalebox{1.3}{\shadowbox{$ #1 $}}}
+
+%電気回路
+\newcommand{\wO}{\Omega}
+\newcommand{\tx}[1]{\text{#1}}
+\newcommand{\txV}{\text{V}}
+\newcommand{\txH}{\text{H}}
+\newcommand{\txF}{\text{F}}
+\newcommand{\txC}{\text{C}}
+\newcommand{\txR}{\text{R}}
+\newcommand{\txHz}{\text{Hz}}
+\newcommand{\txdB}{\text{dB}}
+\newcommand{\txp}{\text{p}}
+\newcommand{\txn}{\text{n}}
+\newcommand{\txm}{\text{m}}
+\newcommand{\txk}{\text{k}}
+\newcommand{\const}{\tx{const.}}

@@ -1,0 +1,138 @@
+% ファイル名をmain.texに変更するとコンパイルエラーが発生するので注意
+% 总计页数: 50
+% Related Work: 10页
+% Proposed Method: 15页
+
+\documentclass[a4paper]{master_thesis}
+\usepackage[dvipdfmx]{graphicx}
+% \usepackage{graphicx}
+\usepackage[dvipdfmx]{color}
+% \usepackage[notransparent]{svg}
+
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cleveref}
+
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{here}
+\usepackage{amsfonts}
+\usepackage{bm}
+\usepackage{mathtools}
+\usepackage{comment}
+\usepackage{mynewcommand}
+% Algorithm
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{enumitem}
+
+\addtolength{\topmargin}{-10pt}
+\setlength{\jot}{10pt}
+
+\bibliographystyle{junsrt}
+\makeatletter 
+\def\delete#1from#2{% 
+  \def\reserved@a{#1}% 
+  \def\reserved@c{}% 
+  \def\@elt##1{% 
+    \def\reserved@b{##1}% 
+    \ifx\reserved@a\reserved@b 
+    \else 
+      \@cons\reserved@c{{##1}}% 
+    \fi}% 
+  \csname cl@#2\endcsname 
+  \expandafter\let\csname cl@#2\endcsname\reserved@c 
+  \let\@elt\relax} 
+\makeatother
+\delete{footnote}from{chapter}
+
+\begin{document}
+\title{A Research on Cross-Domain Recommendation under Non-Overlapping Settings by Integrating Gaussian Mixture User Preference Distributions and Optimal Transport}
+\subtitle{\LARGE 非重複設定下におけるガウス混合モデルユーザ嗜好分布と最適輸送を統合したクロスドメイン推薦に関する研究}
+\author{48-246453 肖　子吟}
+\faculty{東京大学大学院 情報理工学系研究科}
+\department{電子情報学専攻}
+\professor{鈴村 豊太郎 教授}
+\date{2026 年 1 月 22 日}
+
+\maketitle
+\onecolumn
+
+\begin{abstract}
+	% What is recommendation systems?
+	% Why are they important?
+	% What are the challenges?
+	% Why use cross-domain recommendation?
+	% What is the problem with existing methods?
+	% What is the proposed method?
+	% What are the results?
+
+	Recommendation systems are essential tools for helping users discover items of interest in various domains, such as e-commerce, streaming services, and social media.
+	With the rapid growth of online platforms, the need for effective recommendation systems has become increasingly important.
+
+	However, traditional recommendation systems often face challenges such as data sparsity and cold-start problems, which can limit their effectiveness.
+	Cross-domain recommendation has emerged as a promising approach to address these challenges by leveraging information from multiple domains to improve recommendation accuracy.
+	Nevertheless, existing cross-domain recommendation methods often assume overlapping users or items between domains, which may not hold in many real-world scenarios.
+	Also, they usually represent user preferences as point estimates, which may not capture the full complexity of user behavior.
+
+	To address these limitations, in this thesis, we propose a novel framework that models user preferences as Gaussian Mixture Models (GMMs) and integrates optimal transport techniques for cross-domain recommendation under non-overlapping settings.
+	By representing user preferences as distributions, our approach can capture the uncertainty and diversity of user behavior more effectively and fine-grainedly.
+	The use of optimal transport allows us to align user preference distributions across domains, facilitating knowledge transfer even in the absence of overlapping users or items.
+
+	We evaluate our proposed method on Amazon datasets across multiple domains, comparing its performance against state-of-the-art cross-domain recommendation techniques and traditional single-domain methods.
+	We also conduct ablation studies to assess the effectiveness of representing user preferences as distributions and the impact of boosting target domain recommendation performance using source domain information.
+	The experimental results demonstrate that our approach significantly outperforms existing methods in terms of recommendation accuracy, highlighting the effectiveness of modeling user preferences as distributions and leveraging optimal transport for cross-domain knowledge transfer.
+
+\end{abstract}
+
+\begin{comment}
+
+\end{comment}
+
+\clearpage
+
+%\maketoc
+\setcounter{page}{0}
+
+\pagestyle{fancyplain}
+\pagenumbering{roman}
+\tableofcontents
+% comment out if 
+\listoffigures
+\listoftables
+%\listofalgorithms
+\newpage
+
+%\baselineskip 5.8mm
+\pagestyle{fancy}
+\lhead{\rightmark}
+\renewcommand{\chaptermark}[1]{\markboth{Chapter\ \normalfont\thechapter\ \ ~#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}{}}
+\rhead{\leftmark}
+\pagenumbering{arabic}
+
+
+
+\input{chapterfile/chapter1}
+\input{chapterfile/chapter2}
+\input{chapterfile/chapter3}
+\input{chapterfile/chapter4}
+\input{chapterfile/chapter5}
+\input{chapterfile/chapter6}
+\input{chapterfile/chapter7}
+
+
+
+\bibliography{reference}
+
+\pagestyle{fancy}
+\lhead{}
+\rhead{}
+
+\input{chapterfile/chapter_appendix} % Appendix
+\input{chapterfile/chapter_publication} % Publication
+\input{chapterfile/chapter_acknowledgement} % Acknowledgment
+
+\end{document}

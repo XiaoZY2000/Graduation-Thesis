@@ -1,0 +1,41 @@
+\chapter{Introduction}\label{chap:introduction}
+
+\section{Background}
+% Background
+% The Importance of Recommender Systems
+These days, information overload has become a significant challenge for users in various online platforms, such as e-commerce websites, streaming services, and social media\cite{city23544, ijerph19138060, 10.1371/journal.pone.0284466}. Recommender systems play a crucial role in addressing this challenge by providing personalized guidance to users by selecting items with the highest predicted utility from a large space of options.\cite{resnick1997recommender,burke2002hybrid,Burke_Felfernig_Göker_2011}
+By analyzing user-item interactions, recommender systems can help users discover relevant content, products, or services, thereby enhancing user satisfaction and engagement.
+Besides improving user experience, recommender systems also benefit businesses by increasing sales, customer retention, and overall platform activity\cite{10.1145/3370082}. As the volume of online content continues to grow, the importance of effective recommender systems becomes even more pronounced.
+% Challenges in Recommender Systems
+Despite their significance, recommender systems face several challenges that can hinder their performance. One of the primary challenges is data sparsity, where users interact with only a small fraction of the available items, making it difficult to accurately model user preferences. This issue is particularly prevalent in new or niche platforms with limited user interactions.
+Another challenge is the cold-start problem, which occurs when new users or items are introduced to the system. In such cases, there is insufficient data to make reliable recommendations, leading to suboptimal user experiences.
+Both data sparsity and cold-start problems are caused by the limited availability of user-item interaction data, which can significantly impact the effectiveness of recommender systems. To address these challendges, cross-domain recommendation has emerged as a promising approach that leverages information from multiple domains to improve recommendation accuracy.
+% Cross-Domain Recommendation
+Cross-domain recommendation aims to enhance the performance of recommender systems by transferring knowledge from a source domain to a target domain. This approach is particularly useful in scenarios where the target domain suffers from data sparsity or cold-start issues. By utilizing user-item interactions from a related source domain, cross-domain recommendation can help alleviate these challenges and provide more accurate recommendations.
+However, existing cross-domain recommendation methods often assume overlapping users or items between the source and target domains, and rely on these overlaps to build connections between the two domains in the training stage. However, in many real-world scenarios, such overlaps may not exist, limiting the applicability of these methods. Additionally, traditional recommender systems typically represent user preferences as point estimates, which may not capture the full complexity and uncertainty of user behavior.
+To overcome these limitations, there is a need for novel approaches that can effectively model user preferences and facilitate knowledge transfer between non-overlapping domains during the training process.
+% Proposed Method
+In this thesis, we propose a novel framework that models user preferences as Gaussian Mixture Models (GMMs) and integrates optimal transport techniques for cross-domain recommendation under non-overlapping settings. By representing user preferences as distributions, our approach can capture the uncertainty and diversity of user behavior more effectively. The use of optimal transport allows us to align user preference distributions across domains, facilitating knowledge transfer even in the absence of overlapping users or items.
+The proposed framework consists of two main components: (1) modeling user preferences as GMMs to capture the complexity of user behavior, and (2) employing optimal transport to align these distributions between the source and target domains. This combination enables our method to leverage information from the source domain to enhance recommendation accuracy in the target domain, even when there are no overlapping users or items.
+
+\section{Contributions}
+The main contributions of this thesis are as follows:
+\begin{itemize}
+	\item We introduce a novel framework for cross-domain recommendation under non-overlapping settings by modeling
+	\item We propose representing user preferences as Gaussian Mixture Models (GMMs) to capture the uncertainty and diversity of user behavior more effectively.
+	\item We integrate optimal transport techniques to align user preference distributions across domains, enabling knowledge transfer
+	\item We conduct extensive experiments on Amazon datasets across multiple domains to evaluate the performance of our proposed method. The results demonstrate that our approach significantly outperforms existing cross-domain recommendation techniques and traditional single-domain methods in terms of recommendation accuracy.
+	\item We perform ablation studies to assess the effectiveness of representing user preferences as distributions and the impact of boosting target domain recommendation performance using source domain information.
+	\item We provide insights into the benefits of modeling user preferences as distributions and leveraging optimal transport for cross-domain knowledge transfer, highlighting the potential of our approach for addressing challenges in recommender systems.
+\end{itemize}
+
+\section{Thesis Organization}
+The remainder of this thesis is organized as follows:
+\begin{itemize}
+	\item In Chapter~\ref{chap:premilinaries}, we provide an overview of the fundamental concepts and techniques relevant to this research, including recommender systems, cross-domain recommendation, Gaussian Mixture Models, and optimal transport.
+	\item In Chapter~\ref{chap:related_work}, we review related work on recommender systems, cross-domain recommendation, and optimal transport techniques.
+	\item In Chapter~\ref{chap:proposed_method}, we present our proposed framework for cross-domain recommendation under non-over
+	\item In Chapter~\ref{chap:experiments}, we describe the experimental setup, datasets, and evaluation metrics used to assess the performance of our proposed method.
+	\item In Chapter~\ref{chap:results}, we present and discuss the experimental results, including comparisons with existing methods and ablation studies.
+	\item Finally, in Chapter~\ref{chap:conclusion}, we summarize the main findings of this thesis and discuss potential directions for future research.
+\end{itemize}
