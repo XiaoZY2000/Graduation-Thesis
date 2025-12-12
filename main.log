@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.uptex) (TeX Live 2025) (preloaded format=uplatex 2025.6.4)  8 DEC 2025 13:51
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.uptex) (TeX Live 2025) (preloaded format=uplatex 2025.6.4)  9 DEC 2025 09:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -514,11 +514,25 @@ Chapter 2.
 
 [5]
 Chapter 3.
-) (./chapterfile/chapter4.tex
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 6.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 6.
+LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <12> not available
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 6.
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 6.
+LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <12> not available
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 6.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 6.
+
 
 [6
 
-]
+]) (./chapterfile/chapter4.tex
+
+[7]
 Chapter 4.
 ) (./chapterfile/chapter5.tex
 
@@ -528,25 +542,25 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[7
+[8
 
 ]
 Chapter 5.
 ) (./chapterfile/chapter6.tex
 
-[8
+[9
 
 ]
 Chapter 6.
 ) (./chapterfile/chapter7.tex
 
-[9
+[10
 
 ]
 Chapter 7.
 ) (./main.bbl
 
-[10
+[11
 
 ]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -563,21 +577,23 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 41.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 46.
+LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
+(Font)              No change on input line 51.
 ) (./chapterfile/chapter_appendix.tex
-
-[11
-
-]) (./chapterfile/chapter_publication.tex
 
 [12
 
-]) (./chapterfile/chapter_acknowledgement.tex
+]) (./chapterfile/chapter_publication.tex
 
 [13
 
-] Excluding 'comment' comment.)
+]) (./chapterfile/chapter_acknowledgement.tex
 
 [14
+
+] Excluding 'comment' comment.)
+
+[15
 
 ] (./main.aux)
  ***********
@@ -587,12 +603,12 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 10847 strings out of 475292
- 240999 string characters out of 5766798
- 595603 words of memory out of 5000000
- 33839 multiletter control sequences out of 15000+600000
- 576914 words of font info for 118 fonts, out of 8000000 for 9000
+ 10853 strings out of 475292
+ 241082 string characters out of 5766798
+ 595609 words of memory out of 5000000
+ 33845 multiletter control sequences out of 15000+600000
+ 577519 words of font info for 120 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  73i,11n,80p,765b,543s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (19 pages, 33868 bytes).
+Output written on main.dvi (20 pages, 38748 bytes).

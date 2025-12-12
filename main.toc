@@ -8,11 +8,21 @@
 \contentsline {section}{\numberline {2.3}Gaussian Mixture Models}{4}{}%
 \contentsline {section}{\numberline {2.4}Optimal Transport}{5}{}%
 \contentsline {chapter}{\numberline {3}Related Work}{6}{}%
-\contentsline {chapter}{\numberline {4}Distributional User Preferences for Cross-Domain Recommendation via Optimal Transport}{7}{}%
-\contentsline {chapter}{\numberline {5}Experiments}{8}{}%
-\contentsline {chapter}{\numberline {6}Results}{9}{}%
-\contentsline {chapter}{\numberline {7}Conclusion}{10}{}%
-\contentsline {chapter}{Appendix}{12}{}%
-\contentsline {section}{\numberline {A}Graph-Enhanced EEG Foundation Models}{12}{}%
-\contentsline {chapter}{Publications}{13}{}%
-\contentsline {chapter}{Acknowledgement}{14}{}%
+\contentsline {section}{\numberline {3.1}Recommender Systems}{6}{}%
+\contentsline {subsection}{\numberline {3.1.1}Divide by Technique}{6}{}%
+\contentsline {subsubsection}{\numberline {3.1.1.1}Traditional Recommender Systems}{6}{}%
+\contentsline {subsubsection}{\numberline {3.1.1.2}Machine Learning-based Recommender Systems}{6}{}%
+\contentsline {subsubsection}{\numberline {3.1.1.3}Deep Learning-based Recommender Systems}{6}{}%
+\contentsline {subsection}{\numberline {3.1.2}Divide by Application Domain}{7}{}%
+\contentsline {subsubsection}{\numberline {3.1.2.1}Sequential Recommender Systems}{7}{}%
+\contentsline {subsubsection}{\numberline {3.1.2.2}Graph-based Recommender Systems}{7}{}%
+\contentsline {subsubsection}{\numberline {3.1.2.3}Cross-Domain Recommender Systems}{7}{}%
+\contentsline {subsubsection}{\numberline {3.1.2.4}Generative Recommender Systems}{7}{}%
+\contentsline {chapter}{\numberline {4}Distributional User Preferences for Cross-Domain Recommendation via Optimal Transport}{8}{}%
+\contentsline {chapter}{\numberline {5}Experiments}{9}{}%
+\contentsline {chapter}{\numberline {6}Results}{10}{}%
+\contentsline {chapter}{\numberline {7}Conclusion}{11}{}%
+\contentsline {chapter}{Appendix}{13}{}%
+\contentsline {section}{\numberline {A}Graph-Enhanced EEG Foundation Models}{13}{}%
+\contentsline {chapter}{Publications}{14}{}%
+\contentsline {chapter}{Acknowledgement}{15}{}%
