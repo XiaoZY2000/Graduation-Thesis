@@ -29,7 +29,7 @@
 \contentsline {section}{\numberline {3.4}Optimal Transport for Representation Alignment}{12}{}%
 \contentsline {subsection}{\numberline {3.4.1}OT Basics in ML}{12}{}%
 \contentsline {subsection}{\numberline {3.4.2}OT in Domain Adaptation}{12}{}%
-\contentsline {chapter}{\numberline {4}Distributional User Preferences for Cross-Domain Recommendation via Optimal Transport}{13}{}%
+\contentsline {chapter}{\numberline {4}Proposed Method: Distributional Preference Modeling for Cross-Domain Recommendation}{13}{}%
 \contentsline {chapter}{\numberline {5}Experiments}{14}{}%
 \contentsline {chapter}{\numberline {6}Results}{15}{}%
 \contentsline {chapter}{\numberline {7}Conclusion}{16}{}%
