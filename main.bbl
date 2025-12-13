@@ -1,6 +1,6 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
-\bibitem{city23544}
+\bibitem{Bawden_Robinson_2020_info_overload}
 D.~Bawden and L.~Robinson.
 \newblock Information overload: An overview.
 \newblock In {\em Oxford Encyclopedia of Political Decision Making}. Oxford
@@ -9,7 +9,7 @@ D.~Bawden and L.~Robinson.
   University Press in the book Oxford Encyclopedia of Political Decision
   Making.
 
-\bibitem{ijerph19138060}
+\bibitem{Lv_Liu_2022_info_overload}
 Jun Lv and Xuan Liu.
 \newblock The impact of information overload of e-commerce platform on consumer
   return intention: Considering the moderating role of perceived environmental
@@ -17,37 +17,274 @@ Jun Lv and Xuan Liu.
 \newblock {\em International Journal of Environmental Research and Public
   Health}, Vol.~19, No.~13, 2022.
 
-\bibitem{10.1371/journal.pone.0284466}
+\bibitem{Zhang_Cao_Liu_2023_info_overload}
 Guihua Zhang, Junwei Cao, and Dong Liu.
 \newblock Examining the influence of information overload on
   consumers’ purchase in live streaming: A heuristic-systematic model
   perspective.
 \newblock {\em PLOS ONE}, Vol.~18, No.~8, pp. 1--16, 08 2023.
 
-\bibitem{resnick1997recommender}
+\bibitem{Resnick_Varian_1997_recommender}
 Paul Resnick and Hal~R Varian.
 \newblock Recommender systems.
 \newblock {\em Communications of the ACM}, Vol.~40, No.~3, pp. 56--58, 1997.
 
-\bibitem{burke2002hybrid}
+\bibitem{Burke_2002_hybrid_recommender}
 Robin Burke.
 \newblock Hybrid recommender systems: Survey and experiments.
 \newblock {\em User modeling and user-adapted interaction}, Vol.~12, No.~4, pp.
   331--370, 2002.
 
-\bibitem{Burke_Felfernig_G^^c3^^b6ker_2011}
+\bibitem{Burke_Felfernig_G^^c3^^b6ker_2011_recommender_overview}
 Robin Burke, Alexander Felfernig, and Mehmet~H. G^^c3^^b6ker.
 \newblock Recommender systems: An overview.
 \newblock {\em AI Magazine}, Vol.~32, No.~3, pp. 13--18, Jun. 2011.
 
-\bibitem{10.1145/3370082}
+\bibitem{Jannach_Jugovac_2019_business_value_recommender}
 Dietmar Jannach and Michael Jugovac.
 \newblock Measuring the business value of recommender systems.
 \newblock {\em ACM Trans. Manage. Inf. Syst.}, Vol.~10, No.~4, December 2019.
 
-\bibitem{BOBADILLA2013109}
+\bibitem{Bobadilla_Ortega_Hernando_Guti^^c3^^a9rrez_2013_recommender_survey}
 J.~Bobadilla, F.~Ortega, A.~Hernando, and A.~Guti^^c3^^a9rrez.
 \newblock Recommender systems survey.
 \newblock {\em Knowledge-Based Systems}, Vol.~46, pp. 109--132, 2013.
+
+\bibitem{Su_Khoshgoftaar_2009_CF_survey}
+Xiaoyuan Su and Taghi~M. Khoshgoftaar.
+\newblock A survey of collaborative filtering techniques.
+\newblock {\em Advances in Artificial Intelligence}, Vol. 2009, No.~1, p.
+  421425, 2009.
+
+\bibitem{Resnick_1994_grouplens}
+Paul Resnick, Neophytos Iacovou, Mitesh Suchak, Peter Bergstrom, and John
+  Riedl.
+\newblock Grouplens: an open architecture for collaborative filtering of
+  netnews.
+\newblock In {\em Proceedings of the 1994 ACM Conference on Computer Supported
+  Cooperative Work}, CSCW '94, p. 175^^e2^^80^^93186, New York, NY, USA, 1994.
+  Association for Computing Machinery.
+
+\bibitem{Sarwar_2001_item_based_CF}
+Badrul Sarwar, George Karypis, Joseph Konstan, and John Riedl.
+\newblock Item-based collaborative filtering recommendation algorithms.
+\newblock In {\em Proceedings of the 10th international conference on World
+  Wide Web}, pp. 285--295, 2001.
+
+\bibitem{Breese_Heckerman_Kadie_2013_CF_analysis}
+John~S. Breese, David Heckerman, and Carl Kadie.
+\newblock Empirical analysis of predictive algorithms for collaborative
+  filtering, 2013.
+
+\bibitem{Ungar_Foster_1998_clustering_CF}
+Lyle~H Ungar and Dean~P Foster.
+\newblock Clustering methods for collaborative filtering.
+\newblock In {\em AAAI workshop on recommendation systems}, Vol.~1, pp.
+  114--129. Menlo Park, CA, 1998.
+
+\bibitem{Koren_Bell_Volinsky_2009_MF_recommender}
+Yehuda Koren, Robert Bell, and Chris Volinsky.
+\newblock Matrix factorization techniques for recommender systems.
+\newblock {\em Computer}, Vol.~42, No.~8, pp. 30--37, 2009.
+
+\bibitem{Salakhutdinov_Mnih_2008_Bayesian_PMF}
+Ruslan Salakhutdinov and Andriy Mnih.
+\newblock Bayesian probabilistic matrix factorization using markov chain monte
+  carlo.
+\newblock In {\em Proceedings of the 25th International Conference on Machine
+  Learning}, ICML '08, p. 880^^e2^^80^^93887, New York, NY, USA, 2008.
+  Association for Computing Machinery.
+
+\bibitem{Hofmann_2004_PLSA_recommender}
+Thomas Hofmann.
+\newblock Latent semantic models for collaborative filtering.
+\newblock {\em ACM Trans. Inf. Syst.}, Vol.~22, No.~1, p. 89^^e2^^80^^93115,
+  January 2004.
+
+\bibitem{Marlin_2003_user_rating_profiles}
+Benjamin~M Marlin.
+\newblock Modeling user rating profiles for collaborative filtering.
+\newblock In S.~Thrun, L.~Saul, and B.~Sch\"{o}lkopf, editors, {\em Advances in
+  Neural Information Processing Systems}, Vol.~16. MIT Press, 2003.
+
+\bibitem{Blei_Ng_Jordan_2003_LDA}
+David~M Blei, Andrew~Y Ng, and Michael~I Jordan.
+\newblock Latent dirichlet allocation.
+\newblock {\em Journal of machine Learning research}, Vol.~3, No. Jan, pp.
+  993--1022, 2003.
+
+\bibitem{Salton_Buckley_Fox_1983_auto_query_formulation}
+Gerard Salton, Chris Buckley, and Edward~A Fox.
+\newblock Automatic query formulations in information retrieval.
+\newblock {\em Journal of the American society for information science},
+  Vol.~34, No.~4, pp. 262--280, 1983.
+
+\bibitem{Pazzani_Billsus_1997_user_profiles}
+Michael Pazzani and Daniel Billsus.
+\newblock Learning and revising user profiles: The identification of
+  interesting web sites.
+\newblock {\em Machine learning}, Vol.~27, No.~3, pp. 313--331, 1997.
+
+\bibitem{Pazzani_1999_framework_CDR}
+Michael~J Pazzani.
+\newblock A framework for collaborative, content-based and demographic
+  filtering.
+\newblock {\em Artificial intelligence review}, Vol.~13, No.~5, pp. 393--408,
+  1999.
+
+\bibitem{Melville_Mooney_Nagarajan_2002_content_boosted_CF}
+Prem Melville, Raymond~J Mooney, Ramadass Nagarajan, et~al.
+\newblock Content-boosted collaborative filtering for improved recommendations.
+\newblock {\em Aaai/iaai}, Vol.~23, pp. 187--192, 2002.
+
+\bibitem{Billsus_Pazzani_2000_user_modeling}
+Daniel Billsus and Michael~J Pazzani.
+\newblock User modeling for adaptive news access.
+\newblock {\em User modeling and user-adapted interaction}, Vol.~10, No.~2, pp.
+  147--180, 2000.
+
+\bibitem{Basilico_Hofmann_2004_unifying_CF_content}
+Justin Basilico and Thomas Hofmann.
+\newblock Unifying collaborative and content-based filtering.
+\newblock In {\em Proceedings of the twenty-first international conference on
+  Machine learning}, p.~9, 2004.
+
+\bibitem{Rendle_2010_factorization_machines}
+Steffen Rendle.
+\newblock Factorization machines.
+\newblock In {\em 2010 IEEE International conference on data mining}, pp.
+  995--1000. IEEE, 2010.
+
+\bibitem{Burges_Shaked_Renshaw_Lazier_Deeds_Hamilton_Hullender_2005_LTR}
+Chris Burges, Tal Shaked, Erin Renshaw, Ari Lazier, Matt Deeds, Nicole
+  Hamilton, and Greg Hullender.
+\newblock Learning to rank using gradient descent.
+\newblock In {\em Proceedings of the 22nd international conference on Machine
+  learning}, pp. 89--96, 2005.
+
+\bibitem{Burges_2010_ranknet_lambdarank_lambdamart}
+Christopher~JC Burges.
+\newblock From ranknet to lambdarank to lambdamart: An overview.
+\newblock {\em Learning}, Vol.~11, No. 23-581, p.~81, 2010.
+
+\bibitem{He_Pan_Jin_Xu_Liu_Xu_Shi_Atallah_Herbrich_Bowers_2014_facebook_ads}
+Xinran He, Junfeng Pan, Ou~Jin, Tianbing Xu, Bo~Liu, Tao Xu, Yanxin Shi,
+  Antoine Atallah, Ralf Herbrich, Stuart Bowers, et~al.
+\newblock Practical lessons from predicting clicks on ads at facebook.
+\newblock In {\em Proceedings of the eighth international workshop on data
+  mining for online advertising}, pp. 1--9, 2014.
+
+\bibitem{Chen_2016_XGBoost}
+Tianqi Chen.
+\newblock Xgboost: A scalable tree boosting system.
+\newblock {\em Cornell University}, 2016.
+
+\bibitem{Ke_Meng_Finley_Wang_Chen_Ma_Ye_Liu_2017_LightGBM}
+Guolin Ke, Qi~Meng, Thomas Finley, Taifeng Wang, Wei Chen, Weidong Ma, Qiwei
+  Ye, and Tie-Yan Liu.
+\newblock Lightgbm: A highly efficient gradient boosting decision tree.
+\newblock {\em Advances in neural information processing systems}, Vol.~30, ,
+  2017.
+
+\bibitem{He_Liao_Zhang_Nie_Hu_Chua_2017_NCF}
+Xiangnan He, Lizi Liao, Hanwang Zhang, Liqiang Nie, Xia Hu, and Tat-Seng Chua.
+\newblock Neural collaborative filtering.
+\newblock In {\em Proceedings of the 26th international conference on world
+  wide web}, pp. 173--182, 2017.
+
+\bibitem{Hidasi_Karatzoglou_Baltrunas_Tikk_2015_session_based_RNN}
+Bal{\'a}zs Hidasi, Alexandros Karatzoglou, Linas Baltrunas, and Domonkos Tikk.
+\newblock Session-based recommendations with recurrent neural networks.
+\newblock {\em arXiv preprint arXiv:1511.06939}, 2015.
+
+\bibitem{Kang_McAuley_2018_SASRec}
+Wang-Cheng Kang and Julian McAuley.
+\newblock Self-attentive sequential recommendation.
+\newblock In {\em 2018 IEEE international conference on data mining (ICDM)},
+  pp. 197--206. IEEE, 2018.
+
+\bibitem{Sun_Yuan_Wang_Shen_Li_Lu_2019_BERT4Rec}
+Fei Sun, Jun Liu, Jian Wu, Changhua Pei, Xiao Lin, Wenwu Ou, and Peng Jiang.
+\newblock Bert4rec: Sequential recommendation with bidirectional encoder
+  representations from transformer.
+\newblock In {\em Proceedings of the 28th ACM International Conference on
+  Information and Knowledge Management}, CIKM '19, p. 1441^^e2^^80^^931450, New
+  York, NY, USA, 2019. Association for Computing Machinery.
+
+\bibitem{VanDenBerg_Thomas_Kipf_Welling_2017_GCMC}
+Rianne Van Den~Berg, N~Kipf Thomas, and Max Welling.
+\newblock Graph convolutional matrix completion.
+\newblock {\em arXiv preprint arXiv:1706.02263}, Vol.~2, No.~8, p.~9, 2017.
+
+\bibitem{Ying_He_Chen_Eksombatchai_Hamilton_Leskovec_2018_GCN_recommender}
+Rex Ying, Ruining He, Kaifeng Chen, Pong Eksombatchai, William~L Hamilton, and
+  Jure Leskovec.
+\newblock Graph convolutional neural networks for web-scale recommender
+  systems.
+\newblock In {\em Proceedings of the 24th ACM SIGKDD international conference
+  on knowledge discovery \& data mining}, pp. 974--983, 2018.
+
+\bibitem{Wang_He_Wang_Feng_Chua_2019_NGCF}
+Xiang Wang, Xiangnan He, Meng Wang, Fuli Feng, and Tat-Seng Chua.
+\newblock Neural graph collaborative filtering.
+\newblock In {\em Proceedings of the 42nd International ACM SIGIR Conference on
+  Research and Development in Information Retrieval}, SIGIR'19, p.
+  165^^e2^^80^^93174, New York, NY, USA, 2019. Association for Computing
+  Machinery.
+
+\bibitem{He_Deng_Wang_Li_Zhang_Wang_2020_LightGCN}
+Xiangnan He, Kuan Deng, Xiang Wang, Yan Li, YongDong Zhang, and Meng Wang.
+\newblock Lightgcn: Simplifying and powering graph convolution network for
+  recommendation.
+\newblock In {\em Proceedings of the 43rd International ACM SIGIR Conference on
+  Research and Development in Information Retrieval}, SIGIR '20, p.
+  639^^e2^^80^^93648, New York, NY, USA, 2020. Association for Computing
+  Machinery.
+
+\bibitem{Wu_Tang_Zhu_Wang_Xie_Tan_2019_SR-GNN}
+Shu Wu, Yuyuan Tang, Yanqiao Zhu, Liang Wang, Xing Xie, and Tieniu Tan.
+\newblock Session-based recommendation with graph neural networks.
+\newblock {\em Proceedings of the AAAI Conference on Artificial Intelligence},
+  Vol.~33, No.~01, pp. 346--353, Jul. 2019.
+
+\bibitem{Sedhain_Menon_Sanner_Xie_2015_AutoRec}
+Suvash Sedhain, Aditya~Krishna Menon, Scott Sanner, and Lexing Xie.
+\newblock Autorec: Autoencoders meet collaborative filtering.
+\newblock In {\em Proceedings of the 24th International Conference on World
+  Wide Web}, WWW '15 Companion, p. 111^^e2^^80^^93112, New York, NY, USA, 2015.
+  Association for Computing Machinery.
+
+\bibitem{Liang_Krishnan_Hoffman_Jebara_2018_VAE_CF}
+Dawen Liang, Rahul~G. Krishnan, Matthew~D. Hoffman, and Tony Jebara.
+\newblock Variational autoencoders for collaborative filtering.
+\newblock In {\em Proceedings of the 2018 World Wide Web Conference}, WWW '18,
+  p. 689^^e2^^80^^93698, Republic and Canton of Geneva, CHE, 2018.
+  International World Wide Web Conferences Steering Committee.
+
+\bibitem{Wang_Yu_Zhang_Gong_Xu_Wang_Zhang_Zhang_2017_IRGAN}
+Jun Wang, Lantao Yu, Weinan Zhang, Yu~Gong, Yinghui Xu, Benyou Wang, Peng
+  Zhang, and Dell Zhang.
+\newblock Irgan: A minimax game for unifying generative and discriminative
+  information retrieval models.
+\newblock In {\em Proceedings of the 40th International ACM SIGIR Conference on
+  Research and Development in Information Retrieval}, SIGIR '17, p.
+  515^^e2^^80^^93524, New York, NY, USA, 2017. Association for Computing
+  Machinery.
+
+\bibitem{Chae_Kang_Kim_Lee_2018_CFGAN}
+Dong-Kyu Chae, Jin-Soo Kang, Sang-Wook Kim, and Jung-Tae Lee.
+\newblock Cfgan: A generic collaborative filtering framework based on
+  generative adversarial networks.
+\newblock In {\em Proceedings of the 27th ACM International Conference on
+  Information and Knowledge Management}, CIKM '18, p. 137^^e2^^80^^93146, New
+  York, NY, USA, 2018. Association for Computing Machinery.
+
+\bibitem{Wang_Xu_Feng_Lin_He_Chua_2023_DiffRec}
+Wenjie Wang, Yiyan Xu, Fuli Feng, Xinyu Lin, Xiangnan He, and Tat-Seng Chua.
+\newblock Diffusion recommender model.
+\newblock In {\em Proceedings of the 46th International ACM SIGIR Conference on
+  Research and Development in Information Retrieval}, SIGIR '23, p.
+  832^^e2^^80^^93841, New York, NY, USA, 2023. Association for Computing
+  Machinery.
 
 \end{thebibliography}
