@@ -1,1 +1,16 @@
 \chapter{Proposed Method: Distributional Preference Modeling for Cross-Domain Recommendation}\label{chap:proposed_method}
+
+\section{Background}
+The existing recommender systems have already achieved significant success in various applications. However, they often struggle with challenges such as data sparsity, cold start problems. Also, most traditional recommender systems represent user preferences as point estimates, which may not fully capture the uncertainty and multifaceted nature of user preferences. To address these issues, we propose a novel approach that models user preferences as probability distributions rather than single point estimates, and leverages cross-domain information to enhance recommendation accuracy. In existing cross-domain recommendation methods, it is common to assume that there are overlapping users or items between domains during the training phase to provide a bridge for knowledge transfer. However, we argue that this kind of assumption may not hold in many real-world scenarios, where users and items can be entirely distinct across different domains. Therefore, our proposed method focuses on scenarios where there are no overlapping users or items between domains during training, making it more applicable to a wider range of real-world applications.
+Based on this motivation, we introduce a distributional preference modeling framework for cross-domain recommendation without overlapping users or items. We call this method DUP-OT(Distributional User Preference with Optimal Transport). The key idea behind DUP-OT is to represent user preferences in each domain as probability distributions over items, capturing the uncertainty and diversity of user interests. By leveraging optimal transport theory, we can effectively align and transfer knowledge between the source and target domains, even in the absence of overlapping users or items. This alignment allows us to learn a shared latent space where user preferences from both domains can be compared and utilized for recommendation.
+
+\section{Methods}
+\subsection{Overview}
+The overall architecture of the proposed DUP-OT framework is illustrated in Figure~\ref{fig:dup-ot-architecture}. The framework consists of three main components: (1) Shared Feature Extraction, (2) Distributional Preference Modeling, and (3) Optimal Transport-based Knowledge Transfer.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figures/overall_structure}
+	\caption{Architecture of the DUP-OT Framework}
+	\label{fig:dup-ot-architecture}
+\end{figure}
+The

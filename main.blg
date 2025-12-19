@@ -7,46 +7,52 @@ Repeated entry---line 268 of file reference.bib
  : @article{Burke_2002_hybrid_recommender
  :                                       ,
 I'm skipping whatever remains of this entry
-You've used 44 entries,
+Repeated entry---line 636 of file reference.bib
+ : @inproceedings{Salakhutdinov_Mnih_2008_Bayesian_PMF
+ :                                                    ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "Peyre_Cuturi_2019_OT_ML"
+Warning--can't use both volume and number fields in Pan_Xiang_Liu_Yang_2010_transfer_learning_CF
+You've used 57 entries,
             2270 wiz_defined-function locations,
-            866 strings with 15774 characters,
-and the built_in function-call counts, 19301 in all, are:
-= -- 1752
-> -- 531
-< -- 75
-+ -- 206
-- -- 162
-* -- 846
-:= -- 2100
-add.period$ -- 147
-call.type$ -- 44
-change.case$ -- 44
+            945 strings with 19079 characters,
+and the built_in function-call counts, 24255 in all, are:
+= -- 2118
+> -- 719
+< -- 91
++ -- 277
+- -- 220
+* -- 1119
+:= -- 2704
+add.period$ -- 186
+call.type$ -- 57
+change.case$ -- 56
 chr.to.int$ -- 0
-cite$ -- 44
-duplicate$ -- 1379
-empty$ -- 1641
-format.name$ -- 324
-if$ -- 5012
+cite$ -- 58
+duplicate$ -- 1662
+empty$ -- 2121
+format.name$ -- 440
+if$ -- 6226
 int.to.chr$ -- 0
-int.to.str$ -- 44
-missing$ -- 43
-newline$ -- 223
-num.names$ -- 46
-pop$ -- 262
+int.to.str$ -- 57
+missing$ -- 56
+newline$ -- 287
+num.names$ -- 61
+pop$ -- 365
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 1335
+skip$ -- 1558
 stack$ -- 0
-substring$ -- 1015
-swap$ -- 699
-text.length$ -- 75
+substring$ -- 1315
+swap$ -- 786
+text.length$ -- 91
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 118
-width$ -- 46
-write$ -- 519
-is.kanji.str$ -- 568
-(There was 1 error message)
+warning$ -- 1
+while$ -- 158
+width$ -- 59
+write$ -- 660
+is.kanji.str$ -- 746
+(There were 2 error messages)

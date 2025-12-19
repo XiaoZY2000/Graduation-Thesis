@@ -13,27 +13,30 @@
 \contentsline {subsubsection}{\numberline {3.1.1.1}Memory-based CF}{6}{}%
 \contentsline {subsubsection}{\numberline {3.1.1.2}Model-based CF}{7}{}%
 \contentsline {subsubsection}{\numberline {3.1.1.3}Content-based Filtering}{8}{}%
-\contentsline {subsubsection}{\numberline {3.1.1.4}Hybrid Methods}{8}{}%
-\contentsline {subsection}{\numberline {3.1.2}Supervised Machine Learning in Recommender Systems}{8}{}%
-\contentsline {subsection}{\numberline {3.1.3}Deep Learning-based Recommender Systems}{9}{}%
-\contentsline {subsubsection}{\numberline {3.1.3.1}Neural Collaborative Filtering}{9}{}%
-\contentsline {subsubsection}{\numberline {3.1.3.2}Sequential Recommender Systems}{10}{}%
-\contentsline {subsubsection}{\numberline {3.1.3.3}Graph-based Recommender Systems}{11}{}%
-\contentsline {subsubsection}{\numberline {3.1.3.4}Generative Recommender Systems}{11}{}%
-\contentsline {section}{\numberline {3.2}Cross-Domain Recommender Systems}{12}{}%
-\contentsline {subsection}{\numberline {3.2.1}Overlapping CDR}{12}{}%
-\contentsline {subsection}{\numberline {3.2.2}Non-overlapping CDR}{12}{}%
-\contentsline {section}{\numberline {3.3}Distributional User Preference Modeling}{12}{}%
-\contentsline {subsection}{\numberline {3.3.1}Multi-interest User Modeling}{12}{}%
-\contentsline {subsection}{\numberline {3.3.2}Probabilistic Preference Modeling}{12}{}%
-\contentsline {section}{\numberline {3.4}Optimal Transport for Representation Alignment}{12}{}%
-\contentsline {subsection}{\numberline {3.4.1}OT Basics in ML}{12}{}%
-\contentsline {subsection}{\numberline {3.4.2}OT in Domain Adaptation}{12}{}%
-\contentsline {chapter}{\numberline {4}Proposed Method: Distributional Preference Modeling for Cross-Domain Recommendation}{13}{}%
-\contentsline {chapter}{\numberline {5}Experiments}{14}{}%
-\contentsline {chapter}{\numberline {6}Results}{15}{}%
-\contentsline {chapter}{\numberline {7}Conclusion}{16}{}%
-\contentsline {chapter}{Appendix}{21}{}%
-\contentsline {section}{\numberline {A}Graph-Enhanced EEG Foundation Models}{21}{}%
-\contentsline {chapter}{Publications}{22}{}%
-\contentsline {chapter}{Acknowledgement}{23}{}%
+\contentsline {subsubsection}{\numberline {3.1.1.4}Hybrid Methods}{9}{}%
+\contentsline {subsection}{\numberline {3.1.2}Supervised Machine Learning in Recommender Systems}{9}{}%
+\contentsline {subsection}{\numberline {3.1.3}Deep Learning-based Recommender Systems}{10}{}%
+\contentsline {subsubsection}{\numberline {3.1.3.1}Neural Collaborative Filtering}{11}{}%
+\contentsline {subsubsection}{\numberline {3.1.3.2}Sequential Recommender Systems}{11}{}%
+\contentsline {subsubsection}{\numberline {3.1.3.3}Graph-based Recommender Systems}{12}{}%
+\contentsline {subsubsection}{\numberline {3.1.3.4}Generative Recommender Systems}{13}{}%
+\contentsline {section}{\numberline {3.2}Cross-Domain Recommender Systems}{14}{}%
+\contentsline {subsection}{\numberline {3.2.1}Overlapping CDR}{14}{}%
+\contentsline {subsection}{\numberline {3.2.2}Non-overlapping CDR}{15}{}%
+\contentsline {section}{\numberline {3.3}Distributional User Preference Modeling}{15}{}%
+\contentsline {subsection}{\numberline {3.3.1}Multi-interest User Modeling}{15}{}%
+\contentsline {subsection}{\numberline {3.3.2}Probabilistic Preference Modeling}{16}{}%
+\contentsline {section}{\numberline {3.4}Optimal Transport for Representation Alignment}{16}{}%
+\contentsline {subsection}{\numberline {3.4.1}OT Basics in ML}{17}{}%
+\contentsline {subsection}{\numberline {3.4.2}OT in Domain Adaptation}{17}{}%
+\contentsline {chapter}{\numberline {4}Proposed Method: Distributional Preference Modeling for Cross-Domain Recommendation}{18}{}%
+\contentsline {section}{\numberline {4.1}Background}{18}{}%
+\contentsline {section}{\numberline {4.2}Methods}{19}{}%
+\contentsline {subsection}{\numberline {4.2.1}Overview}{19}{}%
+\contentsline {chapter}{\numberline {5}Experiments}{20}{}%
+\contentsline {chapter}{\numberline {6}Results}{21}{}%
+\contentsline {chapter}{\numberline {7}Conclusion}{22}{}%
+\contentsline {chapter}{Appendix}{28}{}%
+\contentsline {section}{\numberline {A}Additional Experimental Results}{28}{}%
+\contentsline {chapter}{Publications}{29}{}%
+\contentsline {chapter}{Acknowledgement}{30}{}%

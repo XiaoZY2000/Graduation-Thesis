@@ -7,133 +7,281 @@ This section reviews the existing literature on recommender systems, categorizin
 \subsection{Traditional Recommender Systems}
 % Include collaborative filtering, content-based filtering, hybrid methods.
 In the early stages of recommender systems, traditional techniques such as collaborative filtering, content-based filtering, and hybrid methods were predominantly used.
-Collaborative filtering (CF) is one of the foundational approaches in recommender systems, operating on the principle that users with similar preferences will like similar items, or that items liked by similar users will be preferred by a given user\cite{Bobadilla_Ortega_Hernando_Gutiérrez_2013_recommender_survey,Su_Khoshgoftaar_2009_CF_survey}.
+Collaborative filtering (CF) is one of the foundational approaches in recommender systems, operating on the principle that users with similar preferences will like similar items, or that items liked by similar users will be preferred by a given user~\cite{Bobadilla_Ortega_Hernando_Gutiérrez_2013_recommender_survey,Su_Khoshgoftaar_2009_CF_survey}.
 
-CF can be divded into memory based and model-based methods based on how recommendations are generated. Memory-based methods utilize user-item interaction data directly to compute similarities between users or items, while model-based methods employ machine learning algorithms to learn latent factors from the interaction data.
+CF can be divded into memory-based and model-based methods based on how recommendations are generated. Memory-based methods utilize user-item interaction data directly to compute similarities between users or items, while model-based methods employ machine learning algorithms to learn latent factors from the interaction data.
 \subsubsection{Memory-based CF}
 By user or item similarities, memory-based CF can be further categorized into user-based and item-based approaches. User-based CF recommends items to a user based on the preferences of similar users, while item-based CF suggests items similar to those the user has previously liked.
 
-GroupLens\cite{Resnick_1994_grouplens} is one of the earliest and most influential memory-based CF systems, which introduced user-based collaborative filtering using Pearson correlation to compute user similarities. It demonstrated the effectiveness of CF in providing personalized recommendations and laid the groundwork for subsequent research in the field.
+GroupLens~\cite{Resnick_1994_grouplens} is one of the earliest and most influential memory-based CF systems, which introduced user-based collaborative filtering using Pearson correlation to compute user similarities. It demonstrated the effectiveness of CF in providing personalized recommendations and laid the groundwork for subsequent research in the field.
 
-Sarwar et al.\cite{Sarwar_2001_item_based_CF} proposed an item-based collaborative filtering approach that focused on item similarities rather than user similarities. This method improved scalability and recommendation accuracy by leveraging item-item correlations, making it more suitable for large-scale recommender systems. This approach is widely adopted in commercial recommender systems due to its efficiency and effectiveness even today.
+Sarwar et al.~\cite{Sarwar_2001_item_based_CF} points out that when the number of users and items is very large, user-based CF can be computationally expensive and the sparsity of the user-item interaction matrix can lead to poor recommendation quality. Noticing that users' preferences change quickly over time but items' characteristics are relatively stable, they proposed an item-based CF approach that computes item similarities based on user interactions. The merit of this method is that item similarities can be precomputed and stored, allowing for efficient recommendation generation. And the number of items is usually much smaller than the number of users, which helps alleviate the data sparsity issue. Also, one important attribution of this paper is that it proposed a new similarity measure called adjusted cosine similarity, which accounts for individual user rating biases when computing item similarities. This method has since become a standard technique in item-based CF and has been widely adopted in various recommender systems.
 
 \subsubsection{Model-based CF}
-Model-based CF methods utilize machine learning techniques to learn latent representations of users and items from interaction data.
+Model-based CF methods utilize machine learning techniques to learn latent representations of users and items from interaction data, by fitting parametric models such as matrix factorization, probabilistic latent factor models, or neural networks.
+These models capture underlying preference patterns in a low-dimensional latent space, enabling generalization to unseen user–item pairs and alleviating data sparsity.
 
-Breese et al.\cite{Breese_Heckerman_Kadie_2013_CF_analysis} conducted a comprehensive analysis of various model-based CF techniques, including Bayesian networks and clustering methods. Their work highlighted the advantages of model-based approaches in handling data sparsity and improving recommendation accuracy. Bayesian networks, in particular, provided a probabilistic framework for modeling user preferences and item characteristics. This method laid the foundation for later model-based CF techniques as it proposed a general probabilistic framework for recommendation.
+Breese et al.~\cite{Breese_Heckerman_Kadie_2013_CF_analysis} conducted a comprehensive analysis of both memory-based and model-based CF methods. This paper is the first to systematically distinguish between memory-based and model-based CF approaches, providing a detailed comparison of their strengths and weaknesses. The model-based methods mentioned in this paper include Bayesian Clustering and Bayesian Networks. Bayesian Clustering groups users into clusters based on their preferences, while Bayesian Networks model the probabilistic relationships between users and items.
 
-Ungar and Foster\cite{Ungar_Foster_1998_clustering_CF} introduced a clustering-based CF method that grouped users with similar preferences and made recommendations based on cluster-level preferences. This approach effectively addressed the scalability issue in CF by reducing the dimensionality of the user-item interaction space.
+Ungar and Foster~\cite{Ungar_Foster_1998_clustering_CF} pointed out that traditional clustering-based collaborative filtering methods suffer from instability and poor generalization when interaction data are highly sparse, as approaches based on KNN or simple K-means clustering rely heavily on local similarity patterns.
+To address this issue, they proposed Gibbs clustering for collaborative filtering, a probabilistic co-clustering approach that jointly clusters users and items into latent classes and models their interactions through class-level link probabilities. By explicitly formulating a generative model and employing Gibbs sampling for inference, their method enforces global consistency in user and item assignments and provides a principled alternative to heuristic clustering.
 
-Koren et al.\cite{Koren_Bell_Volinsky_2009_MF_recommender} proposed matrix factorization (MF) techniques for recommender systems, which became one of the most popular model-based CF methods. MF decomposes the user-item interaction matrix into low-rank latent factor matrices, capturing the underlying structure of user preferences and item characteristics. This method demonstrated significant improvements in recommendation accuracy and scalability, particularly in large-scale datasets.
+Koren et al.~\cite{Koren_Bell_Volinsky_2009_MF_recommender} systematically review matrix factorization techniques for recommender systems, demonstrating that latent factor models with bias, implicit feedback, and temporal dynamics achieve consistently superior accuracy and scalability over neighborhood-based methods, and establishing matrix factorization as a dominant model-based collaborative filtering paradigm.
 
-Salakhutdinov and Mnih\cite{Salakhutdinov_Mnih_2008_Bayesian_PMF} introduced Bayesian Probabilistic Matrix Factorization (BPMF), which incorporated Bayesian inference into the MF framework. BPMF provided a principled way to handle uncertainty in user preferences and item characteristics, leading to improved recommendation performance.
+Salakhutdinov and Mnih introduce Probabilistic Matrix Factorization as a scalable latent factor model for large, sparse recommender systems, and further extend it to a fully Bayesian framework using MCMC, significantly improving robustness and generalization—especially for infrequent users—while establishing PMF as a foundational model-based collaborative filtering paradigm~\cite{Mnih_Salakhutdinov_2007_PMF,Salakhutdinov_Mnih_2008_Bayesian_PMF}.
 
-These model-based methods mainly represent user preferences as discrete vectors in a latent space, but there are also some methods that represent user preferences as probability distributions. Considering that our proposed method also represents user preferences as distributions, we introduce some of these related works below.
+While most model-based collaborative filtering methods represent user preferences as point embeddings in a latent space, several approaches instead characterize user preferences in a probabilistic manner. Since our proposed method also adopts a distributional representation of user preferences, we briefly review related works along this line.
 
-Hofmann \cite{Hofmann_2004_PLSA_recommender} proposed Probabilistic Latent Semantic Analysis (PLSA) for recommender systems, which models user-item interactions using a mixture of latent topics. PLSA represents user preferences as probability distributions over latent topics, allowing for a more nuanced representation of user behavior.
+Hofmann~\cite{Hofmann_2004_PLSA_recommender} proposed probabilistic latent semantic analysis (PLSA) for collaborative filtering, formulating user–item interactions as a latent class mixture model. In PLSA, each user is associated with a probability distribution over latent topics (or communities), and each interaction is generated by first sampling a latent topic and then drawing an item conditioned on that topic. As a result, user preferences are represented as distributions over latent semantic factors, allowing different interactions of the same user to be explained by different latent causes, rather than being tied to a single latent representation.
 
-Marlin \cite{Marlin_2003_user_rating_profiles} introduced a probabilistic approach to model user rating profiles, capturing the uncertainty in user preferences. This method utilized Gaussian distributions to represent user ratings, enabling more accurate recommendations by accounting for variability in user behavior.
+Marlin~\cite{Marlin_2003_user_rating_profiles} proposed the User Rating Profile (URP) model, a probabilistic latent variable approach for rating-based collaborative filtering that explicitly models uncertainty in user preferences. URP represents each user as a mixture over latent user attitudes, where the mixture proportions are drawn from a Dirichlet distribution. For each item, a latent attitude is sampled and the corresponding rating is generated according to an attitude-specific rating distribution.
+By modeling users as distributions over latent preference patterns rather than fixed point representations, URP enables different items rated by the same user to be explained by different latent factors and allows direct inference of rating distributions for unseen items.
 
-Blei, Ng, and Jordan \cite{Blei_Ng_Jordan_2003_LDA} proposed Latent Dirichlet Allocation (LDA), a generative probabilistic model that represents documents as mixtures of topics. Although originally designed for text modeling, LDA has been adapted for recommender systems to model user preferences as distributions over latent topics, providing a richer representation of user behavior.
+Blei, Ng, and Jordan~\cite{Blei_Ng_Jordan_2003_LDA} proposed Latent Dirichlet Allocation (LDA), a hierarchical generative probabilistic model that represents each document as a mixture over latent topics, where the topic proportions are drawn from a Dirichlet prior. By introducing a document-level latent variable, LDA provides a fully generative framework that enables principled inference for previously unseen data.
+Although originally developed for text modeling, LDA has been extended to collaborative filtering by treating users as documents and items as words. Under this formulation, user preferences are modeled as probability distributions over latent topics, allowing each user–item interaction to be explained by different latent factors. This distributional representation enables LDA to capture heterogeneous user interests more flexibly than single-vector latent representations.
 
 \subsubsection{Content-based Filtering}
-Content-based filtering (CBF) recommends items to users based on the attributes of items and the user's past interactions with similar items.
+Content-based filtering (CBF) recommends items to users by modeling user preferences from the attributes of items they have previously interacted with.
+Typically, both users and items are represented in a shared feature space, where recommendations are generated based on the similarity between user profiles and item representations.
+Since CBF relies solely on individual user history, it is less affected by user–user interaction sparsity but often suffers from limited diversity and difficulty in capturing evolving or complex user interests.
 
-Salton et al.\cite{Salton_Buckley_Fox_1983_auto_query_formulation} introduced the vector space model for information retrieval, which laid the foundation for content-based recommender systems. This model represents items and user profiles as vectors in a high-dimensional space, allowing for the computation of similarity scores between users and items.
+Salton et al.~\cite{Salton_Buckley_Fox_1983_auto_query_formulation} proposed the vector space model for information retrieval, in which both documents and queries are represented as weighted term vectors.
+By assigning importance weights to terms (e.g., inverse document frequency) and computing similarity scores between query and document vectors, the model enables ranked retrieval based on relevance.
+This representation and similarity-matching paradigm laid the foundation for content-based recommender systems, where user profiles and item content are similarly modeled in a shared feature space.
 
-Pazzani et al.\cite{Pazzani_Billsus_1997_user_profiles} proposed a content-based recommender system that constructs user profiles based on item attributes and user feedback. Their approach utilized machine learning techniques to learn user preferences and recommend items that align with those preferences.
+Pazzani and Billsus~\cite{Pazzani_Billsus_1997_user_profiles} proposed a content-based recommender system that learns user profiles from explicit user feedback on item content.
+Their method represents items using content features and employs a naive Bayesian classifier to incrementally learn and revise user preference profiles, enabling the system to predict the interestingness of unseen items.
 
 \subsubsection{Hybrid Methods}
 Hybrid recommender systems combine both collaborative filtering and content-based filtering techniques to leverage the strengths of each approach and mitigate their respective weaknesses.
+By jointly exploiting user–item interaction patterns and item content information, hybrid methods can alleviate issues such as data sparsity and cold-start that commonly affect pure collaborative filtering models.
+These approaches typically integrate multiple signals at different stages of the recommendation pipeline, resulting in more robust and accurate predictions.
 
-Burke\cite{Burke_2002_hybrid_recommender} provided a comprehensive survey of hybrid recommender systems, categorizing various hybridization strategies such as weighted, switching, and feature combination methods. This work highlighted the benefits of hybrid approaches in improving recommendation accuracy and addressing challenges like data sparsity and cold-start problems.
+Burke~\cite{Burke_2002_hybrid_recommender} presented a comprehensive survey of hybrid recommender systems, systematically categorizing hybridization strategies such as weighted, switching, mixed, and feature combination approaches.
+The survey analyzed how different hybrid designs integrate multiple recommendation techniques to balance their respective strengths and weaknesses, demonstrating that hybrid methods can effectively improve recommendation accuracy and alleviate issues such as data sparsity and cold-start problems.
 
-Pazzani\cite{Pazzani_1999_framework_CDR} proposed a hybrid recommender system that integrates collaborative filtering and content-based filtering to enhance recommendation quality. This system utilized user-item interaction data and item attributes to generate personalized recommendations, demonstrating improved performance over single-method approaches.
+Pazzani~\cite{Pazzani_1999_framework_CDR} proposed a unified framework for integrating collaborative, content-based, and demographic filtering methods in recommender systems.
+By exploiting multiple sources of information, including user–item interactions, item content, and user profiles, the framework combines recommendations from different models to improve precision.
+Experimental results demonstrated that hybrid approaches within this framework consistently outperform single-method recommenders.
 
-Melville et al.\cite{Melville_Mooney_Nagarajan_2002_content_boosted_CF} introduced a content-boosted collaborative filtering approach that incorporates content information into the collaborative filtering framework. This method effectively addresses data sparsity issues by leveraging item attributes to enhance user-item interaction data. The core idea is to use content-based predictions to fill in missing values in the user-item interaction matrix, thereby improving the overall recommendation accuracy.
+Melville et al.~\cite{Melville_Mooney_Nagarajan_2002_content_boosted_CF} proposed a content-boosted collaborative filtering (CBCF) framework that integrates content-based prediction into the collaborative filtering process.
+Specifically, a content-based predictor is first used to generate pseudo ratings for unrated items, producing a dense pseudo user–item matrix on which collaborative filtering is subsequently applied.
+By alleviating sparsity and the first-rater problem, this approach achieves significantly improved recommendation accuracy compared to pure collaborative, pure content-based, and naive hybrid methods.
 
-Billsus et al.\cite{Billsus_Pazzani_2000_user_modeling} developed a hybrid news recommender system that combines collaborative filtering and content-based filtering techniques. Their approach utilized user feedback and item content to generate personalized news recommendations, demonstrating the effectiveness of hybrid methods in real-world applications. This system is a typical example of application-driven hybrid recommender systems.
+Billsus et al.~\cite{Billsus_Pazzani_2000_user_modeling} developed a hybrid news recommender system for adaptive news access that integrates collaborative filtering and content-based filtering techniques.
+Their system learns personalized user models from both explicit and implicit user feedback, and combines short-term and long-term interest representations to adapt to users’ evolving information needs.
+Deployed in a real-world news delivery environment, this work demonstrated the practical effectiveness of hybrid recommender systems in improving personalization quality without requiring additional user effort.
 
 \subsection{Supervised Machine Learning in Recommender Systems}
-% Include some classic machine learning techniques that not included in model-based collaborative filtering. Like decision trees, SVM, etc.
-Supervised machine learning techniques have also been applied to recommender systems to enhance recommendation accuracy. Algorithms such as decision trees, support vector machines (SVM), and ensemble methods have been utilized to model user preferences based on various features. These techniques often incorporate user demographics, item attributes, and contextual information to improve recommendation quality.
+Supervised machine learning techniques have also been widely applied to recommender systems to enhance recommendation accuracy.
+By formulating recommendation as a regression or classification problem, these methods learn predictive models from labeled user–item interaction data using features such as user demographics, item attributes, and contextual information.
+Algorithms including decision trees, support vector machines, and ensemble methods have been employed to capture complex relationships between features and user preferences.
+While effective in leveraging rich side information, supervised learning-based approaches often rely heavily on feature engineering and struggle to generalize under sparse interaction settings.
 
-Basilico et al.\cite{Basilico_Hofmann_2004_unifying_CF_content} proposed a unified framework that combines collaborative filtering and content-based filtering using supervised learning techniques. Their approach employed decision trees to model user preferences, demonstrating improved recommendation performance by leveraging both user-item interactions and item attributes.
+Basilico and Hofmann~\cite{Basilico_Hofmann_2004_unifying_CF_content} proposed a unified supervised learning framework that integrates collaborative filtering and content-based filtering within a single prediction model.
+Their approach formulates recommendation as a learning problem over user–item pairs by designing joint feature representations and kernel functions that enable simultaneous generalization across both user and item dimensions.
+By incorporating user–item interaction data together with item and user attributes, the framework achieves improved recommendation accuracy compared to traditional collaborative or content-based methods.
 
-Render et al.\cite{Rendle_2010_factorization_machines} introduced Factorization Machines (FMs), a supervised learning algorithm that generalizes matrix factorization techniques. FMs can model interactions between features in high-dimensional sparse data, making them well-suited for recommender systems. This method has been shown to outperform traditional CF and CBF approaches in various recommendation tasks.
+Rendle~\cite{Rendle_2010_factorization_machines} introduced Factorization Machines (FMs), a supervised learning model that generalizes matrix factorization by modeling pairwise feature interactions through factorized parameters.
+By representing user–item interactions, item attributes, and contextual information as sparse feature vectors, FMs can efficiently capture interactions in high-dimensional and highly sparse settings.
+This unified formulation subsumes several state-of-the-art factorization models and has demonstrated superior performance over traditional collaborative and content-based approaches in various recommendation tasks.
 
-Burges et al.\cite{Burges_Shaked_Renshaw_Lazier_Deeds_Hamilton_Hullender_2005_LTR} developed a learning-to-rank framework for recommender systems using SVMs. Their approach focused on optimizing the ranking of recommended items based on user preferences, leading to improved recommendation quality.
+Burges et al.~\cite{Burges_Shaked_Renshaw_Lazier_Deeds_Hamilton_Hullender_2005_LTR} proposed a learning-to-rank framework that directly optimizes the ordering of items rather than predicting absolute preference scores.
+Their approach formulates ranking as a pairwise learning problem and introduces RankNet, which models ranking preferences using a probabilistic cost function optimized via gradient descent.
+By focusing on ranking quality, this framework significantly improves recommendation effectiveness in scenarios where the relative order of items is more important than precise rating prediction.
 
-Later, Burges et al.\cite{Burges_2010_ranknet_lambdarank_lambdamart} extended their work on learning-to-rank by introducing RankNet, LambdaRank, and LambdaMART algorithms. These methods utilized gradient-based optimization techniques to directly optimize ranking metrics, further enhancing the performance of recommender systems.
+Later, Burges~\cite{Burges_2010_ranknet_lambdarank_lambdamart} provided a comprehensive overview of learning-to-rank methods, including RankNet, LambdaRank, and LambdaMART.
+RankNet formulates ranking as a pairwise probabilistic learning problem optimized via gradient descent, while LambdaRank introduces the concept of lambda gradients to directly optimize ranking metrics such as NDCG.
+By combining LambdaRank with gradient-boosted decision trees, LambdaMART further improves ranking performance and has become a widely adopted approach in large-scale recommendation and information retrieval systems.
 
-In industrial applications, supervised learning techniques have been widely adopted to build effective recommender systems. And decision tree and ensemble methods are particularly popular due to their interpretability and ability to handle complex feature interactions.
+In industrial recommender systems, supervised learning techniques are widely adopted due to their strong predictive performance and flexibility in incorporating heterogeneous features.
+Among these methods, decision tree-based models and ensemble learning techniques are particularly popular, as they provide a good balance between interpretability and the ability to capture complex feature interactions.
 
-He, et al.\cite{He_Pan_Jin_Xu_Liu_Xu_Shi_Atallah_Herbrich_Bowers_2014_facebook_ads} developed a recommender system for Facebook Ads using gradient boosting decision trees. Their approach effectively modeled user preferences based on various features, leading to improved ad targeting and user engagement. This work exemplifies the successful application of supervised learning techniques in large-scale industrial recommender systems using decision trees.
+He et al.~\cite{He_Pan_Jin_Xu_Liu_Xu_Shi_Atallah_Herbrich_Bowers_2014_facebook_ads} developed a large-scale recommender system for Facebook Ads based on gradient boosting decision trees.
+By modeling user preferences from rich user, item, and contextual features, their approach significantly improved ad targeting effectiveness and user engagement, demonstrating the practicality of supervised learning methods in real-world industrial recommendation scenarios.
 
-Besides, some improved ensemble methods like XGBoost\cite{Chen_2016_XGBoost} and LightGBM\cite{Ke_Meng_Finley_Wang_Chen_Ma_Ye_Liu_2017_LightGBM} have also been applied in recommender systems to enhance recommendation accuracy and scalability. These methods leverage gradient boosting techniques to build robust models that can effectively capture complex user-item interactions.
+Furthermore, advanced gradient boosting frameworks such as XGBoost~\cite{Chen_2016_XGBoost} and LightGBM~\cite{Ke_Meng_Finley_Wang_Chen_Ma_Ye_Liu_2017_LightGBM} have been widely applied in recommender systems to enhance both accuracy and scalability.
+These methods leverage efficient tree-based boosting strategies to model high-order feature interactions, making them particularly suitable for large-scale recommendation tasks with sparse and high-dimensional feature spaces.
 
 \subsection{Deep Learning-based Recommender Systems}
-Deep learning has revolutionized recommender systems by enabling the modeling of complex user-item interactions and capturing non-linear relationships. Neural Collaborative Filtering (NCF) employs multi-layer perceptrons to learn user-item interaction functions, outperforming traditional MF methods. Convolutional Neural Networks (CNNs) have been utilized to extract features from item content, such as images and text, enhancing recommendation quality. Recurrent Neural Networks (RNNs) have been applied to model sequential user behavior, capturing temporal dynamics in user preferences.
+Deep learning-based recommender systems have significantly advanced the field by enabling end-to-end representation learning and modeling complex, non-linear user–item interactions.
+Neural Collaborative Filtering (NCF) extends traditional matrix factorization by replacing fixed inner products with multi-layer perceptrons, allowing the model to learn more expressive interaction functions.
+Beyond interaction modeling, convolutional neural networks (CNNs) have been widely used to extract informative representations from unstructured item content such as images and text, thereby enriching item features for recommendation.
+Recurrent neural networks (RNNs) and their variants further incorporate temporal dynamics by modeling sequential user behaviors, enabling personalized recommendations that adapt to users’ evolving preferences.
 
 \subsubsection{Neural Collaborative Filtering}
-Neural Collaborative Filtering (NCF) is a deep learning-based approach that utilizes neural networks to model user-item interactions.
+Neural Collaborative Filtering (NCF) is a deep learning-based recommendation framework that replaces the fixed inner product used in matrix factorization with neural networks to model user–item interactions.
+By learning non-linear interaction functions through multi-layer perceptrons, NCF can capture more complex preference patterns than traditional collaborative filtering methods.
+The framework unifies several neural architectures, including generalized matrix factorization (GMF), multi-layer perceptron (MLP), and their hybrid variant NeuMF, which have demonstrated superior performance on various recommendation benchmarks.
 
-He et al.\cite{He_Liao_Zhang_Nie_Hu_Chua_2017_NCF} proposed the NCF framework, which formulates collaborative filtering as a neural interaction learning problem. Instead of assuming a fixed interaction function such as the inner product used in traditional matrix factorization, NCF leverages neural networks to learn flexible and nonlinear user–item interaction functions from data. Specifically, users and items are first represented as low-dimensional embedding vectors, which are then combined through neural architectures to capture complex interaction patterns that cannot be modeled by linear similarity measures.
-
-Within the NCF framework, the authors introduced several representative model instantiations, including Generalized Matrix Factorization (GMF), which extends classical matrix factorization by generalizing the inner product into a learnable function, and MLP-based collaborative filtering, which employs multi-layer perceptrons to model high-order nonlinear interactions between user and item embeddings. Furthermore, the NeuMF model integrates GMF and MLP components into a unified architecture, enabling the framework to simultaneously capture both linear and nonlinear interaction signals.
-
-By replacing manually designed interaction functions with data-driven neural networks, NCF significantly enhances the expressive capacity of collaborative filtering models while retaining the fundamental user–item interaction paradigm. This neural interaction learning framework has since been widely adopted as a standard baseline in recommender system research, particularly for evaluating the effectiveness of neural network–based interaction modeling.
+He et al.~\cite{He_Liao_Zhang_Nie_Hu_Chua_2017_NCF} proposed the Neural Collaborative Filtering (NCF) framework, which formulates collaborative filtering as a neural interaction learning problem.
+Instead of relying on a fixed inner product as in traditional matrix factorization, NCF employs neural networks to learn flexible and non-linear user–item interaction functions directly from data.
+In this framework, users and items are embedded into low-dimensional latent spaces and their representations are combined through neural architectures—such as generalized matrix factorization (GMF), multi-layer perceptrons (MLP), and their fusion model NeuMF—to capture complex interaction patterns beyond linear similarity measures.
 
 \subsubsection{Sequential Recommender Systems}
-Sequential Recommender Systems leverage sequential patterns in user behavior to provide personalized recommendations. This approach captures the temporal dynamics of user preferences by modeling the order of user interactions with items and are widely used in various applications, such as e-commerce, music streaming, and video platforms.
-The main techniques used in sequential recommender systems include Recurrent Neural Networks (RNNs), LSTM networks, and Transformer-based models.
+Sequential recommender systems exploit the sequential patterns in users’ interaction histories to generate personalized recommendations.
+By explicitly modeling the order and temporal dependencies of user–item interactions, these methods capture the dynamic evolution of user preferences over time and have been widely applied in domains such as e-commerce, music streaming, and video platforms.
+Representative techniques for sequential recommendation include recurrent neural networks (RNNs) and their variants such as long short-term memory (LSTM) networks, as well as more recent Transformer-based architectures.
 
-Hidasi et al.\cite{Hidasi_Karatzoglou_Baltrunas_Tikk_2015_session_based_RNN} proposed a session-based recommender system using RNNs to model user behavior within sessions. Their approach effectively captures the sequential nature of user interactions, leading to improved recommendation accuracy.
+Hidasi et al.~\cite{Hidasi_Karatzoglou_Baltrunas_Tikk_2015_session_based_RNN} proposed a session-based recommender system that applies recurrent neural networks (RNNs) to model user behavior within individual sessions.
+By representing a session as a sequence of item interactions and maintaining a recurrent hidden state, their approach captures both short-term and long-term dependencies in session data.
+Furthermore, the authors introduced ranking-oriented loss functions tailored to recommendation tasks, enabling the model to significantly outperform traditional item-to-item and neighborhood-based baselines.
 
-The mainstream sequential recommender systems now are Transformer-based models. Kang and McAuley\cite{Kang_McAuley_2018_SASRec} introduced SASRec, a self-attentive sequential recommender system that utilizes the Transformer architecture to model user behavior. SASRec captures long-range dependencies in user interactions, enabling more accurate recommendations. SASRec utilizes the encoder part of the Transformer architecture to model user interaction sequences. By employing self-attention mechanisms, SASRec can effectively capture complex dependencies and patterns in user behavior over time. This allows the model to consider the entire sequence of user interactions when making recommendations, rather than relying solely on recent actions. The self-attention mechanism enables SASRec to weigh the importance of different items in the user's interaction history, allowing it to focus on relevant past behaviors that are most indicative of future preferences. This capability to model long-range dependencies and complex interaction patterns significantly enhances the recommendation quality, making SASRec a powerful approach for sequential recommendation tasks.
+The mainstream sequential recommender systems now are Transformer-based models. Kang and McAuley~\cite{Kang_McAuley_2018_SASRec} proposed SASRec, a self-attentive sequential recommender system based on the Transformer encoder architecture.
+By employing self-attention mechanisms, SASRec adaptively weighs historical items in a user’s interaction sequence, enabling the model to capture long-range dependencies while remaining efficient on sparse data.
+Unlike recurrent models that summarize sequences through a single hidden state, SASRec directly attends to relevant past interactions, leading to improved recommendation accuracy and scalability in sequential recommendation tasks.
 
-BERT4Rec\cite{Sun_Yuan_Wang_Shen_Li_Lu_2019_BERT4Rec} is another Transformer-based sequential recommender system that employs bidirectional self-attention to model user behavior. BERT4Rec captures contextual information from both past and future interactions, leading to enhanced recommendation performance. This structure is similar to the decoder part of the original Transformer architecture, where the model is trained to predict masked items in the user interaction sequence. By leveraging bidirectional self-attention, BERT4Rec can effectively capture complex dependencies and contextual information from both past and future interactions, enabling it to generate more accurate recommendations. This bidirectional modeling allows BERT4Rec to consider the entire sequence of user interactions when making predictions, rather than relying solely on preceding items. As a result, BERT4Rec can better understand user preferences and provide more relevant recommendations, making it a powerful approach for sequential recommendation tasks.
+Sun et al.~\cite{Sun_Yuan_Wang_Shen_Li_Lu_2019_BERT4Rec} proposed BERT4Rec, a Transformer-based sequential recommender system that employs bidirectional self-attention to model user behavior sequences.
+Unlike unidirectional sequential models such as RNN-based methods and SASRec, BERT4Rec leverages bidirectional contextual information by predicting masked items within a sequence using a Cloze-style training objective.
+This design enables each item representation to incorporate both preceding and succeeding context, leading to more expressive sequence modeling and consistently improved recommendation performance across multiple benchmark datasets.
 
 \subsubsection{Graph-based Recommender Systems}
-With the increasing popularity of graph neural networks (GNNs), graph-based recommender systems have gained significant attention in recent years. These systems leverage the inherent graph structure of user-item interactions to capture complex relationships and dependencies. The advantages of graph-based recommender systems include their ability to model high-order connectivity, incorporate side information, and handle dynamic interactions.
+Graph-based recommender systems model user–item interactions as graphs and apply graph neural networks (GNNs) to learn representations through neighborhood aggregation.
+By propagating information along graph edges, these methods can effectively capture high-order connectivity and collaborative signals that are difficult to model with point-wise interaction functions.
+Moreover, graph-based frameworks naturally support the integration of side information and heterogeneous relations, enabling richer modeling of user preferences and item characteristics.
 
-Van Den Berg et al.\cite{VanDenBerg_Thomas_Kipf_Welling_2017_GCMC} proposed Graph Convolutional Matrix Completion (GCMC), which utilizes graph convolutional networks to model user-item interactions. GCMC effectively captures high-order connectivity in the interaction graph, leading to improved recommendation accuracy.
+Van den Berg et al.~\cite{VanDenBerg_Thomas_Kipf_Welling_2017_GCMC} proposed Graph Convolutional Matrix Completion (GCMC), which formulates collaborative filtering as a link prediction problem on a bipartite user–item interaction graph.
+By employing a graph convolutional auto-encoder architecture, GCMC learns user and item representations through message passing on the interaction graph and reconstructs ratings via a bilinear decoder.
+This approach effectively captures high-order collaborative signals and naturally incorporates side information, leading to improved recommendation performance on benchmark datasets.
 
-Ying et al.\cite{Ying_He_Chen_Eksombatchai_Hamilton_Leskovec_2018_GCN_recommender} introduced PinSage, a graph-based recommender system that combines GNNs with random walks to generate item embeddings. PinSage effectively incorporates side information and captures complex relationships in the interaction graph, enhancing recommendation quality. This method has been successfully deployed in large-scale industrial applications, such as Pinterest, demonstrating its scalability and effectiveness.
+Ying et al.~\cite{Ying_He_Chen_Eksombatchai_Hamilton_Leskovec_2018_GCN_recommender} proposed PinSage, a graph-based recommender system designed for web-scale applications.
+PinSage combines graph neural networks with efficient random-walk-based neighborhood sampling to learn item representations that incorporate both graph structure and rich side information.
+By addressing the scalability limitations of conventional GCNs, PinSage was successfully deployed in large-scale industrial systems such as Pinterest, demonstrating the effectiveness of graph-based recommendation models in real-world production environments.
 
-Wang et al.\cite{Wang_He_Wang_Feng_Chua_2019_NGCF} proposed Neural Graph Collaborative Filtering (NGCF), which integrates GNNs into the collaborative filtering framework. NGCF captures high-order connectivity and complex user-item interactions, leading to significant improvements in recommendation performance.
+Wang et al.~\cite{Wang_He_Wang_Feng_Chua_2019_NGCF} proposed Neural Graph Collaborative Filtering (NGCF), which explicitly integrates graph neural networks into collaborative filtering by modeling user–item interactions as a bipartite graph.
+NGCF refines user and item embeddings through recursive message passing on the interaction graph, enabling the explicit modeling of high-order connectivity and collaborative signals, which leads to significant improvements in recommendation performance.
 
-He et al. \cite{He_Deng_Wang_Li_Zhang_Wang_2020_LightGCN} introduced LightGCN, a simplified graph convolutional network for recommender systems. LightGCN removes unnecessary components from traditional GNNs, focusing solely on neighborhood aggregation to enhance recommendation accuracy while reducing computational complexity. This streamlined architecture allows LightGCN to efficiently capture high-order connectivity in user-item interaction graphs, leading to improved recommendation performance with lower resource consumption. This method has become a popular baseline in graph-based recommender system research due to its effectiveness and efficiency.
+He et al.~\cite{He_Deng_Wang_Li_Zhang_Wang_2020_LightGCN} introduced LightGCN, a simplified graph convolutional network tailored for recommender systems.
+Unlike prior GNN-based models that incorporate feature transformations and nonlinear activations, LightGCN argues that these components contribute little to collaborative filtering performance when only user and item IDs are available as input.
+Accordingly, LightGCN retains only the neighborhood aggregation operation to propagate embeddings over the user–item interaction graph, significantly simplifying the model architecture while preserving the ability to capture high-order connectivity.
+Extensive experiments demonstrate that LightGCN not only reduces computational complexity but also achieves superior recommendation accuracy compared to more complex GNN-based methods such as NGCF, making it a widely adopted and strong baseline in graph-based recommender system research.
 
-Wu et al.\cite{Wu_Tang_Zhu_Wang_Xie_Tan_2019_SR-GNN} proposed SR-GNN, a session-based recommender system that utilizes GNNs to model user behavior within sessions. SR-GNN effectively captures complex relationships in the interaction graph, leading to enhanced recommendation accuracy. This work is a representation of combining graph-based methods with sequential recommender systems to leverage the strengths of both approaches.
+Wu et al.~\cite{Wu_Tang_Zhu_Wang_Xie_Tan_2019_SR-GNN} proposed SR-GNN, a session-based recommender system that models user interaction sequences as graph-structured data and applies graph neural networks to learn item representations within sessions.
+By constructing a directed session graph for each interaction sequence, SR-GNN is able to capture complex transition patterns among items that go beyond simple sequential dependencies.
+This work represents an early attempt to integrate graph-based modeling with sequential recommendation, effectively combining the strengths of GNNs in capturing high-order relational information and sequential models in characterizing short-term user intent.
 
 %Knowledge Graph-based Recommender Systems
 
 \subsubsection{Generative Recommender Systems}
-Generative Recommender Systems are newly emerging as a promising approach to enhance recommendation quality by leveraging generative models to capture complex user-item interactions and generate personalized recommendations. These systems utilize techniques such as Variational Autoencoders (VAEs), Generative Adversarial Networks (GANs), and Normalizing Flows to model the underlying distribution of user preferences and item characteristics.
-Generative recommender systems offer several advantages, including the ability to model uncertainty in user preferences, generate diverse recommendations, and handle data sparsity effectively. This benefits can also be seen in our proposed method, which models user preferences as distributions.
+Generative recommender systems have emerged as an important research direction that models user preferences and item characteristics from a probabilistic perspective.
+By leveraging generative models such as Variational Autoencoders (VAEs), Generative Adversarial Networks (GANs), and Normalizing Flows, these approaches aim to learn the underlying distribution of user–item interactions rather than deterministic point estimates.
+Such distribution-aware modeling enables recommender systems to capture uncertainty in user preferences, generate diverse recommendations, and alleviate data sparsity issues.
+These advantages are closely related to the motivation of our proposed method, which also represents user preferences as probability distributions to support more expressive and robust recommendation.
 
-Sedhain et al.\cite{Sedhain_Menon_Sanner_Xie_2015_AutoRec} proposed AutoRec, a VAE-based recommender system that learns latent representations of users and items from interaction data. AutoRec effectively captures complex user-item interactions, leading to improved recommendation accuracy.
+Liang et al.~\cite{Liang_Krishnan_Hoffman_Jebara_2018_VAE_CF} proposed a variational autoencoder (VAE)-based collaborative filtering framework for implicit feedback data.
+By modeling user preferences as latent random variables and employing a multinomial likelihood, this approach provides a probabilistic formulation that captures uncertainty and multi-modal structures in user behavior.
+Compared with deterministic autoencoder-based models, the VAE framework enables more expressive preference modeling and demonstrates strong empirical performance under sparse interaction settings.
 
-Liang et al.\cite{Liang_Krishnan_Hoffman_Jebara_2018_VAE_CF} introduced a VAE-based collaborative filtering approach that models user preferences as latent variables. This method captures uncertainty in user behavior, enhancing recommendation quality.
+Wang et al.~\cite{Wang_Yu_Zhang_Gong_Xu_Wang_Zhang_Zhang_2017_IRGAN} proposed IRGAN, a generative adversarial framework that unifies generative and discriminative models for information retrieval and recommendation tasks.
+By formulating the learning process as a minimax game, the generative model aims to approximate the underlying relevance distribution over items, while the discriminative model learns to distinguish relevant from non-relevant user–item pairs.
+Through adversarial training, IRGAN effectively improves recommendation performance, particularly under implicit feedback settings.
 
-Wang et al.\cite{Wang_Yu_Zhang_Gong_Xu_Wang_Zhang_Zhang_2017_IRGAN} proposed IRGAN, a GAN-based recommender system that unifies generative and discriminative models for information retrieval tasks. IRGAN effectively generates personalized recommendations by modeling user-item interactions through adversarial training.
+Chae et al.~\cite{Chae_Kang_Kim_Lee_2018_CFGAN} proposed CFGAN, a generic collaborative filtering framework based on generative adversarial networks.
+Unlike prior GAN-based recommender systems that generate discrete item indices, CFGAN adopts vector-wise adversarial training, where the generator produces real-valued preference vectors and the discriminator distinguishes them from ground-truth interaction vectors.
+This design effectively stabilizes adversarial learning and improves recommendation accuracy, especially under sparse implicit feedback settings.
 
-Chae et al.\cite{Chae_Kang_Kim_Lee_2018_CFGAN} introduced CFGAN, a collaborative filtering framework based on GANs. CFGAN generates user-item interaction data to improve recommendation accuracy, particularly in scenarios with limited interaction data.
-
-Besides these typical generative models, diffusion models have also been recently applied in recommender systems.
-Wang et al.\cite{Wang_Xu_Feng_Lin_He_Chua_2023_DiffRec} proposed DiffRec, a diffusion-based recommender system that leverages diffusion processes to model user-item interactions. DiffRec effectively captures complex relationships in the interaction data, leading to enhanced recommendation performance. This work represents the application of diffusion models in recommender systems, showcasing their potential to improve recommendation quality by modeling intricate user-item dynamics.
+Beyond VAEs and GANs, diffusion models have recently been introduced to recommender systems as a new class of generative models.
+Wang et al.~\cite{Wang_Xu_Feng_Lin_He_Chua_2023_DiffRec} proposed DiffRec, a diffusion-based recommender system that models the user–item interaction generation process through iterative denoising.
+By gradually corrupting user interaction histories and learning to recover the original interactions step by step, DiffRec provides a flexible and expressive framework for modeling complex preference distributions.
+This work demonstrates the potential of diffusion models to overcome the limitations of traditional generative approaches and further improve recommendation performance under noisy and sparse interaction settings.
 
 \section{Cross-Domain Recommender Systems}
 
+Despite the success of single-domain recommender systems, challenges such as data sparsity and cold-start users remain difficult to address when interaction data are limited.
+Cross-Domain Recommendation (CDR) tackles these issues by transferring knowledge from a source domain with abundant user–item interactions to a target domain where data are scarce.
+
+The core objective of CDR is to leverage auxiliary information across domains to improve recommendation performance, under the assumption that user preferences or item characteristics exhibit certain transferable patterns.
+By exploiting correlations between domains, CDR methods aim to enhance recommendation accuracy and robustness, especially in cold-start and sparse-data scenarios.
+
+Based on whether domains share common entities, existing CDR approaches can be broadly categorized into \emph{overlapping} and \emph{non-overlapping} settings.
+Overlapping CDR methods assume the existence of shared users or items across domains and utilize this overlap as a bridge for knowledge transfer in the training stage.
+Typical techniques include joint matrix factorization, co-clustering, and graph-based models that align user preferences or item representations across domains.
+
+In contrast, non-overlapping CDR methods address more challenging scenarios where no users or items are shared between domains during training.
+These approaches generally rely on content features, latent representations, or learned mappings between domains to enable preference transfer without explicit entity overlap.
+Non-overlapping CDR is particularly relevant in practical applications, but remains challenging due to the lack of direct correspondence between domains.
+
 \subsection{Overlapping CDR}
+%Still need to add more recent works.
+%Add GNN based CDR methods.
+The core idea of overlapping CDR is to leverage the shared users or items between domains to facilitate knowledge transfer.
+
+Singh and Gordon~\cite{Singh_Gordon_2008_CMF} proposed Collective Matrix Factorization (CMF), a multi-relational matrix factorization framework that jointly factorizes multiple user–item interaction matrices across domains.
+By sharing latent factors for overlapping users or items, CMF enables effective knowledge transfer between related domains and improves recommendation performance under data sparsity.
+This work is widely regarded as a foundational approach for overlapping cross-domain recommendation.
+
+Li et al.~\cite{Li_Yang_Xue_2009_transfer_learning_CF} proposed a transfer learning framework for collaborative filtering based on a rating-matrix generative model.
+Their approach captures shared latent rating patterns across domains by learning a common cluster-level rating structure, enabling knowledge transfer even under severe data sparsity.
+This framework provides a principled probabilistic formulation for overlapping cross-domain recommendation and significantly improves recommendation performance in the target domain.
+
+Pan et al.~\cite{Pan_Xiang_Liu_Yang_2010_transfer_learning_CF} proposed a transfer learning framework for collaborative filtering that alleviates data sparsity by transferring knowledge from auxiliary domains.
+Their method discovers shared latent structures of users and items in auxiliary data through matrix factorization and adapts these structures to the target domain via a principled regularization scheme.
+By exploiting overlapping users or items across domains, this approach effectively captures transferable preference patterns and improves recommendation performance in sparse target domains.
 
 \subsection{Non-overlapping CDR}
+%Still need to add more recent works.
+Non-overlapping cross-domain recommendation addresses scenarios where no users or items are shared between domains.
+In the absence of explicit entity overlap, these methods aim to bridge domains by learning transferable representations from auxiliary information, such as content features, latent factors, or deep neural models.
+
+Man et al.~\cite{Man_Shen_Jin_Cheng_2017_CDR_embedding_mapping} proposed EMCDR, an embedding-and-mapping framework for cross-domain recommendation.
+The framework first learns latent user and item representations independently in each domain, and then learns a cross-domain mapping function to project embeddings from the source domain into the target domain.
+By transferring preferences through latent space mapping, EMCDR enables effective knowledge transfer in non-overlapping and cold-start scenarios.
 
 \section{Distributional User Preference Modeling}
+
+Recent studies have recognized that user preferences are often uncertain and multi-modal, reflecting diverse and evolving interests.
+However, most traditional recommender systems represent user preferences as deterministic point embeddings in a latent space, which implicitly assume a single dominant preference pattern.
+
+To better capture preference variability, distributional user preference modeling has been proposed as an alternative paradigm that represents user interests as probability distributions.
+By modeling preferences at the distribution level, these approaches provide a more expressive representation that can capture uncertainty, preference diversity, and complex user–item interaction patterns.
+
 \subsection{Multi-interest User Modeling}
+
+Multi-interest user modeling refers to a class of approaches that represent user preferences using multiple latent vectors or components in order to capture diverse and heterogeneous interests.
+
+Early probabilistic models have implicitly adopted multi-interest representations by modeling user preferences as mixtures over latent components.
+Probabilistic Latent Semantic Analysis (pLSA)~\cite{Hofmann_2004_PLSA_recommender} and related latent class models represent users through distributions over latent topics or preference patterns inferred from interaction data.
+Latent Dirichlet Allocation (LDA)~\cite{Blei_Ng_Jordan_2003_LDA} further introduces a fully generative formulation by modeling user-specific mixture weights as random variables, enabling users to exhibit multiple interests to different degrees.
+Similarly, Marlin~\cite{Marlin_2003_user_rating_profiles} models user rating profiles as mixtures of latent user attitudes, providing an early probabilistic formulation of multi-interest user preferences in collaborative filtering.
+
+Zhou et al. ~\cite{Zhou_Zhu_Song_Fan_Zhu_Ma_Yan_Jin_Li_Gai_2018_DIN} proposed Deep Interest Network (DIN), which captures users' diverse interests by employing an attention mechanism to dynamically aggregate multiple interest representations based on the target item. DIN effectively models the multifaceted nature of user preferences, leading to improved recommendation accuracy.
+
+%MIND比较重要，可以扩展
+Li et al. ~\cite{Li_Liu_Wu_Xu_Zhao_Huang_Kang_Chen_Li_Lee_2019_MIND} introduced Multi-Interest Network with Dynamic Routing (MIND), which represents user preferences using multiple interest vectors. MIND employs a dynamic routing mechanism to capture diverse user interests, enhancing recommendation performance. MIND is a industrial-level multi-interest user modeling method that has been deployed in large-scale recommender systems.
+
+Cen et al. ~\cite{Cen_Zhang_Zou_Zhou_Yang_Tang_2020_ComiRec} proposed ComiRec, a comprehensive multi-interest recommender system that utilizes a capsule network to model diverse user interests. ComiRec can explicitly capture multiple interest representations and support controllable diversity in recommendations, leading to enhanced recommendation quality.
+
 \subsection{Probabilistic Preference Modeling}
+Beyond multi-interest user modeling, probabilistic preference modeling aims to capture the uncertainty and variability in user preferences by representing them as probability distributions. This approach allows for a more flexible and expressive representation of user behavior, accommodating the inherent uncertainty in user preferences.
+
+The previously mentioned works by Marlin ~\cite{Marlin_2003_user_rating_profiles}, Hofmann ~\cite{Hofmann_2004_PLSA_recommender}, and Blei et al. ~\cite{Blei_Ng_Jordan_2003_LDA} are also modeling user preferences as distributions and their purpose is to capture the multi-faceted nature of user interests. Besides this target, uncertainty modeling is another important purpose of probabilistic preference modeling.
+Salakhutdinov and Mnih~\cite{Salakhutdinov_Mnih_2008_Bayesian_PMF} introduced Bayesian Probabilistic Matrix Factorization (BPMF), which incorporated Bayesian inference into the MF framework. BPMF provided a principled way to handle uncertainty in user preferences and item characteristics. BPMF models user preferences as Gaussian distributions in the latent space, allowing for a more flexible representation that captures uncertainty in user behavior.
+%这里还可以加
+
+VAE-based methods also model uncertainty in user preferences. Liang et al.~\cite{Liang_Krishnan_Hoffman_Jebara_2018_VAE_CF} introduced a VAE-based collaborative filtering approach that models user preferences as latent variables. This method captures uncertainty in user behavior, enhancing recommendation quality. By representing user preferences as distributions in the latent space, VAE-based methods can effectively model the variability and uncertainty inherent in user behavior.
+
+Besides recommendation systems implementations, some works focus on the general representation learning of words or items as distributions.
+Vilnis and McCallum ~\cite{Vilnis_McCallum_2015_Gaussian_embeddings} proposed Gaussian Embeddings, which represent words as Gaussian distributions in the embedding space. This approach captures both the semantic meaning and uncertainty of word representations, providing a richer and more expressive representation compared to traditional point embeddings. Although this work is not specifically designed for recommender systems, the idea of representing entities as distributions can be extended to model user preferences and item characteristics in recommendation tasks.
 
 \section{Optimal Transport for Representation Alignment}
+Optimal Transport is a framework for finding an optimal transport plan between two probability distributions, minimizing the cost of transporting mass from one distribution to another. OT has been widely used in various machine learning tasks, including domain adaptation, generative modeling, and representation learning.
+
 \subsection{OT Basics in ML}
+Optimal Transport (OT) provides a mathematical framework for comparing and aligning probability distributions by finding the most efficient way to transport mass from one distribution to another. In machine learning, OT has been employed in various tasks, including domain adaptation, generative modeling, and representation learning.
+
+Villani ~\cite{Villani_2008_optimal_transport} provided a comprehensive overview of the mathematical foundations of OT, including the Kantorovich formulation and Wasserstein distances. This work laid the groundwork for applying OT in machine learning by establishing key theoretical concepts.
+
+Peyré and Cuturi ~\cite{Peyre_Cuturi_2019_OT_ML} presented a detailed survey of OT applications in machine learning, covering topics such as domain adaptation, generative modeling, and deep learning. This work highlighted the versatility of OT in addressing various machine learning challenges and provided practical algorithms for implementing OT-based methods.
+
+Cuturi and Marco ~\cite{Cuturi_2013_Sinkhorn_distances} introduced the Sinkhorn algorithm, which enables efficient computation of OT distances by adding an entropic regularization term. This method significantly reduces the computational complexity of OT, making it feasible for large-scale machine learning applications.
+
+Genevay et al. ~\cite{Genevay_Peyre_Cuturi_2018_Sinkhorn_generative_models} proposed the use of Sinkhorn divergences for training generative models. This work demonstrated the effectiveness of OT-based losses in improving the quality of generated samples, showcasing the potential of OT in generative modeling tasks.
+
 \subsection{OT in Domain Adaptation}
+Optimal Transport has been widely used in domain adaptation tasks to align feature distributions between source and target domains. By minimizing the transport cost between distributions, OT-based methods can effectively transfer knowledge from the source domain to the target domain, improving model performance in the target domain.
+
+Courty et al. ~\cite{Courty_Flamary_Tuia_Rakotomamonjy_2016_OT_domain_adaptation} proposed an OT-based domain adaptation method that aligns feature distributions between source and target domains. Their approach minimizes the Wasserstein distance between distributions, enabling effective knowledge transfer and improved performance in the target domain.
+
+Frogner et al. ~\cite{Frogner_Zhang_Mobahi_Araya_Poggio_2015_Wasserstein_loss} introduced a deep learning framework for domain adaptation using OT. Their method incorporates OT losses into deep neural networks, allowing for end-to-end training and effective alignment of feature distributions across domains.
+
+With the development of efficient OT computation methods, such as the Sinkhorn algorithm, OT-based domain adaptation methods have become more practical for large-scale applications. These methods have demonstrated significant improvements in various domain adaptation tasks, showcasing the effectiveness of OT in addressing distributional shifts between domains.

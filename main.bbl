@@ -87,6 +87,13 @@ Yehuda Koren, Robert Bell, and Chris Volinsky.
 \newblock Matrix factorization techniques for recommender systems.
 \newblock {\em Computer}, Vol.~42, No.~8, pp. 30--37, 2009.
 
+\bibitem{Mnih_Salakhutdinov_2007_PMF}
+Andriy Mnih and Russ~R Salakhutdinov.
+\newblock Probabilistic matrix factorization.
+\newblock In J.~Platt, D.~Koller, Y.~Singer, and S.~Roweis, editors, {\em
+  Advances in Neural Information Processing Systems}, Vol.~20. Curran
+  Associates, Inc., 2007.
+
 \bibitem{Salakhutdinov_Mnih_2008_Bayesian_PMF}
 Ruslan Salakhutdinov and Andriy Mnih.
 \newblock Bayesian probabilistic matrix factorization using markov chain monte
@@ -247,13 +254,6 @@ Shu Wu, Yuyuan Tang, Yanqiao Zhu, Liang Wang, Xing Xie, and Tieniu Tan.
 \newblock {\em Proceedings of the AAAI Conference on Artificial Intelligence},
   Vol.~33, No.~01, pp. 346--353, Jul. 2019.
 
-\bibitem{Sedhain_Menon_Sanner_Xie_2015_AutoRec}
-Suvash Sedhain, Aditya~Krishna Menon, Scott Sanner, and Lexing Xie.
-\newblock Autorec: Autoencoders meet collaborative filtering.
-\newblock In {\em Proceedings of the 24th International Conference on World
-  Wide Web}, WWW '15 Companion, p. 111^^e2^^80^^93112, New York, NY, USA, 2015.
-  Association for Computing Machinery.
-
 \bibitem{Liang_Krishnan_Hoffman_Jebara_2018_VAE_CF}
 Dawen Liang, Rahul~G. Krishnan, Matthew~D. Hoffman, and Tony Jebara.
 \newblock Variational autoencoders for collaborative filtering.
@@ -286,5 +286,84 @@ Wenjie Wang, Yiyan Xu, Fuli Feng, Xinyu Lin, Xiangnan He, and Tat-Seng Chua.
   Research and Development in Information Retrieval}, SIGIR '23, p.
   832^^e2^^80^^93841, New York, NY, USA, 2023. Association for Computing
   Machinery.
+
+\bibitem{Singh_Gordon_2008_CMF}
+Ajit~P Singh and Geoffrey~J Gordon.
+\newblock Relational learning via collective matrix factorization.
+\newblock In {\em Proceedings of the 14th ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, pp. 650--658, 2008.
+
+\bibitem{Li_Yang_Xue_2009_transfer_learning_CF}
+Bin Li, Qiang Yang, and Xiangyang Xue.
+\newblock Transfer learning for collaborative filtering via a rating-matrix
+  generative model.
+\newblock In {\em Proceedings of the 26th annual international conference on
+  machine learning}, pp. 617--624, 2009.
+
+\bibitem{Pan_Xiang_Liu_Yang_2010_transfer_learning_CF}
+Weike Pan, Evan Xiang, Nathan Liu, and Qiang Yang.
+\newblock Transfer learning in collaborative filtering for sparsity reduction.
+\newblock In {\em Proceedings of the AAAI conference on artificial
+  intelligence}, Vol.~24, pp. 230--235, 2010.
+
+\bibitem{Man_Shen_Jin_Cheng_2017_CDR_embedding_mapping}
+Tong Man, Huawei Shen, Xiaolong Jin, and Xueqi Cheng.
+\newblock Cross-domain recommendation: An embedding and mapping approach.
+\newblock In {\em Ijcai}, Vol.~17, pp. 2464--2470, 2017.
+
+\bibitem{Zhou_Zhu_Song_Fan_Zhu_Ma_Yan_Jin_Li_Gai_2018_DIN}
+Guorui Zhou, Xiaoqiang Zhu, Chenru Song, Ying Fan, Han Zhu, Xiao Ma, Yanghui
+  Yan, Junqi Jin, Han Li, and Kun Gai.
+\newblock Deep interest network for click-through rate prediction.
+\newblock In {\em Proceedings of the 24th ACM SIGKDD international conference
+  on knowledge discovery \& data mining}, pp. 1059--1068, 2018.
+
+\bibitem{Li_Liu_Wu_Xu_Zhao_Huang_Kang_Chen_Li_Lee_2019_MIND}
+Chao Li, Zhiyuan Liu, Mengmeng Wu, Yuchi Xu, Huan Zhao, Pipei Huang, Guoliang
+  Kang, Qiwei Chen, Wei Li, and Dik~Lun Lee.
+\newblock Multi-interest network with dynamic routing for recommendation at
+  tmall.
+\newblock In {\em Proceedings of the 28th ACM international conference on
+  information and knowledge management}, pp. 2615--2623, 2019.
+
+\bibitem{Cen_Zhang_Zou_Zhou_Yang_Tang_2020_ComiRec}
+Yukuo Cen, Jianwei Zhang, Xu~Zou, Chang Zhou, Hongxia Yang, and Jie Tang.
+\newblock Controllable multi-interest framework for recommendation.
+\newblock In {\em Proceedings of the 26th ACM SIGKDD international conference
+  on knowledge discovery \& data mining}, pp. 2942--2951, 2020.
+
+\bibitem{Vilnis_McCallum_2015_Gaussian_embeddings}
+Luke Vilnis and Andrew McCallum.
+\newblock Word representations via gaussian embedding, 2015.
+
+\bibitem{Villani_2008_optimal_transport}
+C{\'e}dric Villani, et~al.
+\newblock {\em Optimal transport: old and new}, Vol. 338.
+\newblock Springer, 2008.
+
+\bibitem{Cuturi_2013_Sinkhorn_distances}
+Marco Cuturi.
+\newblock Sinkhorn distances: Lightspeed computation of optimal transport.
+\newblock {\em Advances in neural information processing systems}, Vol.~26, ,
+  2013.
+
+\bibitem{Genevay_Peyre_Cuturi_2018_Sinkhorn_generative_models}
+Aude Genevay, Gabriel Peyr{\'e}, and Marco Cuturi.
+\newblock Learning generative models with sinkhorn divergences.
+\newblock In {\em International Conference on Artificial Intelligence and
+  Statistics}, pp. 1608--1617. PMLR, 2018.
+
+\bibitem{Courty_Flamary_Tuia_Rakotomamonjy_2016_OT_domain_adaptation}
+Nicolas Courty, R{\'e}mi Flamary, Devis Tuia, and Alain Rakotomamonjy.
+\newblock Optimal transport for domain adaptation.
+\newblock {\em IEEE transactions on pattern analysis and machine intelligence},
+  Vol.~39, No.~9, pp. 1853--1865, 2016.
+
+\bibitem{Frogner_Zhang_Mobahi_Araya_Poggio_2015_Wasserstein_loss}
+Charlie Frogner, Chiyuan Zhang, Hossein Mobahi, Mauricio Araya, and Tomaso~A
+  Poggio.
+\newblock Learning with a wasserstein loss.
+\newblock {\em Advances in neural information processing systems}, Vol.~28, ,
+  2015.
 
 \end{thebibliography}
