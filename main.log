@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.uptex) (TeX Live 2025) (preloaded format=uplatex 2025.6.4)  19 DEC 2025 21:20
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.uptex) (TeX Live 2025) (preloaded format=uplatex 2025.6.4)  20 DEC 2025 17:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -563,50 +563,71 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 
 [16]
 
-LaTeX Warning: Citation `Peyre_Cuturi_2019_OT_ML' on page 17 undefined on input
- line 259.
+[17]) (./chapterfile/chapter4.tex
 
-) (./chapterfile/chapter4.tex
-
-[17]
+[18]
 Chapter 4.
-File: figures/overall_structure.pdf Graphic file (type pdf)
-<figures/overall_structure.pdf>
-) (./chapterfile/chapter5.tex
 
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 22.54448pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[18
+[19
 
 ]
+File: figures/overall_structure.pdf Graphic file (type pdf)
+<figures/overall_structure.pdf>
 
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 22.54448pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-[19]
+
+
+[20]
+
+[21]
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 6.73553pt on input line 57.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 6.73553pt on input line 57.
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 4.8111pt on input line 57.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 4.8111pt on input line 57.
+
+
+[22]
+File: figures/domain_discrepancy.pdf Graphic file (type pdf)
+<figures/domain_discrepancy.pdf>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: figures/autoencoder_structure.pdf Graphic file (type pdf)
+<figures/autoencoder_structure.pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./chapterfile/chapter5.tex
+
+[23]
+
+[24]
+
+[25]
 Chapter 5.
 ) (./chapterfile/chapter6.tex
 
-[20
+[26
 
 ]
 Chapter 6.
 ) (./chapterfile/chapter7.tex
 
-[21
+[27
 
 ]
 Chapter 7.
 ) (./main.bbl
 
-[22
+[28
 
 ]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -633,7 +654,7 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 71.
 
 
-[23
+[29
 
 ]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -666,7 +687,7 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 162.
 
 
-[24]
+[30]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 169.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -695,7 +716,7 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 246.
 
 
-[25]
+[31]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 254.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -718,7 +739,7 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 318.
 
 
-[26]
+[32]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 326.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -732,20 +753,22 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 359.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 366.
+(Font)              No change on input line 365.
+LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
+(Font)              No change on input line 372.
 ) (./chapterfile/chapter_appendix.tex
 
-[27]) (./chapterfile/chapter_publication.tex
+[33]) (./chapterfile/chapter_publication.tex
 
-[28
+[34
 
 ]) (./chapterfile/chapter_acknowledgement.tex
 
-[29
+[35
 
 ])
 
-[30
+[36
 
 ] (./main.aux)
  ***********
@@ -753,18 +776,14 @@ pLaTeX2e <2023-02-14u04>+1, based on
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 10922 strings out of 475292
- 243714 string characters out of 5766798
- 597877 words of memory out of 5000000
- 33908 multiletter control sequences out of 15000+600000
- 577872 words of font info for 121 fonts, out of 8000000 for 9000
+ 10945 strings out of 475292
+ 244462 string characters out of 5766798
+ 599019 words of memory out of 5000000
+ 33928 multiletter control sequences out of 15000+600000
+ 578249 words of font info for 122 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 73i,12n,80p,1213b,543s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 73i,12n,80p,1118b,543s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (36 pages, 114760 bytes).
+Output written on main.dvi (42 pages, 138352 bytes).

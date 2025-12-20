@@ -11,48 +11,47 @@ Repeated entry---line 636 of file reference.bib
  : @inproceedings{Salakhutdinov_Mnih_2008_Bayesian_PMF
  :                                                    ,
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "Peyre_Cuturi_2019_OT_ML"
 Warning--can't use both volume and number fields in Pan_Xiang_Liu_Yang_2010_transfer_learning_CF
-You've used 57 entries,
+You've used 59 entries,
             2270 wiz_defined-function locations,
-            945 strings with 19079 characters,
-and the built_in function-call counts, 24255 in all, are:
-= -- 2118
-> -- 719
-< -- 91
-+ -- 277
-- -- 220
-* -- 1119
-:= -- 2704
-add.period$ -- 186
-call.type$ -- 57
-change.case$ -- 56
+            955 strings with 19451 characters,
+and the built_in function-call counts, 24857 in all, are:
+= -- 2164
+> -- 736
+< -- 94
++ -- 284
+- -- 225
+* -- 1147
+:= -- 2772
+add.period$ -- 191
+call.type$ -- 59
+change.case$ -- 58
 chr.to.int$ -- 0
-cite$ -- 58
-duplicate$ -- 1662
-empty$ -- 2121
-format.name$ -- 440
-if$ -- 6226
+cite$ -- 60
+duplicate$ -- 1699
+empty$ -- 2182
+format.name$ -- 450
+if$ -- 6376
 int.to.chr$ -- 0
-int.to.str$ -- 57
-missing$ -- 56
-newline$ -- 287
-num.names$ -- 61
-pop$ -- 365
+int.to.str$ -- 59
+missing$ -- 57
+newline$ -- 296
+num.names$ -- 63
+pop$ -- 380
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 1558
+skip$ -- 1592
 stack$ -- 0
-substring$ -- 1315
-swap$ -- 786
-text.length$ -- 91
+substring$ -- 1347
+swap$ -- 799
+text.length$ -- 94
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 158
-width$ -- 59
-write$ -- 660
-is.kanji.str$ -- 746
+while$ -- 163
+width$ -- 61
+write$ -- 679
+is.kanji.str$ -- 768
 (There were 2 error messages)

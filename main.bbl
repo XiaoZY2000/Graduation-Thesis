@@ -341,6 +341,12 @@ C{\'e}dric Villani, et~al.
 \newblock {\em Optimal transport: old and new}, Vol. 338.
 \newblock Springer, 2008.
 
+\bibitem{Peyre_Cuturi_2019_computational_OT}
+Gabriel Peyr{\'e}, Marco Cuturi, et~al.
+\newblock Computational optimal transport: With applications to data science.
+\newblock {\em Foundations and Trends{\textregistered} in Machine Learning},
+  Vol.~11, No. 5-6, pp. 355--607, 2019.
+
 \bibitem{Cuturi_2013_Sinkhorn_distances}
 Marco Cuturi.
 \newblock Sinkhorn distances: Lightspeed computation of optimal transport.
@@ -365,5 +371,9 @@ Charlie Frogner, Chiyuan Zhang, Hossein Mobahi, Mauricio Araya, and Tomaso~A
 \newblock Learning with a wasserstein loss.
 \newblock {\em Advances in neural information processing systems}, Vol.~28, ,
   2015.
+
+\bibitem{Reimers_Gurevych_2019_SBERT}
+Nils Reimers and Iryna Gurevych.
+\newblock Sentence-bert: Sentence embeddings using siamese bert-networks, 2019.
 
 \end{thebibliography}

@@ -26,17 +26,21 @@
 \contentsline {section}{\numberline {3.3}Distributional User Preference Modeling}{15}{}%
 \contentsline {subsection}{\numberline {3.3.1}Multi-interest User Modeling}{15}{}%
 \contentsline {subsection}{\numberline {3.3.2}Probabilistic Preference Modeling}{16}{}%
-\contentsline {section}{\numberline {3.4}Optimal Transport for Representation Alignment}{16}{}%
+\contentsline {section}{\numberline {3.4}Optimal Transport for Representation Alignment}{17}{}%
 \contentsline {subsection}{\numberline {3.4.1}OT Basics in ML}{17}{}%
-\contentsline {subsection}{\numberline {3.4.2}OT in Domain Adaptation}{17}{}%
-\contentsline {chapter}{\numberline {4}Proposed Method: Distributional Preference Modeling for Cross-Domain Recommendation}{18}{}%
-\contentsline {section}{\numberline {4.1}Background}{18}{}%
-\contentsline {section}{\numberline {4.2}Methods}{19}{}%
-\contentsline {subsection}{\numberline {4.2.1}Overview}{19}{}%
-\contentsline {chapter}{\numberline {5}Experiments}{20}{}%
-\contentsline {chapter}{\numberline {6}Results}{21}{}%
-\contentsline {chapter}{\numberline {7}Conclusion}{22}{}%
-\contentsline {chapter}{Appendix}{28}{}%
-\contentsline {section}{\numberline {A}Additional Experimental Results}{28}{}%
-\contentsline {chapter}{Publications}{29}{}%
-\contentsline {chapter}{Acknowledgement}{30}{}%
+\contentsline {subsection}{\numberline {3.4.2}OT in Domain Adaptation}{18}{}%
+\contentsline {chapter}{\numberline {4}Distributional Preference Modeling for Cross-Domain Recommendation}{19}{}%
+\contentsline {section}{\numberline {4.1}Background}{19}{}%
+\contentsline {section}{\numberline {4.2}Methods}{20}{}%
+\contentsline {subsection}{\numberline {4.2.1}Overview}{20}{}%
+\contentsline {subsection}{\numberline {4.2.2}Shared Preprocessing Stage}{22}{}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}Review Text Embedding}{22}{}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}User and Item Embedding Aggregation}{22}{}%
+\contentsline {subsubsection}{\numberline {4.2.2.3}Dimensionality Reduction via Autoencoder}{23}{}%
+\contentsline {chapter}{\numberline {5}Experiments}{26}{}%
+\contentsline {chapter}{\numberline {6}Results}{27}{}%
+\contentsline {chapter}{\numberline {7}Conclusion}{28}{}%
+\contentsline {chapter}{Appendix}{34}{}%
+\contentsline {section}{\numberline {A}Additional Experimental Results}{34}{}%
+\contentsline {chapter}{Publications}{35}{}%
+\contentsline {chapter}{Acknowledgement}{36}{}%

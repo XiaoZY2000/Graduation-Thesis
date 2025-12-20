@@ -1,16 +1,108 @@
-\chapter{Proposed Method: Distributional Preference Modeling for Cross-Domain Recommendation}\label{chap:proposed_method}
+\chapter{Distributional Preference Modeling for Cross-Domain Recommendation}\label{chap:proposed_method}
 
 \section{Background}
-The existing recommender systems have already achieved significant success in various applications. However, they often struggle with challenges such as data sparsity, cold start problems. Also, most traditional recommender systems represent user preferences as point estimates, which may not fully capture the uncertainty and multifaceted nature of user preferences. To address these issues, we propose a novel approach that models user preferences as probability distributions rather than single point estimates, and leverages cross-domain information to enhance recommendation accuracy. In existing cross-domain recommendation methods, it is common to assume that there are overlapping users or items between domains during the training phase to provide a bridge for knowledge transfer. However, we argue that this kind of assumption may not hold in many real-world scenarios, where users and items can be entirely distinct across different domains. Therefore, our proposed method focuses on scenarios where there are no overlapping users or items between domains during training, making it more applicable to a wider range of real-world applications.
-Based on this motivation, we introduce a distributional preference modeling framework for cross-domain recommendation without overlapping users or items. We call this method DUP-OT(Distributional User Preference with Optimal Transport). The key idea behind DUP-OT is to represent user preferences in each domain as probability distributions over items, capturing the uncertainty and diversity of user interests. By leveraging optimal transport theory, we can effectively align and transfer knowledge between the source and target domains, even in the absence of overlapping users or items. This alignment allows us to learn a shared latent space where user preferences from both domains can be compared and utilized for recommendation.
+
+Recommender systems have achieved remarkable success in a wide range of real-world applications, such as e-commerce, online media platforms, and social networks. However, despite their effectiveness, many existing recommender systems continue to face fundamental challenges, including data sparsity and the cold-start problem, particularly when user–item interactions are limited or unevenly distributed. These challenges often lead to suboptimal recommendation performance, as traditional models struggle to accurately capture user preferences under such constraints.
+
+Most traditional recommender systems model user preferences as fixed point embeddings in a latent space. While such representations are computationally efficient, they implicitly assume that a user's interests can be captured by a single deterministic vector. This assumption overlooks two important characteristics of real user behavior. First, user preferences are inherently uncertain, especially in sparse settings where limited observations are available. Second, user interests are often multi-faceted, spanning multiple latent aspects that cannot be adequately represented by a single point estimate. As a result, point-based representations may fail to capture the diversity and ambiguity of user preferences, leading to suboptimal recommendation performance.
+
+Cross-domain recommendation (CDR) aims to alleviate cold-start and data sparsity issues by transferring knowledge from a data-rich source domain to a data-sparse target domain. A common strategy adopted by existing CDR methods is to exploit overlapping users or items between domains as explicit bridges for knowledge transfer. Through shared embeddings, adversarial alignment, or joint training objectives, these methods assume that at least part of the user or item space is shared across domains during training. However, such assumptions are often unrealistic in practical scenarios. In many real-world applications, user identities or item catalogs are domain-specific due to privacy constraints, platform isolation, or delayed synchronization, resulting in entirely non-overlapping users and items across domains during the training phase.
+
+In the absence of overlapping entities, effective knowledge transfer across domains becomes substantially more challenging. Without explicit correspondences, aligning latent representations across domains requires modeling higher-level structural or distributional similarities rather than instance-level matches. Existing non-overlapping CDR methods typically rely on shared latent spaces or distribution matching techniques, but most of them still represent user preferences as discrete vectors, limiting their expressiveness and robustness under severe data sparsity.
+
+Motivated by these limitations, we propose to model user preferences from a distributional perspective and perform cross-domain knowledge transfer at the distribution level. Specifically, we introduce \textbf{DUP-OT} (Distributional User Preference with Optimal Transport), a novel framework for cross-domain recommendation under strictly non-overlapping settings. The core idea of DUP-OT is to represent each user's preference as a probability distribution over latent preference components, rather than a single point embedding. This distributional representation explicitly captures both the uncertainty and the multi-aspect nature of user interests.
+
+To enable effective cross-domain alignment between such distributional preferences, DUP-OT leverages optimal transport (OT) theory as a principled mechanism for measuring and aligning probability distributions across domains. By aligning distributional representations in a shared latent space, OT allows preference knowledge to be transferred from the source domain to the target domain without requiring any overlapping users or items during training. This design enables DUP-OT to bridge domain gaps at a structural level, making it particularly suitable for realistic cross-domain recommendation scenarios where explicit correspondences are unavailable.
+
+In the following sections, we introduce the detailed architecture of DUP-OT, including its shared preprocessing stage for constructing a unified latent space, the distributional user preference modeling module based on Gaussian Mixture Models, and the optimal-transport-based alignment mechanism for cross-domain preference transfer.
 
 \section{Methods}
 \subsection{Overview}
-The overall architecture of the proposed DUP-OT framework is illustrated in Figure~\ref{fig:dup-ot-architecture}. The framework consists of three main components: (1) Shared Feature Extraction, (2) Distributional Preference Modeling, and (3) Optimal Transport-based Knowledge Transfer.
+
+The overall architecture of the proposed DUP-OT framework is illustrated in Figure~\ref{fig:dup-ot-architecture}. DUP-OT is designed for cross-domain recommendation under strictly non-overlapping settings and consists of three main stages: (1) Shared Preprocessing Stage, (2) User GMM Weights Learning Stage, and (3) Cross-Domain Rating Prediction Stage. These stages jointly enable distributional user preference modeling and cross-domain knowledge transfer via optimal transport.
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{figures/overall_structure}
 	\caption{Architecture of the DUP-OT Framework}
 	\label{fig:dup-ot-architecture}
 \end{figure}
-The
+
+The scenario setup of DUP-OT involves two domains: a source domain $\mathcal{D}_S$ and a target domain $\mathcal{D}_T$. Each domain contains its own set of users and items, with \textbf{no overlapping users or items} between the two domains during training. The training set of source domain should happen before the valid and test set of target domain in time to avoid information leakage. The goal of DUP-OT is to leverage the abundant user–item interaction data in the source domain to enhance recommendation performance in the target domain, particularly under data sparsity conditions.
+
+A core design principle of DUP-OT is to model user preferences as probability distributions rather than point embeddings. Specifically, we represent each user's preference as a Gaussian Mixture Model (GMM) in a shared latent space across both source and target domains. To make distribution-level alignment computationally feasible, we introduce the following assumption: within each domain, all users share a fixed set of GMM components, while only the mixture weights vary across users. The shared components capture the main latent preference aspects of the domain, whereas the user-specific weights reflect individual preferences over these aspects. This assumption is reasonable in practice, as users within the same domain often exhibit similar underlying preference structures, and it allows us to perform cross-domain alignment at the component level instead of the instance level.
+
+The Shared Preprocessing Stage aims to construct a unified latent space for both domains. Given user–item interaction data accompanied by review texts, ratings, and timestamps, we first extract semantic features from review texts using a shared pre-trained BERT model. User and item embeddings are obtained by aggregating review-level features, where a time-decay function is applied to assign higher weights to more recent reviews during user embedding aggregation. As for item embeddings, we simply average all associated review embeddings.
+This preprocessing pipeline is shared across domains to ensure consistency in representation. Since the resulting embeddings are high-dimensional, a shared autoencoder is trained on data from both domains to reduce dimensionality and produce compact embeddings in a common latent space, which serves as the basis for subsequent preference modeling.
+
+Based on the reduced item embeddings, we then determine the fixed GMM components for each domain. Specifically, a Gaussian Mixture Model is fitted to all item embeddings within a domain, and the learned mixture components are treated as domain-level latent preference aspects. This design is motivated by the observation that items in a domain naturally reflect its major semantic and preference dimensions.
+
+In the User GMM Weights Learning Stage, DUP-OT learns personalized preference distributions for individual users. For each domain, we train a user-specific GMM weight learner and a rating prediction model using only data from that domain. The weight learner, implemented as a multi-layer perceptron (MLP), maps a user's reduced embedding to a set of mixture weights over the fixed GMM components. These weights define the user's preference distribution. A separate rating prediction MLP then estimates user–item ratings based on the weighted Mahalanobis distances between item embeddings and the GMM components. This stage produces expressive distributional representations of user preferences within each domain.
+
+Finally, the Cross-Domain Rating Prediction Stage enables knowledge transfer from the source domain to the target domain via optimal transport. Since GMM components are fixed within each domain, we formulate optimal transport at the component level to align source-domain and target-domain GMMs. The resulting transport plan specifies how preference mass should be transferred between components across domains. Using this transport plan, user-specific GMM weights learned in the source domain can be mapped to the target domain, yielding adapted preference distributions. These transferred distributions are optionally fused with original target-domain user distributions to enhance preference modeling. The final user preference distributions are then used by the target-domain rating prediction model to generate improved rating predictions.
+
+\subsection{Shared Preprocessing Stage}
+The Shared Preprocessing Stage aims to extract consistent user and item embeddings from raw review data across both source and target domains. This stage consists of three main steps: (1) Review Text Embedding, (2) User and Item Embedding Aggregation, and (3) Dimensionality Reduction via Autoencoder.
+As our settings involve two domains with entirely non-overlapping users and items, it is crucial to ensure that the extracted embeddings are comparable and lie in a shared latent space.
+Also, the potential connections between the two domains can only be established through semantic similarities, so leveraging review texts is essential for capturing meaningful representations.
+
+\subsubsection{Review Text Embedding}
+To extract semantic features from review texts, we utilize a shared pre-trained BERT model across both domains. Specifically, we are using all-MiniMLM-L6-v2 model from Sentence-Transformers library~\cite{Reimers_Gurevych_2019_SBERT}, which is a lightweight variant of BERT optimized for generating sentence embeddings. 
+Given a review text, we tokenize it and feed it into the BERT model to obtain a fixed-length embedding vector that captures its semantic content. By using a shared BERT model, we ensure that review embeddings from both domains are generated in the same semantic space, facilitating cross-domain alignment later on.
+
+\subsubsection{User and Item Embedding Aggregation}
+Usually, the recent reviews of a user are more indicative of its current preferences or characteristics. To account for this temporal aspect, we apply a time-decay function when aggregating review embeddings into user embeddings.
+For each user, we aggregate review-level embeddings into an initial user representation using a time-aware weighted pooling strategy. 
+
+Given a set of reviews with timestamps $\{t_i\}_{i=1}^N$ and corresponding embeddings $\{\mathbf{e}_i\}_{i=1}^N$, we define the reference time as the most recent review timestamp $t_{\text{ref}} = \max_i t_i$. 
+The temporal distance of each review is measured in months and truncated by a maximum value :
+\[
+\Delta_i = \min\left( \frac{t_{\text{ref}} - t_i}{T}, \Delta_{\max} \right),
+\]
+where $T = 30 \times 86400$.
+Each review is assigned an exponentially decayed weight:
+\[
+w_i = \exp(-\lambda \Delta_i),
+\]
+which is further normalized as $\tilde{w}_i = w_i / \sum_j w_j$.
+The final user embedding is computed as a weighted sum of review embeddings:
+\[
+\mathbf{u} = \sum_{i=1}^N \tilde{w}_i \mathbf{e}_i .
+\]
+
+For item embedding aggregation, we assume that item attributes are relatively stable over time. Therefore, we simply compute the item representation by averaging all associated review embeddings.
+Formally, the item embedding is computed as
+\[
+\mathbf{v} = \frac{1}{N}\sum_{i=1}^N \mathbf{e}_i,
+\]
+where $\{\mathbf{e}_i\}$ are the embeddings of reviews associated with the item.
+
+An example of item embeddings after aggregation is illustrated in Figure~\ref{fig:item_embeddings_after_aggregation}. 
+It can be observed that item embeddings from different domains exhibit distinct distributional patterns, indicating a substantial domain discrepancy. 
+Addressing this discrepancy is critical for effective cross-domain recommendation and constitutes the main focus of the following sections.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figures/domain_discrepancy.pdf}
+	\caption{Item Embeddings after Aggregation}
+	\label{fig:item_embeddings_after_aggregation}
+\end{figure}
+
+\subsubsection{Dimensionality Reduction via Autoencoder}
+The aggregated user and item embeddings are typically high-dimensional, which can lead to increased computational costs and potential overfitting in subsequent modeling stages. To address this issue, we employ a shared autoencoder to reduce the dimensionality of embeddings from both domains.
+The autoencoder consists of an encoder network that maps input embeddings to a lower-dimensional latent space and a decoder network that reconstructs the original embeddings from the latent representations. The structure of the autoencoder is illustrated in Figure~\ref{fig:autoencoder_structure}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figures/autoencoder_structure.pdf}
+	\caption{Autoencoder Structure}
+	\label{fig:autoencoder_structure}
+\end{figure}
+
+The autoencoder is trained on a combined dataset of user and item embeddings from both source and target domains. 
+The training objective is to minimize the reconstruction loss, defined as the mean squared error between the original embeddings and their reconstructions. 
+By sharing the autoencoder across domains, we ensure that the resulting reduced embeddings lie in a common latent space, which is essential for following distributional preference modeling and cross-domain alignment.
+
+After training, we obtain reduced user and item embeddings by passing the original embeddings through the encoder network. These reduced embeddings serve as the basis for subsequent GMM-based preference modeling and optimal transport alignment in the DUP-OT framework.
+
+\subsection{User GMM Weights Learning Stage}
