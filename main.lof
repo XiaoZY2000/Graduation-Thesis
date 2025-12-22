@@ -2,9 +2,12 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Architecture of the DUP-OT Framework}}{21}{}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Architecture of the DUP-OT Framework}}{22}{}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Item Embeddings after Aggregation}}{24}{}%
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Autoencoder Structure}}{25}{}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces 1D Gaussian Mixture Model Example}}{26}{}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces 2D Gaussian Mixture Model Example}}{27}{}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Cost Matrix Construction via Pairwise Wasserstein Distances}}{29}{}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -12,46 +12,46 @@ Repeated entry---line 636 of file reference.bib
  :                                                    ,
 I'm skipping whatever remains of this entry
 Warning--can't use both volume and number fields in Pan_Xiang_Liu_Yang_2010_transfer_learning_CF
-You've used 59 entries,
+You've used 60 entries,
             2270 wiz_defined-function locations,
-            955 strings with 19451 characters,
-and the built_in function-call counts, 24857 in all, are:
-= -- 2164
-> -- 736
-< -- 94
-+ -- 284
-- -- 225
-* -- 1147
-:= -- 2772
-add.period$ -- 191
-call.type$ -- 59
-change.case$ -- 58
+            962 strings with 19823 characters,
+and the built_in function-call counts, 25428 in all, are:
+= -- 2205
+> -- 770
+< -- 96
++ -- 296
+- -- 236
+* -- 1186
+:= -- 2846
+add.period$ -- 194
+call.type$ -- 60
+change.case$ -- 59
 chr.to.int$ -- 0
-cite$ -- 60
-duplicate$ -- 1699
-empty$ -- 2182
-format.name$ -- 450
-if$ -- 6376
+cite$ -- 61
+duplicate$ -- 1726
+empty$ -- 2221
+format.name$ -- 472
+if$ -- 6511
 int.to.chr$ -- 0
-int.to.str$ -- 59
-missing$ -- 57
-newline$ -- 296
-num.names$ -- 63
-pop$ -- 380
+int.to.str$ -- 60
+missing$ -- 58
+newline$ -- 301
+num.names$ -- 64
+pop$ -- 384
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 1592
+skip$ -- 1618
 stack$ -- 0
-substring$ -- 1347
-swap$ -- 799
-text.length$ -- 94
+substring$ -- 1387
+swap$ -- 812
+text.length$ -- 96
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 163
-width$ -- 61
-write$ -- 679
-is.kanji.str$ -- 768
+while$ -- 167
+width$ -- 62
+write$ -- 690
+is.kanji.str$ -- 788
 (There were 2 error messages)

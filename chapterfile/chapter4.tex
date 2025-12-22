@@ -83,7 +83,7 @@ Addressing this discrepancy is critical for effective cross-domain recommendatio
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1.0\textwidth]{figures/domain_discrepancy.pdf}
+	\includegraphics[width=0.6\textwidth]{figures/domain_discrepancy.pdf}
 	\caption{Item Embeddings after Aggregation}
 	\label{fig:item_embeddings_after_aggregation}
 \end{figure}
@@ -94,7 +94,7 @@ The autoencoder consists of an encoder network that maps input embeddings to a l
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1.0\textwidth]{figures/autoencoder_structure.pdf}
+	\includegraphics[width=0.6\textwidth]{figures/autoencoder_structure.pdf}
 	\caption{Autoencoder Structure}
 	\label{fig:autoencoder_structure}
 \end{figure}
@@ -106,3 +106,218 @@ By sharing the autoencoder across domains, we ensure that the resulting reduced 
 After training, we obtain reduced user and item embeddings by passing the original embeddings through the encoder network. These reduced embeddings serve as the basis for subsequent GMM-based preference modeling and optimal transport alignment in the DUP-OT framework.
 
 \subsection{User GMM Weights Learning Stage}
+In the User GMM Weights Learning Stage, we aim to learn expressive distributional representations of user preferences in the shared latent space constructed by the Shared Preprocessing Stage. 
+Specifically, each user's preference is modeled as a Gaussian Mixture Model (GMM), which enables the representation of multi-aspect user interests in a probabilistic manner. 
+This stage consists of two key components: (1) determining a fixed set of domain-level GMM components, and (2) learning user-specific mixture weights together with a corresponding rating prediction model.
+
+\subsubsection{Fixed GMM Component Determination}
+To capture the major latent preference aspects within each domain, we first construct a domain-level Gaussian Mixture Model (GMM) by fitting it to the reduced item embeddings obtained from the Shared Preprocessing Stage. 
+The resulting GMM components are treated as fixed and shared by all users within the same domain, serving as latent preference components for subsequent user-specific preference modeling.
+
+To build intuition for Gaussian Mixture Models, we first present a one-dimensional (1D) example in Figure~\ref{fig:gmm_1d}, where the roles of individual Gaussian components and mixture weights can be easily visualized.
+We then illustrate a two-dimensional (2D) GMM in Figure~\ref{fig:gmm_2d} to demonstrate how mixture models generalize from scalar to vector-valued representations.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/GMM_1D.pdf}
+	\caption{1D Gaussian Mixture Model Example}
+	\label{fig:gmm_1d}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/GMM_2D.pdf}
+	\caption{2D Gaussian Mixture Model Example}
+	\label{fig:gmm_2d}
+\end{figure}
+
+To this end, we adopt the \texttt{BayesianGaussianMixture} implementation from the scikit-learn library~\cite{Pedregosa_2011_scikit-learn} to fit GMMs on item embeddings. 
+Unlike conventional GMMs that require manually specifying the number of mixture components, this approach is based on variational Bayesian inference with a Dirichlet prior over mixture weights. 
+Such a formulation allows mixture components that are not sufficiently supported by the data to be automatically suppressed during training, enabling the effective number of active components to be inferred directly from the data.
+
+Formally, given a set of item embeddings $\{\mathbf{x}_n\}_{n=1}^N$, the Bayesian Gaussian Mixture Model assumes the following generative process:
+\[
+\boldsymbol{\pi} \sim \mathrm{Dirichlet}(\boldsymbol{\alpha}), \qquad
+z_n \sim \mathrm{Categorical}(\boldsymbol{\pi}), \qquad
+\mathbf{x}_n \mid z_n = k \sim \mathcal{N}(\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k),
+\]
+where $\boldsymbol{\pi}$ denotes the mixture weights, $z_n$ is the latent component assignment, and $(\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)$ represent the mean and covariance of the $k$-th Gaussian component.
+
+Exact posterior inference in this model is intractable. Therefore, variational Bayesian inference is employed by maximizing the evidence lower bound (ELBO):
+\[
+\mathcal{L}(q) = 
+\mathbb{E}_{q}\!\left[\log p(\mathbf{X}, \mathbf{Z}, \boldsymbol{\pi}, \boldsymbol{\mu}, \boldsymbol{\Sigma})\right]
+-
+\mathbb{E}_{q}\!\left[\log q(\mathbf{Z}, \boldsymbol{\pi}, \boldsymbol{\mu}, \boldsymbol{\Sigma})\right],
+\]
+where $q(\cdot)$ denotes the variational posterior distribution.
+
+Due to the Dirichlet prior imposed on the mixture weights, components that are weakly supported by the data are assigned negligible posterior mass, effectively pruning redundant components. 
+As a result, the Bayesian GMM provides a principled and flexible mechanism for determining the effective number of domain-level latent preference components.
+
+\subsubsection{User-Specific GMM Weight Learning and Rating Prediction}
+
+With the fixed GMM components determined for each domain, we proceed to learn user-specific mixture weights that characterize individual preference distributions in the shared latent space. 
+For each domain, DUP-OT employs two neural modules trained solely on the data from that domain: a user-specific GMM weight learner and a rating prediction network. 
+These two modules are optimized jointly to ensure that the learned preference distributions are directly aligned with the rating prediction objective.
+
+\paragraph{User-specific GMM weight learning.}
+Let $\mathbf{u}_i \in \mathbb{R}^d$ denote the reduced embedding of user $i$ obtained from the Shared Preprocessing Stage.
+Given the fixed set of domain-level GMM components $\{(\boldsymbol{\mu}_k,\boldsymbol{\Sigma}_k)\}_{k=1}^{K}$, we learn personalized mixture weights via a multi-layer perceptron (MLP):
+\[
+\mathbf{s}_i = f_{\theta}(\mathbf{u}_i) \in \mathbb{R}^{K}, \qquad
+\boldsymbol{\pi}_i = \mathrm{softmax}(\mathbf{s}_i),
+\]
+where $\boldsymbol{\pi}_i = [\pi_{i1}, \ldots, \pi_{iK}]^\top$ represents the user-specific mixture weights satisfying $\sum_{k=1}^{K} \pi_{ik} = 1$ and $\pi_{ik} \ge 0$.
+The resulting weights define a personalized preference distribution over the domain-level latent preference components.
+
+\paragraph{Distribution-aware user--item representation.}
+For an item $j$ with reduced embedding $\mathbf{v}_j \in \mathbb{R}^d$, we compute its Mahalanobis distance to each GMM component:
+\[
+d_{ijk} = \sqrt{(\mathbf{v}_j - \boldsymbol{\mu}_k)^\top \boldsymbol{\Sigma}_k^{-1} (\mathbf{v}_j - \boldsymbol{\mu}_k)}.
+\]
+These component-wise distances are combined with the user-specific mixture weights to construct a distribution-aware representation of user--item compatibility:
+\[
+\mathbf{h}_{ij} = \left[ \pi_{i1} d_{ij1}, \; \pi_{i2} d_{ij2}, \; \ldots, \; \pi_{iK} d_{ijK} \right]^\top \in \mathbb{R}^{K}.
+\]
+This formulation enables user preferences and item representations to be compared in a distribution-aware manner by jointly considering latent preference components and their personalized importance.
+
+\paragraph{Rating prediction and joint training.}
+A separate MLP is employed to predict the rating for a given user--item pair:
+\[
+\hat{r}_{ij} = g_{\phi}(\mathbf{h}_{ij}),
+\]
+where $g_{\phi}(\cdot)$ denotes the rating prediction network.
+The GMM weight learner $f_{\theta}$ and the rating prediction network $g_{\phi}$ are trained jointly in a supervised fashion by minimizing the rating prediction loss over the observed interactions $\mathcal{D}$:
+\[
+\mathcal{L}_{\mathrm{rate}}(\theta, \phi) =
+\frac{1}{|\mathcal{D}|}
+\sum_{(i,j,r_{ij}) \in \mathcal{D}}
+\left( \hat{r}_{ij} - r_{ij} \right)^2,
+\]
+where $r_{ij}$ and $\hat{r}_{ij}$ denote the ground-truth and predicted ratings, respectively.
+Through joint optimization, the learned user-specific preference distributions are directly tailored to the recommendation task.
+
+\subsection{Cross-Domain Rating Prediction Stage}
+
+In the Cross-Domain Rating Prediction Stage, we leverage optimal transport (OT)
+theory to facilitate knowledge transfer from the source domain to the target
+domain at the distribution level.
+It is important to emphasize that the non-overlapping constraint in our setting
+is imposed strictly during the training stage: no overlapping users or items are
+exploited when learning user preference models or cross-domain alignments.
+During inference and evaluation, however, users may appear in both domains, which
+reflects realistic deployment scenarios and allows transferred knowledge to be
+utilized in a principled manner.
+This design is reasonable because, in many real-world applications, cross-domain
+user correspondences are unavailable or restricted during training due to privacy
+concerns, system isolation, or data access limitations, while such correspondences
+may become observable at deployment or evaluation time.
+
+Based on the User GMM Weights Learning Stage, each user’s preference in both the
+source and target domains is represented as a Gaussian Mixture Model (GMM) defined
+over fixed, domain-level latent preference components.
+Given these distributional representations, we formulate cross-domain knowledge
+transfer as an optimal transport problem between the source-domain and
+target-domain GMM component sets.
+Since all users within a domain share the same set of GMM components, OT is
+performed at the component level rather than the instance level, enabling
+efficient and stable alignment of latent preference aspects across domains.
+
+\paragraph{Optimal transport formulation and cost matrix.}
+Formally, let $\boldsymbol{\pi}^{s}\in\mathbb{R}_+^{K_s}$ and
+$\boldsymbol{\pi}^{t}\in\mathbb{R}_+^{K_t}$ denote the mixture weight vectors over
+the fixed GMM components in the source and target domains, respectively.
+We define a cost matrix $\mathbf{C}\in\mathbb{R}^{K_s\times K_t}$, where each entry
+$C_{kl}$ measures the dissimilarity between the $k$-th source-domain component and
+the $l$-th target-domain component.
+
+Specifically, the cost matrix is constructed using the 2-Wasserstein distance
+between Gaussian distributions.
+For the $k$-th source-domain component
+$\mathcal{N}(\boldsymbol{\mu}_k^{s}, \boldsymbol{\Sigma}_k^{s})$
+and the $l$-th target-domain component
+$\mathcal{N}(\boldsymbol{\mu}_l^{t}, \boldsymbol{\Sigma}_l^{t})$, the cost is defined as:
+\[
+C_{kl} =
+\lVert \boldsymbol{\mu}_k^{s} - \boldsymbol{\mu}_l^{t} \rVert_2^2
++
+\operatorname{Tr}\!\left(
+\boldsymbol{\Sigma}_k^{s} + \boldsymbol{\Sigma}_l^{t}
+- 2\left(
+(\boldsymbol{\Sigma}_k^{s})^{1/2}
+\boldsymbol{\Sigma}_l^{t}
+(\boldsymbol{\Sigma}_k^{s})^{1/2}
+\right)^{1/2}
+\right).
+\]
+
+Figure~\ref{fig:cost_matrix_illustration} provides an intuitive illustration of
+how the cost matrix is constructed by computing pairwise Wasserstein distances
+between GMM components in the source and target domains.
+Each entry in the cost matrix corresponds to the transport cost between a pair of
+latent preference components, serving as the fundamental unit for subsequent OT
+alignment.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/cost_matrix_calculation.pdf}
+	\caption{Cost Matrix Construction via Pairwise Wasserstein Distances}
+	\label{fig:cost_matrix_illustration}
+\end{figure}
+
+Given the cost matrix, the optimal transport plan $\mathbf{T}$ is obtained by
+solving:
+\[
+\min_{\mathbf{T}\ge 0}\ \langle \mathbf{T}, \mathbf{C}\rangle
+\quad \text{s.t.}\quad
+\mathbf{T}\mathbf{1}=\boldsymbol{\pi}^{s},\ 
+\mathbf{T}^\top\mathbf{1}=\boldsymbol{\pi}^{t}.
+\]
+
+When no regularization is applied, this formulation corresponds to the Earth
+Mover's Distance (EMD), which can be solved as a linear programming problem to
+obtain an exact and typically sparse transport plan.
+Alternatively, we adopt the entropically regularized OT formulation:
+\[
+\min_{\mathbf{T}\ge 0}\ \langle \mathbf{T}, \mathbf{C}\rangle
++ \varepsilon \sum_{k,l} T_{kl}(\log T_{kl}-1),
+\]
+which can be efficiently solved using the Sinkhorn algorithm.
+The entropy regularization yields a smooth and dense transport plan while
+significantly reducing computational cost.
+In our setting, OT is performed at the component level, where the number of GMM
+components is relatively small.
+Therefore, both EMD and Sinkhorn-based OT are computationally feasible.
+In practice, we primarily adopt the Sinkhorn algorithm for efficiency and
+numerical stability, while EMD is used for analysis when an exact transport plan is
+desired.
+
+\paragraph{Distribution transfer and fusion.}
+Using the learned optimal transport plan, we transfer user-specific mixture
+weights from the source domain to the target domain as:
+\[
+\tilde{\boldsymbol{\pi}}_i^{t} = \mathbf{T}^\top \boldsymbol{\pi}_i^{s}.
+\]
+
+At inference time, we construct the final target-domain preference distribution
+via a linear fusion strategy:
+\[
+\boldsymbol{\pi}_i^{\mathrm{final}} =
+\lambda_i \boldsymbol{\pi}_i^{t} + (1-\lambda_i)\tilde{\boldsymbol{\pi}}_i^{t},
+\]
+where $\lambda_i \in [0,1]$ controls the contribution of the original
+target-domain distribution.
+If a user has interactions in both domains, $\lambda_i \in (0,1)$ is used to
+combine domain-specific evidence with transferred knowledge.
+If a user has interactions only in the source domain, $\lambda_i = 0$ and the
+final distribution relies solely on the transferred preference.
+If a user has interactions only in the target domain, $\lambda_i = 1$ and the
+original target-domain distribution is retained.
+
+Finally, the fused user preference distributions are fed into the target-domain
+rating prediction model to generate enhanced rating predictions.
+Through this training-time non-overlapping and inference-time adaptive fusion
+design, DUP-OT faithfully reflects practical cross-domain recommendation
+scenarios while maintaining a strict non-overlapping assumption during model
+learning.

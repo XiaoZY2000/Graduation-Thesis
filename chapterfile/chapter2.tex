@@ -1,33 +1,108 @@
-\chapter{Preliminaries}\label{chap:premilinaries}
+\chapter{Preliminaries}\label{chap:preliminaries}
+
+This chapter introduces the fundamental concepts and mathematical formulations
+that underpin our proposed method, including recommender systems,
+cross-domain recommendation, Gaussian mixture models, and optimal transport.
+These preliminaries provide the necessary background for understanding the
+distributional preference modeling and cross-domain alignment techniques
+presented in later chapters.
 
 \section{Recommender Systems}
-% Mathematical modeling of the task of recommender systems
-Recommender systems can be mathmatically modeled as a function $R: U \times I \rightarrow S$, where $U$ is the set of users, $I$ is the set of items, and $S$ is the set of possible scores or ratings. The goal of a recommender system is to predict the score $s \in S$ that a user $u \in U$ would give to an item $i \in I$. This prediction can be represented as $\hat{s} = R(u, i)$. The final task of recommender systems is to generate a ranked list of items for each user based on the predicted scores.
+
+A recommender system aims to predict users' preferences for items and to provide
+personalized item rankings.
+Formally, let $U$ denote the set of users and $I$ denote the set of items.
+A recommender system can be modeled as a function
+\[
+R: U \times I \rightarrow S,
+\]
+where $S$ is the space of possible scores or ratings.
+Given a user $u \in U$ and an item $i \in I$, the system predicts a score
+$\hat{s}_{ui} = R(u, i)$ that reflects the user's preference for the item.
+
+Based on the predicted scores, the recommender system produces a ranked list of
+items for each user.
+The primary objective is to rank items such that those with higher predicted
+utility are recommended earlier, thereby maximizing user satisfaction and
+engagement.
 
 \section{Cross-Domain Recommendation}
-% Mathematical modeling of the task of cross-domain recommendation
-Cross-domain recommendation aims to leverage user preferences and behaviors from one or more source domains to improve recommendation performance in a target domain. Formally, let $D_s$ be the source domain with user set $U_s$ and item set $I_s$, and $D_t$ be the target domain with user set $U_t$ and item set $I_t$. The objective is to learn a recommendation function $R_t: U_t \times I_t \rightarrow S$ for the target domain by utilizing information from the source domain(s) $D_s$.
-The infromation that can be transferred from the source domain to the target domain includes user-item interactions, user profiles, item attributes, and latent factors learned from the source domain. The challenge in cross-domain recommendation lies in effectively transferring knowledge while addressing issues such as domain heterogeneity, data sparsity, and cold-start problems.
+
+Cross-domain recommendation extends the standard recommendation setting by
+leveraging information from one or more source domains to improve recommendation
+performance in a target domain.
+Let $D_s = (U_s, I_s)$ denote a source domain with user set $U_s$ and item set
+$I_s$, and let $D_t = (U_t, I_t)$ denote a target domain with user set $U_t$ and
+item set $I_t$.
+The goal of cross-domain recommendation is to learn a target-domain recommendation
+function
+\[
+R_t: U_t \times I_t \rightarrow S
+\]
+by exploiting auxiliary information available in the source domain $D_s$.
+
+The transferable information across domains may include user--item interaction
+data, user or item attributes, textual reviews, or latent representations learned
+from the source domain.
+A central challenge in cross-domain recommendation lies in effectively transferring
+useful knowledge while accounting for domain heterogeneity, data sparsity, and
+cold-start issues.
+In particular, many existing methods rely on overlapping users or items to
+establish correspondences between domains, an assumption that does not always
+hold in real-world applications.
 
 \section{Gaussian Mixture Models}
-% Mathematical definition of Gaussian Mixture Models
-A Gaussian Mixture Model (GMM) is a probabilistic model that assumes data is generated from a mixture of several Gaussian distributions. Formally, a GMM can be represented as:
-\begin{equation}
-	p(x) = \sum_{k=1}^{K} \pi_k \mathcal{N}(x | \mu_k, \Sigma_k)
-\end{equation}
-where $K$ is the number of Gaussian components, $\pi_k$ are the mixture weights satisfying $\sum_{k=1}^{K} \pi_k = 1$, and $\mathcal{N}(x | \mu_k, \Sigma_k)$ is the Gaussian distribution with mean $\mu_k$ and covariance matrix $\Sigma_k$.
 
-\section{Optimal Transport}
-% Mathematical definition of Optimal Transport, and the variant we are using in our proposed method
-Optimal transport is a mathematical framework for comparing and transforming probability distributions. Given two probability distributions $\mu$ and $\nu$ defined on spaces $X$ and $Y$, respectively, the optimal transport problem seeks to find a mapping $T: X \rightarrow Y$ that minimizes the cost of transporting mass from $\mu$ to $\nu$. The cost function $c(x, y)$ quantifies the expense of moving mass from point $x \in X$ to point $y \in Y$. The optimal transport problem can be formulated as:
-\begin{equation}
-	\min_{T} \int_{X} c(x, T(x)) d\mu(x)
-\end{equation}
-subject to the constraint that the pushforward measure $T_{\#}\mu = \nu$.
-Optimal transport has been widely used in various applications, including image processing, machine learning, and economics, due to its ability to capture the geometric structure of probability distributions.
-In our proposed method, we are not using optimal transport in the standard sense above, but using a related concept called Wasserstein distance to measure the distance between two probability distributions. The Wasserstein distance is defined as:
-\begin{equation}
-	W_p(\mu, \nu) = \left( \inf_{\gamma \in \Pi(\mu, \nu)} \int_{X \times Y} c(x, y)^p d\gamma(x, y) \right)^{1/p}
-\end{equation}
-where $\Pi(\mu, \nu)$ is the set of all joint distributions (couplings) with marginals $\mu$ and $\nu$, and $c(x, y)$ is the cost function. The Wasserstein distance provides a meaningful way to compare probability distributions, taking into account the underlying geometry of the data.
-With the distance between two probability distributions defined, we can replace the conventional pointwise distance (e.g., Euclidean distance) between vectors with the Wasserstein distance between the corresponding distributions in our proposed method.
+Gaussian Mixture Models (GMMs) are probabilistic models that represent complex
+distributions as weighted combinations of multiple Gaussian components.
+A GMM with $K$ components defines a probability density function of the form
+\[
+p(x) = \sum_{k=1}^{K} \pi_k \, \mathcal{N}(x \mid \boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k),
+\]
+where $\pi_k$ denotes the mixture weight of the $k$-th component, satisfying
+$\pi_k \ge 0$ and $\sum_{k=1}^{K} \pi_k = 1$.
+Each component $\mathcal{N}(x \mid \boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)$ is a
+Gaussian distribution parameterized by a mean vector $\boldsymbol{\mu}_k$ and a
+covariance matrix $\boldsymbol{\Sigma}_k$.
+
+GMMs are capable of modeling multi-modal and heterogeneous data distributions,
+making them well suited for representing complex phenomena such as diverse and
+multi-faceted user preferences.
+In this thesis, GMMs are used to model user preferences as probability
+distributions rather than single point estimates.
+
+\section{Optimal Transport and Wasserstein Distance}
+
+Optimal transport (OT) is a mathematical framework for comparing probability
+distributions by explicitly accounting for the cost of transporting probability
+mass between them.
+Given two probability measures $\mu$ and $\nu$ defined on spaces $X$ and $Y$,
+respectively, and a ground cost function $c(x,y)$ that measures the cost of moving
+mass from $x \in X$ to $y \in Y$, the Kantorovich formulation of optimal transport
+is defined as
+\[
+\inf_{\gamma \in \Pi(\mu, \nu)} \int_{X \times Y} c(x, y) \, d\gamma(x, y),
+\]
+where $\Pi(\mu, \nu)$ denotes the set of all joint probability measures whose
+marginals are $\mu$ and $\nu$.
+
+A widely used metric derived from optimal transport is the Wasserstein distance.
+For $p \ge 1$, the $p$-Wasserstein distance between $\mu$ and $\nu$ is defined as
+\[
+W_p(\mu, \nu) =
+\left(
+\inf_{\gamma \in \Pi(\mu, \nu)}
+\int_{X \times Y} c(x, y)^p \, d\gamma(x, y)
+\right)^{1/p}.
+\]
+Unlike conventional pointwise distances such as the Euclidean distance, the
+Wasserstein distance captures the underlying geometric structure of probability
+distributions and provides meaningful comparisons even when the distributions
+have limited or no overlapping support.
+
+In this thesis, we adopt the Wasserstein distance as a fundamental tool for
+measuring discrepancies between distributional user preference representations
+across domains.
+By operating at the distribution level, optimal transport enables principled
+cross-domain alignment that is particularly suitable for non-overlapping
+recommendation settings.

@@ -27,6 +27,8 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{subcaption}
 
 \addtolength{\topmargin}{-10pt}
 \setlength{\jot}{10pt}
@@ -49,8 +51,8 @@
 \delete{footnote}from{chapter}
 
 \begin{document}
-\title{A Research on Cross-Domain Recommendation under Non-Overlapping Settings by Integrating Gaussian Mixture User Preference Distributions and Optimal Transport}
-\subtitle{\LARGE 非重複設定下におけるガウス混合モデルユーザ嗜好分布と最適輸送を統合したクロスドメイン推薦に関する研究}
+\title{Distributional User Preference Modeling for Cross-Domain Recommendation under Non-Overlapping Settings}
+\subtitle{\LARGE 非重複設定下におけるクロスドメイン推薦のための分布的ユーザ嗜好モデリング}
 \author{48-246453 肖　子吟}
 \faculty{東京大学大学院 情報理工学系研究科}
 \department{電子情報学専攻}
@@ -61,30 +63,48 @@
 \onecolumn
 
 \begin{abstract}
-	% What is recommendation systems?
-	% Why are they important?
-	% What are the challenges?
-	% Why use cross-domain recommendation?
-	% What is the problem with existing methods?
-	% What is the proposed method?
-	% What are the results?
+% What is recommendation systems?
+% Why are they important?
+% What are the challenges?
+% Why use cross-domain recommendation?
+% What is the problem with existing methods?
+% What is the proposed method?
+% What are the results?
 
-	Recommendation systems are essential tools for helping users discover items of interest in various domains, such as e-commerce, streaming services, and social media.
-	With the rapid growth of online platforms, the need for effective recommendation systems has become increasingly important.
+Recommendation systems play a crucial role in helping users discover relevant
+items across a wide range of applications, including e-commerce, streaming
+services, and social media platforms.
+With the rapid expansion of online platforms and available content, developing
+effective recommendation systems has become increasingly important.
 
-	However, traditional recommendation systems often face challenges such as data sparsity and cold-start problems, which can limit their effectiveness.
-	Cross-domain recommendation has emerged as a promising approach to address these challenges by leveraging information from multiple domains to improve recommendation accuracy.
-	Nevertheless, existing cross-domain recommendation methods often assume overlapping users or items between domains, which may not hold in many real-world scenarios.
-	Also, they usually represent user preferences as point estimates, which may not capture the full complexity of user behavior.
+Despite their success, traditional recommendation systems often suffer from
+data sparsity and cold-start problems, which significantly limit their
+performance.
+Cross-domain recommendation has therefore emerged as a promising paradigm that
+leverages information from multiple domains to enhance recommendation accuracy.
+However, most existing cross-domain recommendation methods rely on the
+assumption of overlapping users or items across domains, an assumption that is
+frequently violated in real-world scenarios.
+Moreover, user preferences are typically represented as point estimates, which
+are insufficient for capturing the uncertainty and multi-faceted nature of user
+behavior.
 
-	To address these limitations, in this thesis, we propose a novel framework that models user preferences as Gaussian Mixture Models (GMMs) and integrates optimal transport techniques for cross-domain recommendation under non-overlapping settings.
-	By representing user preferences as distributions, our approach can capture the uncertainty and diversity of user behavior more effectively and fine-grainedly.
-	The use of optimal transport allows us to align user preference distributions across domains, facilitating knowledge transfer even in the absence of overlapping users or items.
+In this thesis, we propose a novel cross-domain recommendation framework that
+models user preferences as Gaussian Mixture Models (GMMs) and integrates optimal
+transport to enable knowledge transfer under non-overlapping settings.
+By representing user preferences as probability distributions, the proposed
+method effectively captures the diversity and uncertainty inherent in user
+interests.
+Furthermore, optimal transport provides a principled mechanism for aligning
+preference distributions across domains, allowing effective knowledge transfer
+even in the absence of overlapping users or items.
 
-	We evaluate our proposed method on Amazon datasets across multiple domains, comparing its performance against state-of-the-art cross-domain recommendation techniques and traditional single-domain methods.
-	We also conduct ablation studies to assess the effectiveness of representing user preferences as distributions and the impact of boosting target domain recommendation performance using source domain information.
-	The experimental results demonstrate that our approach significantly outperforms existing methods in terms of recommendation accuracy, highlighting the effectiveness of modeling user preferences as distributions and leveraging optimal transport for cross-domain knowledge transfer.
-
+Extensive experiments on multiple Amazon datasets demonstrate that the proposed
+approach consistently outperforms state-of-the-art cross-domain recommendation
+methods as well as strong single-domain baselines.
+Additional ablation studies further verify the importance of distributional user
+preference modeling and the effectiveness of incorporating source-domain
+information to enhance target-domain recommendation performance.
 \end{abstract}
 
 \begin{comment}

@@ -5,42 +5,51 @@
 \contentsline {chapter}{\numberline {2}Preliminaries}{4}{}%
 \contentsline {section}{\numberline {2.1}Recommender Systems}{4}{}%
 \contentsline {section}{\numberline {2.2}Cross-Domain Recommendation}{4}{}%
-\contentsline {section}{\numberline {2.3}Gaussian Mixture Models}{4}{}%
-\contentsline {section}{\numberline {2.4}Optimal Transport}{5}{}%
-\contentsline {chapter}{\numberline {3}Related Work}{6}{}%
-\contentsline {section}{\numberline {3.1}Recommender Systems}{6}{}%
-\contentsline {subsection}{\numberline {3.1.1}Traditional Recommender Systems}{6}{}%
-\contentsline {subsubsection}{\numberline {3.1.1.1}Memory-based CF}{6}{}%
-\contentsline {subsubsection}{\numberline {3.1.1.2}Model-based CF}{7}{}%
-\contentsline {subsubsection}{\numberline {3.1.1.3}Content-based Filtering}{8}{}%
-\contentsline {subsubsection}{\numberline {3.1.1.4}Hybrid Methods}{9}{}%
-\contentsline {subsection}{\numberline {3.1.2}Supervised Machine Learning in Recommender Systems}{9}{}%
-\contentsline {subsection}{\numberline {3.1.3}Deep Learning-based Recommender Systems}{10}{}%
-\contentsline {subsubsection}{\numberline {3.1.3.1}Neural Collaborative Filtering}{11}{}%
-\contentsline {subsubsection}{\numberline {3.1.3.2}Sequential Recommender Systems}{11}{}%
-\contentsline {subsubsection}{\numberline {3.1.3.3}Graph-based Recommender Systems}{12}{}%
-\contentsline {subsubsection}{\numberline {3.1.3.4}Generative Recommender Systems}{13}{}%
-\contentsline {section}{\numberline {3.2}Cross-Domain Recommender Systems}{14}{}%
-\contentsline {subsection}{\numberline {3.2.1}Overlapping CDR}{14}{}%
-\contentsline {subsection}{\numberline {3.2.2}Non-overlapping CDR}{15}{}%
-\contentsline {section}{\numberline {3.3}Distributional User Preference Modeling}{15}{}%
-\contentsline {subsection}{\numberline {3.3.1}Multi-interest User Modeling}{15}{}%
-\contentsline {subsection}{\numberline {3.3.2}Probabilistic Preference Modeling}{16}{}%
-\contentsline {section}{\numberline {3.4}Optimal Transport for Representation Alignment}{17}{}%
-\contentsline {subsection}{\numberline {3.4.1}OT Basics in ML}{17}{}%
-\contentsline {subsection}{\numberline {3.4.2}OT in Domain Adaptation}{18}{}%
-\contentsline {chapter}{\numberline {4}Distributional Preference Modeling for Cross-Domain Recommendation}{19}{}%
-\contentsline {section}{\numberline {4.1}Background}{19}{}%
-\contentsline {section}{\numberline {4.2}Methods}{20}{}%
-\contentsline {subsection}{\numberline {4.2.1}Overview}{20}{}%
-\contentsline {subsection}{\numberline {4.2.2}Shared Preprocessing Stage}{22}{}%
-\contentsline {subsubsection}{\numberline {4.2.2.1}Review Text Embedding}{22}{}%
-\contentsline {subsubsection}{\numberline {4.2.2.2}User and Item Embedding Aggregation}{22}{}%
-\contentsline {subsubsection}{\numberline {4.2.2.3}Dimensionality Reduction via Autoencoder}{23}{}%
-\contentsline {chapter}{\numberline {5}Experiments}{26}{}%
-\contentsline {chapter}{\numberline {6}Results}{27}{}%
-\contentsline {chapter}{\numberline {7}Conclusion}{28}{}%
-\contentsline {chapter}{Appendix}{34}{}%
-\contentsline {section}{\numberline {A}Additional Experimental Results}{34}{}%
-\contentsline {chapter}{Publications}{35}{}%
-\contentsline {chapter}{Acknowledgement}{36}{}%
+\contentsline {section}{\numberline {2.3}Gaussian Mixture Models}{5}{}%
+\contentsline {section}{\numberline {2.4}Optimal Transport and Wasserstein Distance}{5}{}%
+\contentsline {chapter}{\numberline {3}Related Work}{7}{}%
+\contentsline {section}{\numberline {3.1}Recommender Systems}{7}{}%
+\contentsline {subsection}{\numberline {3.1.1}Traditional Recommender Systems}{7}{}%
+\contentsline {subsubsection}{\numberline {3.1.1.1}Memory-based CF}{7}{}%
+\contentsline {subsubsection}{\numberline {3.1.1.2}Model-based CF}{8}{}%
+\contentsline {subsubsection}{\numberline {3.1.1.3}Content-based Filtering}{9}{}%
+\contentsline {subsubsection}{\numberline {3.1.1.4}Hybrid Methods}{10}{}%
+\contentsline {subsection}{\numberline {3.1.2}Supervised Machine Learning in Recommender Systems}{10}{}%
+\contentsline {subsection}{\numberline {3.1.3}Deep Learning-based Recommender Systems}{11}{}%
+\contentsline {subsubsection}{\numberline {3.1.3.1}Neural Collaborative Filtering}{12}{}%
+\contentsline {subsubsection}{\numberline {3.1.3.2}Sequential Recommender Systems}{12}{}%
+\contentsline {subsubsection}{\numberline {3.1.3.3}Graph-based Recommender Systems}{13}{}%
+\contentsline {subsubsection}{\numberline {3.1.3.4}Generative Recommender Systems}{14}{}%
+\contentsline {section}{\numberline {3.2}Cross-Domain Recommender Systems}{15}{}%
+\contentsline {subsection}{\numberline {3.2.1}Overlapping CDR}{15}{}%
+\contentsline {subsection}{\numberline {3.2.2}Non-overlapping CDR}{16}{}%
+\contentsline {section}{\numberline {3.3}Distributional User Preference Modeling}{16}{}%
+\contentsline {subsection}{\numberline {3.3.1}Multi-interest User Modeling}{16}{}%
+\contentsline {subsection}{\numberline {3.3.2}Probabilistic Preference Modeling}{17}{}%
+\contentsline {section}{\numberline {3.4}Optimal Transport for Representation Alignment}{18}{}%
+\contentsline {subsection}{\numberline {3.4.1}OT Basics in ML}{18}{}%
+\contentsline {subsection}{\numberline {3.4.2}OT in Domain Adaptation}{19}{}%
+\contentsline {chapter}{\numberline {4}Distributional Preference Modeling for Cross-Domain Recommendation}{20}{}%
+\contentsline {section}{\numberline {4.1}Background}{20}{}%
+\contentsline {section}{\numberline {4.2}Methods}{21}{}%
+\contentsline {subsection}{\numberline {4.2.1}Overview}{21}{}%
+\contentsline {subsection}{\numberline {4.2.2}Shared Preprocessing Stage}{23}{}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}Review Text Embedding}{23}{}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}User and Item Embedding Aggregation}{23}{}%
+\contentsline {subsubsection}{\numberline {4.2.2.3}Dimensionality Reduction via Autoencoder}{25}{}%
+\contentsline {subsection}{\numberline {4.2.3}User GMM Weights Learning Stage}{25}{}%
+\contentsline {subsubsection}{\numberline {4.2.3.1}Fixed GMM Component Determination}{26}{}%
+\contentsline {subsubsection}{\numberline {4.2.3.2}User-Specific GMM Weight Learning and Rating Prediction}{27}{}%
+\contentsline {paragraph}{User-specific GMM weight learning.}{27}{}%
+\contentsline {paragraph}{Distribution-aware user--item representation.}{28}{}%
+\contentsline {paragraph}{Rating prediction and joint training.}{28}{}%
+\contentsline {subsection}{\numberline {4.2.4}Cross-Domain Rating Prediction Stage}{28}{}%
+\contentsline {paragraph}{Optimal transport formulation and cost matrix.}{29}{}%
+\contentsline {paragraph}{Distribution transfer and fusion.}{30}{}%
+\contentsline {chapter}{\numberline {5}Experiments}{31}{}%
+\contentsline {chapter}{\numberline {6}Results}{32}{}%
+\contentsline {chapter}{\numberline {7}Conclusion}{33}{}%
+\contentsline {chapter}{Appendix}{39}{}%
+\contentsline {section}{\numberline {A}Additional Experimental Results}{39}{}%
+\contentsline {chapter}{Publications}{40}{}%
+\contentsline {chapter}{Acknowledgement}{41}{}%

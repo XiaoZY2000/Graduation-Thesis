@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.uptex) (TeX Live 2025) (preloaded format=uplatex 2025.6.4)  20 DEC 2025 17:46
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.uptex) (TeX Live 2025) (preloaded format=uplatex 2025.6.4)  21 DEC 2025 21:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -343,39 +343,66 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 \enit@count@id=\count314
 \enitdp@description=\count315
 )
+(d:/XiaoZiyin/texlive/2025/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+
+(d:/XiaoZiyin/texlive/2025/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+(d:/XiaoZiyin/texlive/2025/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen256
+\captionmargin=\dimen257
+\caption@leftmargin=\dimen258
+\caption@rightmargin=\dimen259
+\caption@width=\dimen260
+\caption@indent=\dimen261
+\caption@parindent=\dimen262
+\caption@hangindent=\dimen263
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count316
+\c@continuedfloat=\count317
+Package caption Info: float package is loaded.
+)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count318
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count319
+)
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 51.
+h' as default language. on input line 53.
 
 (d:/XiaoZiyin/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
 File: l3backend-dvips.def 2024-05-08 L3 backend support: dvips
 \l__pdf_internal_box=\box85
 \l__pdf_backend_content_box=\box86
 \l__pdf_backend_model_box=\box87
-\g__pdf_backend_annotation_int=\count316
-\g__pdf_backend_link_int=\count317
-\g__pdf_backend_link_sf_int=\count318
+\g__pdf_backend_annotation_int=\count320
+\g__pdf_backend_link_int=\count321
+\g__pdf_backend_link_sf_int=\count322
 )
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for JY2/mc/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for JT2/mc/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for JY2/mc/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for JT2/mc/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
 
 (d:/XiaoZiyin/texlive/2025/texmf-dist/tex/latex/translations/translations-basic
 -dictionary-english.trsl
@@ -383,46 +410,48 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 51.
+or `english'. on input line 53.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 23.94002pt on input line 60.
+(Font)              scaled to size 23.94002pt on input line 62.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 23.94002pt on input line 60.
+(Font)              scaled to size 23.94002pt on input line 62.
 LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <24.88> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 60.
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 62.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 23.94002pt on input line 60.
+(Font)              scaled to size 23.94002pt on input line 62.
 LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <24.88> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 60.
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 62.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 23.94002pt on input line 60.
+(Font)              scaled to size 23.94002pt on input line 62.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 19.95642pt on input line 60.
+(Font)              scaled to size 19.95642pt on input line 62.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 19.95642pt on input line 60.
+(Font)              scaled to size 19.95642pt on input line 62.
 LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 60.
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 62.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 19.95642pt on input line 60.
+(Font)              scaled to size 19.95642pt on input line 62.
 LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 60.
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 62.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 19.95642pt on input line 60.
+(Font)              scaled to size 19.95642pt on input line 62.
 LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <17.28> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 60.
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 62.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 16.62714pt on input line 60.
+(Font)              scaled to size 16.62714pt on input line 62.
 LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <17.28> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 60.
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 62.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 16.62714pt on input line 60.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 60.
+(Font)              scaled to size 16.62714pt on input line 62.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 62.
 
 
 (d:/XiaoZiyin/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 60.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 62.
 
 
 (d:/XiaoZiyin/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -431,14 +460,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: img_utm.eps Graphic file (type eps)
 <img_utm.eps>
 
-Overfull \hbox (51.12686pt too wide) in paragraph at lines 60--60
+Overfull \hbox (51.12686pt too wide) in paragraph at lines 62--62
 [][]
  []
 
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 16.62714pt on input line 60.
+(Font)              scaled to size 16.62714pt on input line 62.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 16.62714pt on input line 60.
+(Font)              scaled to size 16.62714pt on input line 62.
 
 
 [0
@@ -446,13 +475,13 @@ LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
 
 ]
 LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 63.
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 65.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 9.6222pt on input line 63.
+(Font)              scaled to size 9.6222pt on input line 65.
 LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 63.
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 65.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 9.6222pt on input line 63.
+(Font)              scaled to size 9.6222pt on input line 65.
 
 
 [1
@@ -469,9 +498,9 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 
 
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/sl' undefined
-(Font)              No change on input line 103.
+(Font)              No change on input line 123.
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/sl' undefined
-(Font)              No change on input line 103.
+(Font)              No change on input line 123.
 [2] (./main.lof)
 \tf@lof=\write5
 \openout5 = `main.lof'.
@@ -519,6 +548,8 @@ Chapter 2.
 ]) (./chapterfile/chapter3.tex
 
 [5]
+
+[6]
 Chapter 3.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
 (Font)              scaled to size 11.54663pt on input line 7.
@@ -534,11 +565,9 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 (Font)              scaled to size 11.54663pt on input line 7.
 
 
-[6
+[7
 
 ]
-
-[7]
 
 [8]
 
@@ -551,25 +580,27 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 [12]
 
 [13]
-LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 196.
-LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 196.
-
 
 [14]
+LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
+(Font)              No change on input line 196.
+LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
+(Font)              No change on input line 196.
+
 
 [15]
 
 [16]
 
-[17]) (./chapterfile/chapter4.tex
+[17]
 
-[18]
+[18]) (./chapterfile/chapter4.tex
+
+[19]
 Chapter 4.
 
 
-[19
+[20
 
 ]
 File: figures/overall_structure.pdf Graphic file (type pdf)
@@ -580,54 +611,68 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[20]
-
 [21]
-LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 6.73553pt on input line 57.
-LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 6.73553pt on input line 57.
-LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 4.8111pt on input line 57.
-LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 4.8111pt on input line 57.
-
 
 [22]
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 6.73553pt on input line 57.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 6.73553pt on input line 57.
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 4.8111pt on input line 57.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 4.8111pt on input line 57.
+
+
+[23]
 File: figures/domain_discrepancy.pdf Graphic file (type pdf)
 <figures/domain_discrepancy.pdf>
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+[24]
 File: figures/autoencoder_structure.pdf Graphic file (type pdf)
 <figures/autoencoder_structure.pdf>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) (./chapterfile/chapter5.tex
-
-[23]
-
-[24]
 
 [25]
+File: figures/GMM_1D.pdf Graphic file (type pdf)
+<figures/GMM_1D.pdf>
+File: figures/GMM_2D.pdf Graphic file (type pdf)
+<figures/GMM_2D.pdf>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[26]
+
+[27]
+
+[28]
+File: figures/cost_matrix_calculation.pdf Graphic file (type pdf)
+<figures/cost_matrix_calculation.pdf>
+
+
+[29]) (./chapterfile/chapter5.tex
+
+[30]
 Chapter 5.
 ) (./chapterfile/chapter6.tex
 
-[26
+[31
 
 ]
 Chapter 6.
 ) (./chapterfile/chapter7.tex
 
-[27
+[32
 
 ]
 Chapter 7.
 ) (./main.bbl
 
-[28
+[33
 
 ]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -654,7 +699,7 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 71.
 
 
-[29
+[34
 
 ]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -687,7 +732,7 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 162.
 
 
-[30]
+[35]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 169.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -716,7 +761,7 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 246.
 
 
-[31]
+[36]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 254.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -739,7 +784,7 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 318.
 
 
-[32]
+[37]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 326.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -756,19 +801,21 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 365.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 372.
+LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
+(Font)              No change on input line 384.
 ) (./chapterfile/chapter_appendix.tex
 
-[33]) (./chapterfile/chapter_publication.tex
+[38]) (./chapterfile/chapter_publication.tex
 
-[34
+[39
 
 ]) (./chapterfile/chapter_acknowledgement.tex
 
-[35
+[40
 
 ])
 
-[36
+[41
 
 ] (./main.aux)
  ***********
@@ -778,12 +825,12 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 10945 strings out of 475292
- 244462 string characters out of 5766798
- 599019 words of memory out of 5000000
- 33928 multiletter control sequences out of 15000+600000
- 578249 words of font info for 122 fonts, out of 8000000 for 9000
+ 12404 strings out of 475292
+ 272813 string characters out of 5766798
+ 623138 words of memory out of 5000000
+ 35374 multiletter control sequences out of 15000+600000
+ 578417 words of font info for 123 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  73i,12n,80p,1118b,543s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (42 pages, 138352 bytes).
+Output written on main.dvi (47 pages, 159732 bytes).

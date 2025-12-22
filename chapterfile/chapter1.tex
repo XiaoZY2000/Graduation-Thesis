@@ -1,22 +1,71 @@
 \chapter{Introduction}\label{chap:introduction}
 
 \section{Background}
-% Background
-% The Importance of Recommender Systems
-These days, information overload has become a significant challenge for users in various online platforms, such as e-commerce websites, streaming services, and social media\cite{Bawden_Robinson_2020_info_overload,Lv_Liu_2022_info_overload,Zhang_Cao_Liu_2023_info_overload}. Recommender systems play a crucial role in addressing this challenge by providing personalized guidance to users by selecting items with the highest predicted utility from a large space of options.\cite{Resnick_Varian_1997_recommender, Burke_2002_hybrid_recommender, Burke_Felfernig_Göker_2011_recommender_overview}.
-By analyzing user-item interactions, recommender systems can help users discover relevant content, products, or services, thereby enhancing user satisfaction and engagement.
-Besides improving user experience, recommender systems also benefit businesses by increasing sales, customer retention, and overall platform activity\cite{Jannach_Jugovac_2019_business_value_recommender}. As the volume of online content continues to grow, the importance of effective recommender systems becomes even more pronounced.
-% Challenges in Recommender Systems
-Despite their significance, recommender systems face several challenges that can hinder their performance. One of the primary challenges is data sparsity, where users interact with only a small fraction of the available items, making it difficult to accurately model user preferences. This issue is particularly prevalent in new or niche platforms with limited user interactions.
-Another challenge is the cold-start problem, which occurs when new users or items are introduced to the system. In such cases, there is insufficient data to make reliable recommendations, leading to suboptimal user experiences.
-Both data sparsity and cold-start problems are caused by the limited availability of user-item interaction data, which can significantly impact the effectiveness of recommender systems. To address these challendges, cross-domain recommendation has emerged as a promising approach that leverages information from multiple domains to improve recommendation accuracy.
-% Cross-Domain Recommendation
-Cross-domain recommendation aims to enhance the performance of recommender systems by transferring knowledge from a source domain to a target domain. This approach is particularly useful in scenarios where the target domain suffers from data sparsity or cold-start issues. By utilizing user-item interactions from a related source domain, cross-domain recommendation can help alleviate these challenges and provide more accurate recommendations.
-However, existing cross-domain recommendation methods often assume overlapping users or items between the source and target domains, and rely on these overlaps to build connections between the two domains in the training stage. However, in many real-world scenarios, such overlaps may not exist, limiting the applicability of these methods. Additionally, traditional recommender systems typically represent user preferences as point estimates, which may not capture the full complexity and uncertainty of user behavior.
-To overcome these limitations, there is a need for novel approaches that can effectively model user preferences and facilitate knowledge transfer between non-overlapping domains during the training process.
-% Proposed Method
-In this thesis, we propose a novel framework that models user preferences as Gaussian Mixture Models (GMMs) and integrates optimal transport techniques for cross-domain recommendation under non-overlapping settings. By representing user preferences as distributions, our approach can capture the uncertainty and diversity of user behavior more effectively. The use of optimal transport allows us to align user preference distributions across domains, facilitating knowledge transfer even in the absence of overlapping users or items.
-The proposed framework consists of two main components: (1) modeling user preferences as GMMs to capture the complexity of user behavior, and (2) employing optimal transport to align these distributions between the source and target domains. This combination enables our method to leverage information from the source domain to enhance recommendation accuracy in the target domain, even when there are no overlapping users or items.
+
+Information overload has become a critical challenge for users on modern online
+platforms, including e-commerce websites, streaming services, and social
+media~\cite{Bawden_Robinson_2020_info_overload,Lv_Liu_2022_info_overload,Zhang_Cao_Liu_2023_info_overload}.
+Recommender systems play a crucial role in alleviating this problem by providing
+personalized guidance, selecting items with the highest predicted utility from a
+large pool of candidates~\cite{Resnick_Varian_1997_recommender,Burke_2002_hybrid_recommender,Burke_Felfernig_Göker_2011_recommender_overview}.
+By analyzing historical user--item interactions, recommender systems help users
+discover relevant content, products, or services, thereby improving user
+satisfaction and engagement.
+Beyond enhancing user experience, recommender systems also generate substantial
+business value by increasing sales, customer retention, and overall platform
+activity~\cite{Jannach_Jugovac_2019_business_value_recommender}.
+As the scale and diversity of online content continue to grow, the importance of
+effective recommender systems becomes increasingly pronounced.
+
+Despite their success, recommender systems face several fundamental challenges
+that limit their performance.
+One major challenge is data sparsity, where users interact with only a small
+fraction of available items, making it difficult to accurately infer user
+preferences.
+This issue is particularly severe in emerging or niche platforms with limited
+interaction data.
+Another critical challenge is the cold-start problem, which arises when new users
+or items enter the system and insufficient historical data is available to
+support reliable recommendations.
+Both data sparsity and cold-start problems stem from the limited availability of
+user--item interaction data and can significantly degrade recommendation quality.
+
+To address these challenges, cross-domain recommendation has emerged as a
+promising paradigm that leverages information from a related source domain to
+improve recommendation performance in a target domain.
+By transferring knowledge across domains, cross-domain recommendation is able to
+alleviate data sparsity and cold-start issues, particularly in data-scarce
+settings.
+However, most existing cross-domain recommendation methods rely on the
+assumption that users or items overlap between the source and target domains, and
+such overlaps are used as bridges for knowledge transfer during the training
+stage.
+In many real-world scenarios, however, this assumption does not hold, as domains
+may be entirely disjoint due to privacy constraints, system isolation, or
+independent platform design.
+Moreover, traditional recommender systems typically represent user preferences as
+point estimates in a latent space, which are often insufficient to capture the
+uncertainty and multi-faceted nature of real user behavior.
+
+Motivated by these limitations, this thesis proposes a novel cross-domain
+recommendation framework that models user preferences as Gaussian Mixture Models
+(GMMs) and integrates optimal transport techniques to enable knowledge transfer
+under non-overlapping settings.
+By representing user preferences as probability distributions rather than point
+estimates, the proposed approach captures both the diversity and uncertainty of
+user interests.
+Furthermore, optimal transport provides a principled mechanism for aligning user
+preference distributions across domains, facilitating effective knowledge
+transfer even when no overlapping users or items are available during training.
+
+The proposed framework consists of two key components:
+(1) modeling user preferences as Gaussian mixture distributions to capture the
+complex structure of user behavior within each domain, and
+(2) employing optimal transport to align these distributions between the source
+and target domains.
+Together, these components enable robust cross-domain recommendation and improve
+recommendation accuracy in the target domain under strictly non-overlapping
+training settings.
 
 \section{Contributions}
 The main contributions of this thesis are as follows:
@@ -32,7 +81,7 @@ The main contributions of this thesis are as follows:
 \section{Thesis Organization}
 The remainder of this thesis is organized as follows:
 \begin{itemize}
-	\item In Chapter~\ref{chap:premilinaries}, we provide an overview of the fundamental concepts and techniques relevant to this research, including recommender systems, cross-domain recommendation, Gaussian Mixture Models, and optimal transport.
+	\item In Chapter~\ref{chap:preliminaries}, we provide an overview of the fundamental concepts and techniques relevant to this research, including recommender systems, cross-domain recommendation, Gaussian Mixture Models, and optimal transport.
 	\item In Chapter~\ref{chap:related_work}, we review related work on recommender systems, cross-domain recommendation, and optimal transport techniques.
 	\item In Chapter~\ref{chap:proposed_method}, we present our proposed framework for cross-domain recommendation under non-overlapping settings, detailing the modeling of user preferences as GMMs and the integration of optimal transport for knowledge transfer.
 	\item In Chapter~\ref{chap:experiments}, we describe the experimental setup, datasets, and evaluation metrics used to assess the performance of our proposed method.
