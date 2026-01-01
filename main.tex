@@ -52,7 +52,7 @@
 
 \begin{document}
 \title{Distributional User Preference Modeling for Cross-Domain Recommendation under Non-Overlapping Settings}
-\subtitle{\LARGE 非重複設定下におけるクロスドメイン推薦のための分布的ユーザ嗜好モデリング}
+\subtitle{\LARGE 非重複設定下におけるクロスドメイン推薦のための確率分布に基づくユーザ嗜好モデリング}
 \author{48-246453 肖　子吟}
 \faculty{東京大学大学院 情報理工学系研究科}
 \department{電子情報学専攻}
@@ -63,48 +63,48 @@
 \onecolumn
 
 \begin{abstract}
-% What is recommendation systems?
-% Why are they important?
-% What are the challenges?
-% Why use cross-domain recommendation?
-% What is the problem with existing methods?
-% What is the proposed method?
-% What are the results?
+	% What is recommendation systems?
+	% Why are they important?
+	% What are the challenges?
+	% Why use cross-domain recommendation?
+	% What is the problem with existing methods?
+	% What is the proposed method?
+	% What are the results?
 
-Recommendation systems play a crucial role in helping users discover relevant
-items across a wide range of applications, including e-commerce, streaming
-services, and social media platforms.
-With the rapid expansion of online platforms and available content, developing
-effective recommendation systems has become increasingly important.
+	Recommendation systems play a crucial role in helping users discover relevant
+	items across a wide range of applications, including e-commerce, streaming
+	services, and social media platforms.
+	With the rapid expansion of online platforms and available content, developing
+	effective recommendation systems has become increasingly important.
 
-Despite their success, traditional recommendation systems often suffer from
-data sparsity and cold-start problems, which significantly limit their
-performance.
-Cross-domain recommendation has therefore emerged as a promising paradigm that
-leverages information from multiple domains to enhance recommendation accuracy.
-However, most existing cross-domain recommendation methods rely on the
-assumption of overlapping users or items across domains, an assumption that is
-frequently violated in real-world scenarios.
-Moreover, user preferences are typically represented as point estimates, which
-are insufficient for capturing the uncertainty and multi-faceted nature of user
-behavior.
+	Despite their success, traditional recommendation systems often suffer from
+	data sparsity and cold-start problems, which significantly limit their
+	performance.
+	Cross-domain recommendation has therefore emerged as a promising paradigm that
+	leverages information from multiple domains to enhance recommendation accuracy.
+	However, most existing cross-domain recommendation methods rely on the
+	assumption of overlapping users or items across domains, an assumption that is
+	frequently violated in real-world scenarios.
+	Moreover, user preferences are typically represented as point estimates, which
+	are insufficient for capturing the uncertainty and multi-faceted nature of user
+	behavior.
 
-In this thesis, we propose a novel cross-domain recommendation framework that
-models user preferences as Gaussian Mixture Models (GMMs) and integrates optimal
-transport to enable knowledge transfer under non-overlapping settings.
-By representing user preferences as probability distributions, the proposed
-method effectively captures the diversity and uncertainty inherent in user
-interests.
-Furthermore, optimal transport provides a principled mechanism for aligning
-preference distributions across domains, allowing effective knowledge transfer
-even in the absence of overlapping users or items.
+	In this thesis, we propose a novel cross-domain recommendation framework that
+	models user preferences as Gaussian Mixture Models (GMMs) and integrates optimal
+	transport to enable knowledge transfer under non-overlapping settings.
+	By representing user preferences as probability distributions, the proposed
+	method effectively captures the diversity and uncertainty inherent in user
+	interests.
+	Furthermore, optimal transport provides a principled mechanism for aligning
+	preference distributions across domains, allowing effective knowledge transfer
+	even in the absence of overlapping users or items.
 
-Extensive experiments on multiple Amazon datasets demonstrate that the proposed
-approach consistently outperforms state-of-the-art cross-domain recommendation
-methods as well as strong single-domain baselines.
-Additional ablation studies further verify the importance of distributional user
-preference modeling and the effectiveness of incorporating source-domain
-information to enhance target-domain recommendation performance.
+	Extensive experiments on multiple Amazon datasets demonstrate that the proposed
+	approach consistently outperforms state-of-the-art cross-domain recommendation
+	methods as well as strong single-domain baselines.
+	Additional ablation studies further verify the importance of distributional user
+	preference modeling and the effectiveness of incorporating source-domain
+	information to enhance target-domain recommendation performance.
 \end{abstract}
 
 \begin{comment}

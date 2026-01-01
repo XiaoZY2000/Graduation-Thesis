@@ -219,6 +219,23 @@ Their method discovers shared latent structures of users and items in auxiliary 
 By exploiting overlapping users or items across domains, this approach effectively captures transferable preference patterns and improves recommendation performance in sparse target domains.
 
 %需要添加可以扩展画图的方法
+Zhu et al.~\cite{Zhu_Jin_Zhang_Meng_Zhang_Li_2024_WCDR} proposed WCDR, a dual-target cross-domain recommendation framework that models users and items as probability distributions to explicitly capture uncertainty across domains.
+Unlike prior embedding-based overlapping CDR methods that rely on deterministic representations, WCDR represents user and item behaviors as elliptical Gaussian distributions and decouples them into local-intrinsic and global-domain components.
+To facilitate effective knowledge transfer between overlapping domains, WCDR further adopts a shared-specific paradigm for global-domain distributions and introduces a Masked Domain-aware Sub-distribution Aggregation (MDSA) module in the Wasserstein space.
+This design enables adaptive aggregation of domain-shared knowledge while alleviating negative transfer caused by domain imbalance.
+Extensive experiments demonstrate that modeling domain-level uncertainty and distributional relationships can significantly improve recommendation performance in both source and target domains.
+Their proposed method can be illustrated as in Figure~\ref{fig:WCDR}.
+
+%这里放图
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figures/WCDR.pdf}
+	\caption{Illustration of the WCDR framework~\cite{Zhu_Jin_Zhang_Meng_Zhang_Li_2024_WCDR}, which models users and items as probability distributions to capture uncertainty in overlapping cross-domain recommendation.}
+	\label{fig:WCDR}
+\end{figure}
+
+WCDR models users and items as probability distributions to capture uncertainty in overlapping cross-domain recommendation.
+By contrast, our work considers a more challenging non-overlapping CDR scenario without any shared users or items, where direct entity-level alignment is unavailable in the training stage and cross-domain transfer must rely on distribution-level modeling.
 
 \subsection{Non-overlapping CDR}
 %Still need to add more recent works.
@@ -228,6 +245,16 @@ In the absence of explicit entity overlap, these methods aim to bridge domains b
 Man et al.~\cite{Man_Shen_Jin_Cheng_2017_CDR_embedding_mapping} proposed EMCDR, an embedding-and-mapping framework for cross-domain recommendation.
 The framework first learns latent user and item representations independently in each domain, and then learns a cross-domain mapping function to project embeddings from the source domain into the target domain.
 By transferring preferences through latent space mapping, EMCDR enables effective knowledge transfer in non-overlapping and cold-start scenarios.
+
+Liu et al.~\cite{Liu_Chen_Liao_Hu_Tan_Wang_Zheng_Ong_2024_JPEDET} proposed JPEDET, a joint preference exploration and dynamic embedding transportation framework for non-overlapping cross-domain recommendation.
+JPEDET addresses the absence of overlapped users and items by learning transferable user representations from both rating and review information, and further aligning user embeddings across domains through a dynamic transportation mechanism.
+
+Specifically, JPEDET first employs a joint preference exploration module to fuse rating-based and review-based user representations, aiming to capture more robust and generalizable user preferences within each domain.
+To bridge the embedding discrepancy across domains, the model introduces a dynamic embedding transportation module based on neural ordinary differential equations (Neural ODEs), which enables continuous and bidirectional transformation between source and target user embedding spaces.
+Moreover, JPEDET incorporates optimal transport–based matching regularization and barycentric Wasserstein interpolation to guide the transportation trajectories, leading to smoother and more stable cross-domain alignment.
+
+By modeling cross-domain adaptation as a dynamic and invertible embedding transformation process, JPEDET advances non-overlapping CDR beyond static embedding mapping or adversarial alignment methods, and demonstrates superior performance on multiple real-world benchmark datasets.
+
 
 \section{Distributional User Preference Modeling}
 
@@ -284,36 +311,36 @@ In recent years, OT has been increasingly adopted in machine learning as a power
 This distribution-level alignment capability has led to successful applications of OT in domain adaptation, generative modeling, and representation learning.
 
 \subsection{OT Basics in ML}
-Optimal Transport is widely used in machine learning as a distribution-aware alignment technique.  
+Optimal Transport is widely used in machine learning as a distribution-aware alignment technique.
 Its ability to compare probability distributions while respecting their geometric structure has led to successful applications in domain adaptation and representation learning.
 
-Villani~\cite{Villani_2008_optimal_transport} systematically developed the theoretical foundations of optimal transport, formalizing the Kantorovich relaxation of the Monge problem and introducing Wasserstein distances as principled metrics between probability measures. 
+Villani~\cite{Villani_2008_optimal_transport} systematically developed the theoretical foundations of optimal transport, formalizing the Kantorovich relaxation of the Monge problem and introducing Wasserstein distances as principled metrics between probability measures.
 By framing distribution comparison as a cost-minimizing mass transportation problem, this work established a rigorous mathematical basis for measuring and aligning probability distributions, which later enabled the adoption of OT as a core tool in machine learning tasks such as distribution alignment, domain adaptation, and representation learning.
 
-Peyré and Cuturi~\cite{Peyre_Cuturi_2019_computational_OT} provided a comprehensive survey of optimal transport from a computational and machine learning perspective, systematically bridging OT theory with practical algorithms. 
-Their work reviewed a wide range of OT-based applications, including domain adaptation, generative modeling, and deep learning, and emphasized scalable solutions such as entropic regularization and Sinkhorn iterations. 
+Peyré and Cuturi~\cite{Peyre_Cuturi_2019_computational_OT} provided a comprehensive survey of optimal transport from a computational and machine learning perspective, systematically bridging OT theory with practical algorithms.
+Their work reviewed a wide range of OT-based applications, including domain adaptation, generative modeling, and deep learning, and emphasized scalable solutions such as entropic regularization and Sinkhorn iterations.
 By demonstrating how OT can be efficiently integrated into modern learning pipelines, this survey established OT as a practical and versatile tool for distribution comparison and representation alignment in machine learning.
 
-Cuturi and Marco~\cite{Cuturi_2013_Sinkhorn_distances} introduced the Sinkhorn algorithm, which incorporates an entropic regularization term into the optimal transport formulation to obtain a smooth and strictly convex objective. 
-This regularization allows the resulting OT problem to be solved efficiently via iterative matrix scaling, leading to orders-of-magnitude speedups compared to classical linear programming solvers. 
+Cuturi and Marco~\cite{Cuturi_2013_Sinkhorn_distances} introduced the Sinkhorn algorithm, which incorporates an entropic regularization term into the optimal transport formulation to obtain a smooth and strictly convex objective.
+This regularization allows the resulting OT problem to be solved efficiently via iterative matrix scaling, leading to orders-of-magnitude speedups compared to classical linear programming solvers.
 As a result, Sinkhorn-based OT distances make optimal transport computationally feasible for large-scale machine learning applications and have become a cornerstone for OT-based representation learning and distribution alignment methods.
 
-Genevay et al.~\cite{Genevay_Peyre_Cuturi_2018_Sinkhorn_generative_models} proposed Sinkhorn divergences as a differentiable and computationally tractable OT-based loss for training generative models. 
-By introducing entropic regularization and leveraging automatic differentiation through Sinkhorn iterations, their approach enables stable optimization and efficient gradient computation at scale. 
+Genevay et al.~\cite{Genevay_Peyre_Cuturi_2018_Sinkhorn_generative_models} proposed Sinkhorn divergences as a differentiable and computationally tractable OT-based loss for training generative models.
+By introducing entropic regularization and leveraging automatic differentiation through Sinkhorn iterations, their approach enables stable optimization and efficient gradient computation at scale.
 This work demonstrated that OT-based losses can effectively improve the quality of generated samples, highlighting the potential of optimal transport as a powerful tool for generative modeling.
 
 \subsection{OT in Domain Adaptation}
-Optimal Transport has been extensively studied in domain adaptation as a principled framework for aligning feature distributions between source and target domains. 
-By explicitly modeling the discrepancy between distributions and minimizing the cost of transporting probability mass across domains, OT-based methods enable effective knowledge transfer from the source domain to the target domain. 
+Optimal Transport has been extensively studied in domain adaptation as a principled framework for aligning feature distributions between source and target domains.
+By explicitly modeling the discrepancy between distributions and minimizing the cost of transporting probability mass across domains, OT-based methods enable effective knowledge transfer from the source domain to the target domain.
 As a result, these approaches can reduce domain shift and improve model performance in the target domain, especially when the two domains exhibit substantial distributional differences.
 
 % 可以扩展画图
-Courty et al.~\cite{Courty_Flamary_Tuia_Rakotomamonjy_2016_OT_domain_adaptation} proposed a seminal optimal-transport-based framework for unsupervised domain adaptation, in which feature distributions from the source and target domains are aligned by learning an optimal transportation plan. 
-By minimizing the Wasserstein distance between empirical distributions, their method explicitly addresses domain shift at the distribution level and enables effective knowledge transfer from the source domain to the target domain. 
+Courty et al.~\cite{Courty_Flamary_Tuia_Rakotomamonjy_2016_OT_domain_adaptation} proposed a seminal optimal-transport-based framework for unsupervised domain adaptation, in which feature distributions from the source and target domains are aligned by learning an optimal transportation plan.
+By minimizing the Wasserstein distance between empirical distributions, their method explicitly addresses domain shift at the distribution level and enables effective knowledge transfer from the source domain to the target domain.
 Moreover, the proposed regularized OT formulation allows the incorporation of class and structural information, leading to improved adaptation performance and establishing OT as a principled tool for representation alignment in domain adaptation.
 
-Frogner et al.~\cite{Frogner_Zhang_Mobahi_Araya_Poggio_2015_Wasserstein_loss} introduced a deep learning framework that incorporates the Wasserstein distance as a loss function for representation learning and domain adaptation. 
-By embedding OT-based losses into neural networks, their method enables end-to-end training while explicitly accounting for the geometric structure of the output space. 
+Frogner et al.~\cite{Frogner_Zhang_Mobahi_Araya_Poggio_2015_Wasserstein_loss} introduced a deep learning framework that incorporates the Wasserstein distance as a loss function for representation learning and domain adaptation.
+By embedding OT-based losses into neural networks, their method enables end-to-end training while explicitly accounting for the geometric structure of the output space.
 Through an entropically regularized formulation, the proposed Wasserstein loss can be efficiently optimized via gradient-based methods, allowing effective alignment of feature distributions across domains and demonstrating the feasibility of OT within deep learning frameworks.
 
 With the development of efficient OT solvers such as the Sinkhorn algorithm, OT-based domain adaptation methods have become computationally tractable for large-scale applications. These advances significantly improve the practical applicability of OT, and extensive empirical results have shown that OT-based approaches can effectively mitigate distributional shifts between source and target domains, leading to consistent performance gains across a wide range of domain adaptation tasks.

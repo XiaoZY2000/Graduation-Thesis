@@ -306,6 +306,15 @@ Weike Pan, Evan Xiang, Nathan Liu, and Qiang Yang.
 \newblock In {\em Proceedings of the AAAI conference on artificial
   intelligence}, Vol.~24, pp. 230--235, 2010.
 
+\bibitem{Zhu_Jin_Zhang_Meng_Zhang_Li_2024_WCDR}
+Xianghui Zhu, Mengqun Jin, Hengyu Zhang, Chang Meng, Daoxin Zhang, and Xiu Li.
+\newblock Modeling domains as distributions with uncertainty for cross-domain
+  recommendation.
+\newblock In {\em Proceedings of the 47th International ACM SIGIR Conference on
+  Research and Development in Information Retrieval}, SIGIR '24, p.
+  2517^^e2^^80^^932521, New York, NY, USA, 2024. Association for Computing
+  Machinery.
+
 \bibitem{Man_Shen_Jin_Cheng_2017_CDR_embedding_mapping}
 Tong Man, Huawei Shen, Xiaolong Jin, and Xueqi Cheng.
 \newblock Cross-domain recommendation: An embedding and mapping approach.

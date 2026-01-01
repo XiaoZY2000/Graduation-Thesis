@@ -746,3 +746,36 @@
   year      = {2011},
   publisher = {JMLR. org}
 }
+
+@inproceedings{Zhu_Jin_Zhang_Meng_Zhang_Li_2024_WCDR,
+  author    = {Zhu, Xianghui and Jin, Mengqun and Zhang, Hengyu and Meng, Chang and Zhang, Daoxin and Li, Xiu},
+  title     = {Modeling Domains as Distributions with Uncertainty for Cross-Domain Recommendation},
+  year      = {2024},
+  isbn      = {9798400704314},
+  publisher = {Association for Computing Machinery},
+  address   = {New York, NY, USA},
+  url       = {https://doi.org/10.1145/3626772.3657930},
+  doi       = {10.1145/3626772.3657930},
+  abstract  = {In the field of dual-target Cross-Domain Recommendation (DTCDR), improving the performance in both the information sparse domain and rich domain has been a mainstream research trend. However, prior embedding-based methods are insufficient to adequately describe the dynamics of user actions and items across domains. Moreover, previous efforts frequently lacked a comprehensive investigation of the entire domain distributions. This paper proposes a novel framework entitled Wasserstein Cross-Domain Recommendation (WCDR) that captures uncertainty in Wasserstein space to address above challenges. In this framework, we abstract user/item actions as Elliptical Gaussian distributions and divide them into local-intrinsic and global-domain parts. To further model the domain diversity, we adopt shared-specific pattern for global-domain distributions and present Masked Domain-aware Sub-distribution Aggregation (MDSA) module to produce informative and diversified global-domain distributions, which incorporates attention-based aggregation method and masking strategy that alleviates negative transfer issues. Extensive experiments on two public datasets and one business dataset are conducted. Experimental results demonstrate the superiority of WCDR over state-of-the-art methods.},
+  booktitle = {Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  pages     = {2517–2521},
+  numpages  = {5},
+  keywords  = {cross-domain recommendation, representation learning, uncertainty, wasserstein space},
+  location  = {Washington DC, USA},
+  series    = {SIGIR '24}
+}
+
+@article{Liu_Chen_Liao_Hu_Tan_Wang_Zheng_Ong_2024_JPEDET,
+  title        = {Learning Accurate and Bidirectional Transformation via Dynamic Embedding Transportation for Cross-Domain Recommendation},
+  volume       = {38},
+  url          = {https://ojs.aaai.org/index.php/AAAI/article/view/28728},
+  doi          = {10.1609/aaai.v38i8.28728},
+  abstractnote = {With the rapid development of Internet and Web techniques, Cross-Domain Recommendation (CDR) models have been widely explored for resolving the data-sparsity
+                  and cold-start problem. Meanwhile, most CDR models should utilize explicit domain-shareable information (e.g., overlapped users or items) for knowledge transfer across domains. However, this assumption may not be always satisfied since users and items are always non-overlapped in real practice. The performance of many previous works will be severely impaired when these domain-shareable information are not available. To address the aforementioned issues, we propose the Joint Preference Exploration and Dynamic Embedding Transportation model (JPEDET) in this paper which is a novel framework for solving the CDR problem when users and items are non-overlapped. JPEDET includes two main modules, i.e., joint preference exploration module and dynamic embedding transportation module. The joint preference exploration module aims to fuse rating and review information for modelling user preferences. The dynamic embedding transportation module is set to share knowledge via neural ordinary equations for dual transformation across domains. Moreover, we innovatively propose the dynamic transport flow equipped with linear interpolation guidance on barycentric Wasserstein path for achieving accurate and bidirectional transformation. Our empirical study on Amazon datasets demonstrates that JPEDET significantly outperforms the state-of-the-art models under the CDR setting.},
+  number       = {8},
+  journal      = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  author       = {Liu, Weiming and Chen, Chaochao and Liao, Xinting and Hu, Mengling and Tan, Yanchao and Wang, Fan and Zheng, Xiaolin and Ong, Yew Soon},
+  year         = {2024},
+  month        = {Mar.},
+  pages        = {8815-8823}
+}
