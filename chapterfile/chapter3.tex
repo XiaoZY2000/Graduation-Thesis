@@ -251,10 +251,17 @@ JPEDET addresses the absence of overlapped users and items by learning transfera
 
 Specifically, JPEDET first employs a joint preference exploration module to fuse rating-based and review-based user representations, aiming to capture more robust and generalizable user preferences within each domain.
 To bridge the embedding discrepancy across domains, the model introduces a dynamic embedding transportation module based on neural ordinary differential equations (Neural ODEs), which enables continuous and bidirectional transformation between source and target user embedding spaces.
-Moreover, JPEDET incorporates optimal transport–based matching regularization and barycentric Wasserstein interpolation to guide the transportation trajectories, leading to smoother and more stable cross-domain alignment.
+Moreover, JPEDET incorporates optimal transport-based matching regularization and barycentric Wasserstein interpolation to guide the transportation trajectories, leading to smoother and more stable cross-domain alignment.
 
 By modeling cross-domain adaptation as a dynamic and invertible embedding transformation process, JPEDET advances non-overlapping CDR beyond static embedding mapping or adversarial alignment methods, and demonstrates superior performance on multiple real-world benchmark datasets.
+The overall framework of JPEDET can be illustrated as in Figure~\ref{fig:JPEDET}.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figures/JPEDET.pdf}
+	\caption{Illustration of the JPEDET framework~\cite{Liu_Chen_Liao_Hu_Tan_Wang_Zheng_Ong_2024_JPEDET}, which employs joint preference exploration and dynamic embedding transportation for non-overlapping cross-domain recommendation.}
+	\label{fig:JPEDET}
+\end{figure}
 
 \section{Distributional User Preference Modeling}
 
@@ -300,7 +307,7 @@ Salakhutdinov and Mnih~\cite{Salakhutdinov_Mnih_2008_Bayesian_PMF} further advan
 
 VAE-based methods provide another probabilistic framework for modeling uncertainty in user preferences. Liang et al.~\cite{Liang_Krishnan_Hoffman_Jebara_2018_VAE_CF} extended variational autoencoders to collaborative filtering by modeling user preferences as latent random variables and performing variational inference. By representing users with posterior distributions in the latent space, VAE-based recommender systems are able to capture both the variability and uncertainty inherent in user behavior, leading to more robust recommendation performance under sparse interaction data.
 
-Beyond recommender system–specific models, some studies investigate representing entities as probability distributions in general representation learning.
+Beyond recommender system-specific models, some studies investigate representing entities as probability distributions in general representation learning.
 Vilnis and McCallum~\cite{Vilnis_McCallum_2015_Gaussian_embeddings} proposed Gaussian embeddings, which represent words as Gaussian distributions in the embedding space, enabling the modeling of both semantic uncertainty and asymmetric relationships.
 Although not originally designed for recommender systems, this distributional representation paradigm provides important methodological insights and has inspired subsequent work on modeling users and items as distributions in recommendation tasks.
 
