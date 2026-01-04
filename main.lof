@@ -2,13 +2,14 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Illustration of the WCDR framework~\cite {Zhu_Jin_Zhang_Meng_Zhang_Li_2024_WCDR}, which models users and items as probability distributions to capture uncertainty in overlapping cross-domain recommendation.}}{16}{}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Illustration of the JPEDET framework~\cite {Liu_Chen_Liao_Hu_Tan_Wang_Zheng_Ong_2024_JPEDET}, which employs joint preference exploration and dynamic embedding transportation for non-overlapping cross-domain recommendation.}}{18}{}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Architecture of the DUP-OT Framework}}{23}{}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Item Embeddings after Aggregation}}{25}{}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Autoencoder Structure}}{26}{}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces 1D Gaussian Mixture Model Example}}{27}{}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces 2D Gaussian Mixture Model Example}}{28}{}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Cost Matrix Construction via Pairwise Wasserstein Distances}}{30}{}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Architecture of the DUP-OT Framework}}{25}{}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Item Embeddings after Aggregation}}{27}{}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Autoencoder Structure}}{28}{}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces 1D Gaussian Mixture Model Example}}{29}{}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces 2D Gaussian Mixture Model Example}}{30}{}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Cost Matrix Construction via Pairwise Wasserstein Distances}}{32}{}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

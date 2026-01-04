@@ -8,7 +8,7 @@ media~\cite{Bawden_Robinson_2020_info_overload,Lv_Liu_2022_info_overload,Zhang_C
 Recommender systems play a crucial role in alleviating this problem by providing
 personalized guidance, selecting items with the highest predicted utility from a
 large pool of candidates~\cite{Resnick_Varian_1997_recommender,Burke_2002_hybrid_recommender,Burke_Felfernig_Göker_2011_recommender_overview}.
-By analyzing historical user--item interactions, recommender systems help users
+By analyzing historical user-item interactions, recommender systems help users
 discover relevant content, products, or services, thereby improving user
 satisfaction and engagement.
 Beyond enhancing user experience, recommender systems also generate substantial
@@ -22,13 +22,13 @@ that limit their performance.
 One major challenge is data sparsity, where users interact with only a small
 fraction of available items, making it difficult to accurately infer user
 preferences.
-This issue is particularly severe in emerging or niche platforms with limited
+This issue is particularly severe in emerging or small-scale platforms with limited
 interaction data.
 Another critical challenge is the cold-start problem, which arises when new users
 or items enter the system and insufficient historical data is available to
 support reliable recommendations.
-Both data sparsity and cold-start problems stem from the limited availability of
-user--item interaction data and can significantly degrade recommendation quality.
+Both data sparsity and cold-start problems arise from the limited availability of
+user-item interaction data and can significantly degrade recommendation quality.
 
 To address these challenges, cross-domain recommendation has emerged as a
 promising paradigm that leverages information from a related source domain to
@@ -50,13 +50,14 @@ uncertainty and multi-faceted nature of real user behavior.
 Motivated by these limitations, this thesis proposes a novel cross-domain
 recommendation framework that models user preferences as Gaussian Mixture Models
 (GMMs) and integrates optimal transport techniques to enable knowledge transfer
-under non-overlapping settings.
+under non-overlapping training settings.
 By representing user preferences as probability distributions rather than point
 estimates, the proposed approach captures both the diversity and uncertainty of
 user interests.
 Furthermore, optimal transport provides a principled mechanism for aligning user
 preference distributions across domains, facilitating effective knowledge
-transfer even when no overlapping users or items are available during training.
+transfer without relying on overlapping users or items during the training
+phase.
 
 The proposed framework consists of two key components:
 (1) modeling user preferences as Gaussian mixture distributions to capture the

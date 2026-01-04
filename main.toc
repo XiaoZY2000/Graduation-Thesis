@@ -23,33 +23,50 @@
 \contentsline {section}{\numberline {3.2}Cross-Domain Recommender Systems}{15}{}%
 \contentsline {subsection}{\numberline {3.2.1}Overlapping CDR}{15}{}%
 \contentsline {subsection}{\numberline {3.2.2}Non-overlapping CDR}{16}{}%
-\contentsline {section}{\numberline {3.3}Distributional User Preference Modeling}{17}{}%
-\contentsline {subsection}{\numberline {3.3.1}Multi-interest User Modeling}{17}{}%
-\contentsline {subsection}{\numberline {3.3.2}Probabilistic Preference Modeling}{18}{}%
-\contentsline {section}{\numberline {3.4}Optimal Transport for Representation Alignment}{18}{}%
-\contentsline {subsection}{\numberline {3.4.1}OT Basics in ML}{19}{}%
-\contentsline {subsection}{\numberline {3.4.2}OT in Domain Adaptation}{19}{}%
-\contentsline {chapter}{\numberline {4}Distributional Preference Modeling for Cross-Domain Recommendation}{21}{}%
-\contentsline {section}{\numberline {4.1}Background}{21}{}%
-\contentsline {section}{\numberline {4.2}Methods}{22}{}%
-\contentsline {subsection}{\numberline {4.2.1}Overview}{22}{}%
-\contentsline {subsection}{\numberline {4.2.2}Shared Preprocessing Stage}{24}{}%
-\contentsline {subsubsection}{\numberline {4.2.2.1}Review Text Embedding}{24}{}%
-\contentsline {subsubsection}{\numberline {4.2.2.2}User and Item Embedding Aggregation}{24}{}%
-\contentsline {subsubsection}{\numberline {4.2.2.3}Dimensionality Reduction via Autoencoder}{26}{}%
-\contentsline {subsection}{\numberline {4.2.3}User GMM Weights Learning Stage}{26}{}%
-\contentsline {subsubsection}{\numberline {4.2.3.1}Fixed GMM Component Determination}{27}{}%
-\contentsline {subsubsection}{\numberline {4.2.3.2}User-Specific GMM Weight Learning and Rating Prediction}{28}{}%
-\contentsline {paragraph}{User-specific GMM weight learning.}{28}{}%
-\contentsline {paragraph}{Distribution-aware user--item representation.}{29}{}%
-\contentsline {paragraph}{Rating prediction and joint training.}{29}{}%
-\contentsline {subsection}{\numberline {4.2.4}Cross-Domain Rating Prediction Stage}{29}{}%
-\contentsline {paragraph}{Optimal transport formulation and cost matrix.}{30}{}%
-\contentsline {paragraph}{Distribution transfer and fusion.}{31}{}%
-\contentsline {chapter}{\numberline {5}Experiments}{32}{}%
-\contentsline {chapter}{\numberline {6}Results}{33}{}%
-\contentsline {chapter}{\numberline {7}Conclusion}{34}{}%
-\contentsline {chapter}{Appendix}{40}{}%
-\contentsline {section}{\numberline {A}Additional Experimental Results}{40}{}%
-\contentsline {chapter}{Publications}{41}{}%
-\contentsline {chapter}{Acknowledgement}{42}{}%
+\contentsline {section}{\numberline {3.3}Distributional User Preference Modeling}{18}{}%
+\contentsline {subsection}{\numberline {3.3.1}Multi-interest User Modeling}{19}{}%
+\contentsline {subsection}{\numberline {3.3.2}Probabilistic Preference Modeling}{19}{}%
+\contentsline {section}{\numberline {3.4}Optimal Transport for Representation Alignment}{20}{}%
+\contentsline {subsection}{\numberline {3.4.1}OT Basics in ML}{20}{}%
+\contentsline {subsection}{\numberline {3.4.2}OT in Domain Adaptation}{21}{}%
+\contentsline {chapter}{\numberline {4}Distributional Preference Modeling for Cross-Domain Recommendation}{23}{}%
+\contentsline {section}{\numberline {4.1}Background}{23}{}%
+\contentsline {section}{\numberline {4.2}Methods}{24}{}%
+\contentsline {subsection}{\numberline {4.2.1}Overview}{24}{}%
+\contentsline {subsection}{\numberline {4.2.2}Shared Preprocessing Stage}{26}{}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}Review Text Embedding}{26}{}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}User and Item Embedding Aggregation}{26}{}%
+\contentsline {subsubsection}{\numberline {4.2.2.3}Dimensionality Reduction via Autoencoder}{28}{}%
+\contentsline {subsection}{\numberline {4.2.3}User GMM Weights Learning Stage}{28}{}%
+\contentsline {subsubsection}{\numberline {4.2.3.1}Fixed GMM Component Determination}{29}{}%
+\contentsline {subsubsection}{\numberline {4.2.3.2}User-Specific GMM Weight Learning and Rating Prediction}{30}{}%
+\contentsline {paragraph}{User-specific GMM weight learning.}{30}{}%
+\contentsline {paragraph}{Distribution-aware user--item representation.}{31}{}%
+\contentsline {paragraph}{Rating prediction and joint training.}{31}{}%
+\contentsline {subsection}{\numberline {4.2.4}Cross-Domain Rating Prediction Stage}{31}{}%
+\contentsline {paragraph}{Optimal transport formulation and cost matrix.}{32}{}%
+\contentsline {paragraph}{Distribution transfer and fusion.}{33}{}%
+\contentsline {chapter}{\numberline {5}Experiments}{34}{}%
+\contentsline {section}{\numberline {5.1}Research Questions}{34}{}%
+\contentsline {section}{\numberline {5.2}Datasets}{34}{}%
+\contentsline {subsection}{\numberline {5.2.1}5-core Filtering}{35}{}%
+\contentsline {subsection}{\numberline {5.2.2}Temporal Splitting Strategy}{35}{}%
+\contentsline {section}{\numberline {5.3}Overview of DUP-OT}{35}{}%
+\contentsline {subsection}{\numberline {5.3.1}Unified Representation Learning}{35}{}%
+\contentsline {subsection}{\numberline {5.3.2}Distribution-Based User Preference Modeling}{36}{}%
+\contentsline {subsection}{\numberline {5.3.3}Cross-Domain Preference Transfer}{36}{}%
+\contentsline {section}{\numberline {5.4}Training Protocol}{36}{}%
+\contentsline {section}{\numberline {5.5}Baseline Models}{36}{}%
+\contentsline {section}{\numberline {5.6}Evaluation Metrics}{37}{}%
+\contentsline {chapter}{\numberline {6}Results}{38}{}%
+\contentsline {section}{\numberline {6.1}Overall Performance Comparison}{38}{}%
+\contentsline {section}{\numberline {6.2}Effect of Cross-Domain Information}{38}{}%
+\contentsline {section}{\numberline {6.3}Effect of Distribution-Based User Preference Modeling}{39}{}%
+\contentsline {section}{\numberline {6.4}Comparison with Cross-Domain Recommendation Baselines}{40}{}%
+\contentsline {section}{\numberline {6.5}Additional Observations and Discussion}{40}{}%
+\contentsline {section}{\numberline {6.6}Summary}{40}{}%
+\contentsline {chapter}{\numberline {7}Conclusion}{41}{}%
+\contentsline {chapter}{Appendix}{48}{}%
+\contentsline {section}{\numberline {A}Additional Experimental Results}{48}{}%
+\contentsline {chapter}{Publications}{49}{}%
+\contentsline {chapter}{Acknowledgement}{50}{}%

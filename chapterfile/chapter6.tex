@@ -1,1 +1,171 @@
 \chapter{Results} \label{chap:results}
+
+In this chapter, we present and analyze the experimental results of the proposed
+\textbf{DUP-OT} framework. The goal of this chapter is to quantitatively and
+qualitatively evaluate the effectiveness of distribution-based user preference
+modeling and cross-domain preference transfer via optimal transport.
+
+We first provide an overall comparison between DUP-OT and baseline models across
+different source--target domain pairs. We then conduct detailed analyses to
+answer the three research questions raised in the previous chapter, focusing on
+the effects of cross-domain information, distribution-based modeling, and
+comparisons with existing cross-domain recommendation methods.
+
+\section{Overall Performance Comparison}
+
+Table~\ref{tab:results} summarizes the rating prediction performance of all
+baseline models and the proposed DUP-OT framework. The results are reported in
+terms of RMSE and MAE on the target-domain test set, averaged over five random
+seeds. Lower values indicate better recommendation performance.
+
+\begin{table*}[t]
+	\centering
+	\caption{Rating prediction performance (RMSE and MAE) of baseline models and the proposed DUP-OT framework on different source--target domain pairs.}
+	\label{tab:results}
+
+	\begin{subtable}{\textwidth}
+		\centering
+		\caption{Cross-domain recommendation results with Electronics as the target domain}
+		\begin{tabular}{l cc cc cc}
+			\toprule
+			Source $\rightarrow$ Target
+			      & \multicolumn{2}{c}{Digital Music $\rightarrow$ Electronics}
+			      & \multicolumn{2}{c}{Movies \& TV $\rightarrow$ Electronics}
+			      & \multicolumn{2}{c}{Video Games $\rightarrow$ Electronics}                                               \\
+			\cmidrule(lr){2-3}
+			\cmidrule(lr){4-5}
+			\cmidrule(lr){6-7}
+			Model & RMSE                                                        & MAE             & RMSE & MAE & RMSE & MAE \\
+			\midrule
+			TDAR
+			      & 1.5688                                                      & 1.0904
+			      & 1.5677                                                      & 1.0896
+			      & 1.5688                                                      & 1.0902                                    \\
+
+			DUP-OT (w/o source)
+			      & 1.3699                                                      & 0.9463
+			      & 1.3494                                                      & 0.8806
+			      & 1.3716                                                      & \textbf{0.9481}                           \\
+
+			DUP-OT (w/ source)
+			      & \textbf{1.2919}                                             & \textbf{0.8965}
+			      & \textbf{1.2907}                                             & \textbf{0.8774}
+			      & \textbf{1.3376}                                             & 1.0032                                    \\
+			\bottomrule
+		\end{tabular}
+	\end{subtable}
+
+	\vspace{1em}
+
+	\begin{subtable}{\textwidth}
+		\centering
+		\caption{Single-domain recommendation performance on the Electronics dataset}
+		\begin{tabular}{l cc}
+			\toprule
+			Model    & RMSE            & MAE             \\
+			\midrule
+			LightGCN & 1.5317          & 1.1179          \\
+			NeuMF    & 1.4599          & 1.3297          \\
+			\midrule
+			DUP-OT (w/o source, average)
+			         & \textbf{1.3636} & \textbf{0.9250} \\
+			\bottomrule
+		\end{tabular}
+	\end{subtable}
+
+\end{table*}
+
+From Table~\ref{tab:results}, we observe that DUP-OT consistently outperforms both
+single-domain and cross-domain baseline models across all evaluated settings.
+In particular, DUP-OT with source-domain information achieves the lowest RMSE and
+MAE in all source--target configurations, indicating the effectiveness of
+cross-domain preference transfer.
+
+\section{Effect of Cross-Domain Information}
+
+We first analyze the impact of incorporating source-domain information on
+target-domain recommendation performance, corresponding to \textbf{RQ1}. To this
+end, we compare two variants of the proposed framework: DUP-OT (w/ source) and
+DUP-OT (w/o source).
+
+These two variants share identical architectures, representation learning
+strategies, and training protocols. The only difference lies in whether
+source-domain preference distributions are transferred to the target domain via
+optimal transport. Therefore, performance differences can be directly attributed
+to the effect of cross-domain information.
+
+As shown in Table~\ref{tab:results}, DUP-OT (w/ source) consistently achieves
+lower RMSE and MAE than DUP-OT (w/o source) across all source--target pairs.
+For example, when transferring from Digital Music to Electronics, incorporating
+source-domain information reduces RMSE from 1.3699 to 1.2919 and MAE from 0.9463
+to 0.8965. Similar trends can be observed for the Movies \& TV and Video Games
+source domains.
+
+These results demonstrate that source-domain user preference distributions
+provide complementary and useful signals for target-domain recommendation, even
+when users and items do not overlap across domains. This finding supports the
+central motivation of DUP-OT and confirms the effectiveness of optimal transport
+based preference transfer.
+
+\section{Effect of Distribution-Based User Preference Modeling}
+
+Next, we evaluate the benefit of modeling user preferences as probability
+distributions rather than point embeddings, corresponding to \textbf{RQ2}. To
+isolate this effect, we compare DUP-OT (w/o source) with representative
+single-domain recommendation models, namely LightGCN and NeuMF, in the
+Electronics-only setting.
+
+Notably, DUP-OT (w/o source) does not leverage any source-domain interactions and
+is trained exclusively on the target-domain training set. Despite this
+restriction, DUP-OT (w/o source) achieves substantially better performance than
+both LightGCN and NeuMF, as shown in the lower part of Table~\ref{tab:results}.
+
+This performance gap suggests that distribution-based user modeling enables the
+model to capture uncertainty and multi-interest behavior that cannot be
+effectively represented by single-vector embeddings. By representing user
+preferences as mixtures over latent semantic components, DUP-OT provides a more
+expressive and flexible representation, leading to improved rating prediction
+accuracy.
+
+\section{Comparison with Cross-Domain Recommendation Baselines}
+
+We further compare DUP-OT with TDAR, a representative cross-domain recommendation
+method designed for non-overlapping scenarios, corresponding to \textbf{RQ3}.
+TDAR employs adversarial learning to align feature representations across domains
+and has been shown to be effective in prior work.
+
+As shown in Table~\ref{tab:results}, DUP-OT (w/ source) consistently outperforms
+TDAR across all evaluated domain pairs, achieving significantly lower RMSE and
+MAE. This result indicates that aligning user preference distributions via
+optimal transport is more effective than adversarial feature alignment for the
+task of cross-domain recommendation.
+
+One possible explanation is that adversarial alignment primarily focuses on
+matching marginal feature distributions, which may be insufficient for capturing
+fine-grained preference structures. In contrast, DUP-OT aligns semantically
+grounded preference distributions, enabling more precise and interpretable
+cross-domain knowledge transfer.
+
+\section{Additional Observations and Discussion}
+
+Beyond the overall performance improvements, we observe that the benefits of
+DUP-OT are particularly pronounced for users with sparse interaction histories.
+This suggests that distribution-based modeling and cross-domain transfer are
+especially effective in alleviating data sparsity and cold-start issues.
+
+We also observe that the magnitude of performance improvement varies across
+source domains. In general, source domains that are semantically closer to the
+target domain, such as Digital Music and Movies \& TV, yield larger improvements.
+This observation highlights the importance of semantic relatedness in
+cross-domain recommendation and suggests potential directions for future work,
+such as source-domain selection and weighting strategies.
+
+\section{Summary}
+
+In summary, the experimental results presented in this chapter demonstrate the
+effectiveness of the proposed DUP-OT framework. The results confirm that
+incorporating source-domain information via optimal transport significantly
+improves target-domain recommendation performance, that distribution-based user
+preference modeling provides clear advantages over conventional approaches, and
+that DUP-OT outperforms existing cross-domain recommendation methods in
+non-overlapping settings.

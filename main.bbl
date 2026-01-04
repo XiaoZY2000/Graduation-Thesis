@@ -320,6 +320,29 @@ Tong Man, Huawei Shen, Xiaolong Jin, and Xueqi Cheng.
 \newblock Cross-domain recommendation: An embedding and mapping approach.
 \newblock In {\em Ijcai}, Vol.~17, pp. 2464--2470, 2017.
 
+\bibitem{Kusano_Oyamada_2023_ATP}
+Genki Kusano and Masafumi Oyamada.
+\newblock Cross-domain user similarity without overlapping attributes via
+  optimal transport theory.
+\newblock 2023.
+
+\bibitem{Liu_Chen_Liao_Hu_Tan_Wang_Zheng_Ong_2024_JPEDET}
+Weiming Liu, Chaochao Chen, Xinting Liao, Mengling Hu, Yanchao Tan, Fan Wang,
+  Xiaolin Zheng, and Yew~Soon Ong.
+\newblock Learning accurate and bidirectional transformation via dynamic
+  embedding transportation for cross-domain recommendation.
+\newblock {\em Proceedings of the AAAI Conference on Artificial Intelligence},
+  Vol.~38, No.~8, pp. 8815--8823, Mar. 2024.
+
+\bibitem{Li_Qiu_Zhao_Wang_Zhang_Xing_Wu_2022_GWCDR}
+Xinhang Li, Zhaopeng Qiu, Xiangyu Zhao, Zihao Wang, Yong Zhang, Chunxiao Xing,
+  and Xian Wu.
+\newblock Gromov-wasserstein guided representation learning for cross-domain
+  recommendation.
+\newblock In {\em Proceedings of the 31st ACM International Conference on
+  Information \& Knowledge Management}, CIKM '22, p. 1199^^e2^^80^^931208, New
+  York, NY, USA, 2022. Association for Computing Machinery.
+
 \bibitem{Zhou_Zhu_Song_Fan_Zhu_Ma_Yan_Jin_Li_Gai_2018_DIN}
 Guorui Zhou, Xiaoqiang Zhu, Chenru Song, Ying Fan, Han Zhu, Xiao Ma, Yanghui
   Yan, Junqi Jin, Han Li, and Kun Gai.
@@ -392,5 +415,13 @@ Fabian Pedregosa, Ga{\"e}l Varoquaux, Alexandre Gramfort, Vincent Michel,
 \newblock Scikit-learn: Machine learning in python.
 \newblock {\em the Journal of machine Learning research}, Vol.~12, pp.
   2825--2830, 2011.
+
+\bibitem{Yu_Lin_Ge_Ou_Qin_2020_TDAR}
+Wenhui Yu, Xiao Lin, Junfeng Ge, Wenwu Ou, and Zheng Qin.
+\newblock Semi-supervised collaborative filtering by text-enhanced domain
+  adaptation.
+\newblock In {\em Proceedings of the 26th ACM SIGKDD International Conference
+  on Knowledge Discovery \& Data Mining}, KDD '20, p. 2136^^e2^^80^^932144, New
+  York, NY, USA, 2020. Association for Computing Machinery.
 
 \end{thebibliography}

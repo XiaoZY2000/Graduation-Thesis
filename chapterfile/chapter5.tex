@@ -1,1 +1,162 @@
 \chapter{Experiments} \label{chap:experiments}
+
+This chapter presents a comprehensive experimental evaluation of the proposed
+\textbf{DUP-OT} framework. The primary goal of these experiments is to examine
+whether modeling user preferences as probability distributions and transferring
+such distributions across domains via optimal transport can effectively improve
+recommendation performance in non-overlapping cross-domain scenarios.
+
+Unlike conventional conference-style experimental sections that primarily focus
+on numerical comparisons, this chapter emphasizes experimental rigor,
+reproducibility, and interpretability. We therefore provide detailed descriptions
+of dataset construction, temporal splitting strategies, architectural design
+choices, training protocols, and baseline configurations. These details are
+essential for understanding the behavior of the proposed method and for enabling
+future work to reproduce and extend our results.
+
+\section{Research Questions}
+
+The experiments are designed to answer the following research questions:
+
+\begin{itemize}
+	\item \textbf{RQ1.} Does incorporating source-domain information improve
+	      recommendation performance in the target domain under non-overlapping user
+	      and item settings?
+
+	\item \textbf{RQ2.} Does representing user preferences as probability
+	      distributions provide advantages over conventional vector-based
+	      representations in single-domain recommendation?
+
+	\item \textbf{RQ3.} How does the proposed DUP-OT framework compare with
+	      existing cross-domain recommendation methods that are designed for
+	      non-overlapping scenarios?
+\end{itemize}
+
+Each research question is addressed through carefully designed experiments and
+controlled comparisons, including ablation studies and cross-model evaluations.
+
+\section{Datasets}
+
+We conduct experiments on the Amazon Review 5-core datasets~\cite{J_Ni_2019},
+which have been widely adopted in recommender system research due to their scale,
+diversity, and availability of both interaction data and rich textual reviews.
+
+Specifically, we use four domains:
+\textit{Digital Music}, \textit{Movies and TV}, \textit{Video Games}, and
+\textit{Electronics}. Among them, Electronics is treated as the target domain,
+while the remaining three domains are used as source domains in different
+source--target configurations.
+
+The Amazon Review datasets contain explicit ratings ranging from 1 to 5, which
+makes them suitable for evaluating rating prediction performance. Moreover, the
+availability of user- and item-level textual reviews enables the construction of
+semantically meaningful representations beyond purely interaction-based models.
+
+\subsection{5-core Filtering}
+
+To reduce extreme sparsity and ensure a minimum level of interaction density, we
+apply standard 5-core filtering to each domain independently. After filtering,
+each user and item has at least five interactions within the corresponding
+domain. This preprocessing step is consistent with prior work and allows for
+fair comparison with baseline models.
+
+\subsection{Temporal Splitting Strategy}
+
+In the target domain (Electronics), interactions are split chronologically into
+training, validation, and test sets with a ratio of 8:1:1. Chronological splitting
+is adopted to simulate realistic recommendation scenarios in which models are
+trained on past data and evaluated on future interactions.
+
+To prevent temporal information leakage across domains, we further filter the
+source-domain datasets by removing interactions that occur later than the
+earliest validation timestamp in the target domain. This ensures that all
+source-domain information used during training is temporally prior to the target
+domain evaluation period.
+
+This temporal alignment strategy is particularly important for cross-domain
+recommendation, as naive inclusion of future source-domain interactions could
+lead to overly optimistic performance estimates.
+
+\section{Overview of DUP-OT}
+
+The DUP-OT framework consists of three major stages: unified representation
+learning, distribution-based preference modeling, and cross-domain preference
+transfer. Each stage is designed to address a specific limitation of existing
+cross-domain recommendation approaches.
+
+\subsection{Unified Representation Learning}
+
+In the first stage, we employ a shared pre-trained sentence encoder,
+\texttt{all-MiniLM-L6-v2}, from the Sentence-Transformers library to encode user
+and item reviews into dense semantic embeddings. The encoder is kept frozen
+throughout training to preserve its general semantic knowledge and to reduce
+computational cost.
+
+A shared autoencoder is then trained on embeddings from all involved domains to
+project them into a unified low-dimensional latent space. By sharing the
+autoencoder across domains, we encourage the model to learn domain-invariant
+semantic representations while still preserving domain-specific information.
+
+\subsection{Distribution-Based User Preference Modeling}
+
+In the second stage, we model user preferences as probability distributions
+rather than fixed-point embeddings. For each domain, we fit an item-level Gaussian
+Mixture Model (GMM) on the learned item embeddings. The use of GMMs allows the
+model to capture multi-modal structure in the item space.
+
+The number of mixture components is automatically determined using the
+\texttt{BayesianGaussianMixture} estimator, which relies on variational Bayesian
+inference to avoid manual hyperparameter tuning. This design choice improves
+robustness across domains with different data scales.
+
+For each user, a lightweight MLP predicts mixture weights over the shared GMM
+components. These weights represent the user’s preference distribution over
+latent semantic clusters. A separate MLP is trained to predict ratings based on
+the interaction between user preference distributions and item embeddings.
+
+\subsection{Cross-Domain Preference Transfer}
+
+In the third stage, we perform cross-domain preference transfer using Optimal
+Transport (OT). OT provides a principled way to align probability distributions
+across domains by minimizing the cost of transporting mass between distributions.
+
+By aligning user preference distributions rather than point embeddings, DUP-OT
+achieves flexible and interpretable cross-domain knowledge transfer. During
+inference, transferred source-domain preferences are fused with target-domain
+preferences to produce final rating predictions.
+
+\section{Training Protocol}
+
+All models are trained using the Adam optimizer with a learning rate of
+$3\times10^{-4}$ and a batch size of 256. Early stopping is applied based on
+validation loss in the target domain to prevent overfitting.
+
+The sentence encoder is frozen, while the shared autoencoder is trained jointly
+across domains. Domain-specific GMMs and MLPs are trained independently. Users
+that appear only in validation or test sets are treated as cold-start users.
+
+All experiments are implemented in PyTorch and conducted on a single NVIDIA GPU.
+To reduce variance caused by random initialization, each experiment is repeated
+with five random seeds $\{7, 11, 17, 33, 2025\}$, and all reported results are
+averaged across runs.
+
+\section{Baseline Models}
+
+We compare DUP-OT with both single-domain and cross-domain baselines.
+
+\textbf{Single-domain baselines} include LightGCN~\cite{He_Deng_Wang_Li_Zhang_Wang_2020_LightGCN} and
+NeuMF~\cite{He_Liao_Zhang_Nie_Hu_Chua_2017_NCF}, which are representative collaborative
+filtering models. These models are implemented using the RecBole framework and
+trained solely on the target domain.
+
+\textbf{Cross-domain baseline} includes TDAR~\cite{Yu_Lin_Ge_Ou_Qin_2020_TDAR}, a
+text-enhanced domain adaptation method designed for non-overlapping scenarios.
+We adapt TDAR to the rating prediction setting by replacing its original
+contrastive loss with a regression objective.
+
+\section{Evaluation Metrics}
+
+All models are evaluated on rating prediction in the target domain. We report
+Root Mean Square Error (RMSE) and Mean Absolute Error (MAE), which are standard
+metrics for explicit-feedback recommendation tasks. Lower values indicate better
+performance.

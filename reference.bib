@@ -779,3 +779,45 @@
   month        = {Mar.},
   pages        = {8815-8823}
 }
+
+@inproceedings{Li_Qiu_Zhao_Wang_Zhang_Xing_Wu_2022_GWCDR,
+  author    = {Li, Xinhang and Qiu, Zhaopeng and Zhao, Xiangyu and Wang, Zihao and Zhang, Yong and Xing, Chunxiao and Wu, Xian},
+  title     = {Gromov-Wasserstein Guided Representation Learning for Cross-Domain Recommendation},
+  year      = {2022},
+  isbn      = {9781450392365},
+  publisher = {Association for Computing Machinery},
+  address   = {New York, NY, USA},
+  url       = {https://doi.org/10.1145/3511808.3557338},
+  doi       = {10.1145/3511808.3557338},
+  abstract  = {Cross-Domain Recommendation (CDR) has attracted increasing attention in recent years as a solution to the data sparsity issue. The fundamental paradigm of prior efforts is to train a mapping function based on the overlapping users/items and then apply it to the knowledge transfer. However, due to the commercial privacy policy and the sensitivity of user data, it is unrealistic to explicitly share the user mapping relations and behavior data. Therefore, in this paper, we consider a more practical cross-domain scenario, where there is no explicit overlap between the source and target domains in terms of users/items. Since the user sets of both domains are drawn from the entire population, there may be commonalities between their user characteristics, resulting in comparable user preference distributions. Thus, without the mapping relations at user level, it is feasible to model this distribution-level relation to transfer knowledge between domains. To this end, we propose a novel framework that improves the effect of representation learning on the target domain by aligning the representation distributions between the source and target domains. In addition, GWCDR can be easily integrated with existing single-domain collaborative filtering methods to achieve cross-domain recommendation. Extensive experiments on two pairs of public bidirectional datasets demonstrate the effectiveness of our proposed framework in enhancing the recommendation performance.},
+  booktitle = {Proceedings of the 31st ACM International Conference on Information \& Knowledge Management},
+  pages     = {1199–1208},
+  numpages  = {10},
+  keywords  = {cross-domain recommendation, gromov-wasserstein learning, optimal transport},
+  location  = {Atlanta, GA, USA},
+  series    = {CIKM '22}
+}
+
+@inproceedings{Kusano_Oyamada_2023_ATP,
+  title  = {Cross-Domain User Similarity without Overlapping Attributes via Optimal Transport Theory.},
+  author = {Kusano, Genki and Oyamada, Masafumi},
+  year   = {2023}
+}
+
+@inproceedings{Yu_Lin_Ge_Ou_Qin_2020_TDAR,
+  author    = {Yu, Wenhui and Lin, Xiao and Ge, Junfeng and Ou, Wenwu and Qin, Zheng},
+  title     = {Semi-supervised Collaborative Filtering by Text-enhanced Domain Adaptation},
+  year      = {2020},
+  isbn      = {9781450379984},
+  publisher = {Association for Computing Machinery},
+  address   = {New York, NY, USA},
+  url       = {https://doi.org/10.1145/3394486.3403264},
+  doi       = {10.1145/3394486.3403264},
+  abstract  = {Data sparsity is an inherent challenge in the recommender systems, where most of the data is collected from the implicit feedbacks of users. This causes two difficulties in designing effective algorithms: first, the majority of users only have a few interactions with the system and there is no enough data for learning; second, there are no negative samples in the implicit feedbacks and it is a common practice to perform negative sampling to generate negative samples. However, this leads to a consequence that many potential positive samples are mislabeled as negative ones and data sparsity would exacerbate the mislabeling problem.To solve these difficulties, we regard the problem of recommendation on sparse implicit feedbacks as a semi-supervised learning task, and explore domain adaption to solve it. We transfer the knowledge learned from dense data to sparse data and we focus on the most challenging case - there is no user or item overlap.In this extreme case, aligning embeddings of two datasets directly is rather sub-optimal since the two latent spaces encode very different information. As such, we adopt domain-invariant textual features as the anchor points to align the latent spaces. To align the embeddings, we extract the textual features for each user and item and feed them into a domain classifier with the embeddings of users and items. The embeddings are trained to puzzle the classifier and textual features are fixed as anchor points. By domain adaptation, the distribution pattern in the source domain is transferred to the target domain. As the target part can be supervised by domain adaptation, we abandon negative sampling in target dataset to avoid label noise.We adopt three pairs of real-world datasets to validate the effectiveness of our transfer strategy. Results show that our models outperform existing models significantly.},
+  booktitle = {Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery \& Data Mining},
+  pages     = {2136–2144},
+  numpages  = {9},
+  keywords  = {adversarial learning, collaborative filtering, domain adaptation, item recommendation, transfer learning, user reviews},
+  location  = {Virtual Event, CA, USA},
+  series    = {KDD '20}
+}

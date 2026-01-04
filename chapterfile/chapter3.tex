@@ -246,6 +246,12 @@ Man et al.~\cite{Man_Shen_Jin_Cheng_2017_CDR_embedding_mapping} proposed EMCDR, 
 The framework first learns latent user and item representations independently in each domain, and then learns a cross-domain mapping function to project embeddings from the source domain into the target domain.
 By transferring preferences through latent space mapping, EMCDR enables effective knowledge transfer in non-overlapping and cold-start scenarios.
 
+Beyond latent embedding mapping, several works investigate cross-domain knowledge transfer by aligning heterogeneous feature spaces.
+Kusano and Oyamada~\cite{Kusano_Oyamada_2023_ATP} proposed ATP, which formulates non-overlapping cross-domain recommendation as an attribute transportation problem.
+ATP focuses on scenarios where neither users nor attributes are shared across domains, and aims to estimate cross-domain user similarity by aligning heterogeneous attribute spaces.
+Specifically, ATP leverages optimal transport to learn a soft correspondence between source and target domain attributes, enabling users to be re-described in a unified attribute space for similarity computation and recommendation.
+By operating at the attribute level, ATP provides an interpretable and feature-driven solution for non-overlapping cross-domain recommendation.
+
 Liu et al.~\cite{Liu_Chen_Liao_Hu_Tan_Wang_Zheng_Ong_2024_JPEDET} proposed JPEDET, a joint preference exploration and dynamic embedding transportation framework for non-overlapping cross-domain recommendation.
 JPEDET addresses the absence of overlapped users and items by learning transferable user representations from both rating and review information, and further aligning user embeddings across domains through a dynamic transportation mechanism.
 
@@ -258,10 +264,19 @@ The overall framework of JPEDET can be illustrated as in Figure~\ref{fig:JPEDET}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{figures/JPEDET.pdf}
+	\includegraphics[width=0.6\textwidth]{figures/JPEDET.pdf}
 	\caption{Illustration of the JPEDET framework~\cite{Liu_Chen_Liao_Hu_Tan_Wang_Zheng_Ong_2024_JPEDET}, which employs joint preference exploration and dynamic embedding transportation for non-overlapping cross-domain recommendation.}
 	\label{fig:JPEDET}
 \end{figure}
+
+In addition to embedding-level alignment methods, several recent works explore cross-domain recommendation from a distributional perspective.
+Liu et al.~\cite{Li_Qiu_Zhao_Wang_Zhang_Xing_Wu_2022_GWCDR} proposed GWCDR, which addresses non-overlapping cross-domain recommendation by aligning user-item interaction patterns at the distribution level.
+
+Instead of relying on overlapped users or items, GWCDR constructs rating pattern distributions based on observed positive interactions, where each interaction is represented by the element-wise product of the corresponding user and item embeddings.
+To bridge the discrepancy between domains without assuming a shared embedding space, the model employs Gromov--Wasserstein optimal transport to align the structural relationships within the interaction distributions of the source and target domains.
+
+By preserving the relative geometry of interaction patterns across domains, GWCDR enables effective knowledge transfer under strict non-overlapping settings.
+This distribution-level alignment paradigm provides a complementary perspective to embedding mapping, attribute transportation, and dynamic embedding transportation methods, and demonstrates strong performance across multiple real-world cross-domain recommendation benchmarks.
 
 \section{Distributional User Preference Modeling}
 
