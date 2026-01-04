@@ -48,25 +48,19 @@
 \contentsline {paragraph}{Distribution transfer and fusion.}{33}{}%
 \contentsline {chapter}{\numberline {5}Experiments}{34}{}%
 \contentsline {section}{\numberline {5.1}Research Questions}{34}{}%
-\contentsline {section}{\numberline {5.2}Datasets}{34}{}%
-\contentsline {subsection}{\numberline {5.2.1}5-core Filtering}{35}{}%
-\contentsline {subsection}{\numberline {5.2.2}Temporal Splitting Strategy}{35}{}%
-\contentsline {section}{\numberline {5.3}Overview of DUP-OT}{35}{}%
-\contentsline {subsection}{\numberline {5.3.1}Unified Representation Learning}{35}{}%
-\contentsline {subsection}{\numberline {5.3.2}Distribution-Based User Preference Modeling}{36}{}%
-\contentsline {subsection}{\numberline {5.3.3}Cross-Domain Preference Transfer}{36}{}%
-\contentsline {section}{\numberline {5.4}Training Protocol}{36}{}%
-\contentsline {section}{\numberline {5.5}Baseline Models}{36}{}%
-\contentsline {section}{\numberline {5.6}Evaluation Metrics}{37}{}%
-\contentsline {chapter}{\numberline {6}Results}{38}{}%
-\contentsline {section}{\numberline {6.1}Overall Performance Comparison}{38}{}%
-\contentsline {section}{\numberline {6.2}Effect of Cross-Domain Information}{38}{}%
-\contentsline {section}{\numberline {6.3}Effect of Distribution-Based User Preference Modeling}{39}{}%
-\contentsline {section}{\numberline {6.4}Comparison with Cross-Domain Recommendation Baselines}{40}{}%
-\contentsline {section}{\numberline {6.5}Additional Observations and Discussion}{40}{}%
-\contentsline {section}{\numberline {6.6}Summary}{40}{}%
-\contentsline {chapter}{\numberline {7}Conclusion}{41}{}%
-\contentsline {chapter}{Appendix}{48}{}%
-\contentsline {section}{\numberline {A}Additional Experimental Results}{48}{}%
-\contentsline {chapter}{Publications}{49}{}%
-\contentsline {chapter}{Acknowledgement}{50}{}%
+\contentsline {section}{\numberline {5.2}Datasets and Preprocessing}{35}{}%
+\contentsline {section}{\numberline {5.3}Experimental Setup}{36}{}%
+\contentsline {subsection}{\numberline {5.3.1}Baseline Models}{36}{}%
+\contentsline {subsection}{\numberline {5.3.2}Evaluation Metrics}{37}{}%
+\contentsline {chapter}{\numberline {6}Results}{39}{}%
+\contentsline {section}{\numberline {6.1}Overall Performance Comparison}{39}{}%
+\contentsline {section}{\numberline {6.2}Effect of Cross-Domain Information}{39}{}%
+\contentsline {section}{\numberline {6.3}Effect of Distribution-Based User Preference Modeling}{40}{}%
+\contentsline {section}{\numberline {6.4}Comparison with Cross-Domain Recommendation Baselines}{41}{}%
+\contentsline {section}{\numberline {6.5}Additional Observations and Discussion}{41}{}%
+\contentsline {section}{\numberline {6.6}Summary}{41}{}%
+\contentsline {chapter}{\numberline {7}Conclusion}{42}{}%
+\contentsline {chapter}{Appendix}{49}{}%
+\contentsline {section}{\numberline {A}Additional Experimental Results}{49}{}%
+\contentsline {chapter}{Publications}{50}{}%
+\contentsline {chapter}{Acknowledgement}{51}{}%

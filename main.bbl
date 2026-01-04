@@ -416,6 +416,16 @@ Fabian Pedregosa, Ga{\"e}l Varoquaux, Alexandre Gramfort, Vincent Michel,
 \newblock {\em the Journal of machine Learning research}, Vol.~12, pp.
   2825--2830, 2011.
 
+\bibitem{Ni_Li_McAuley_2019_Justifying_Recommendations}
+Jianmo Ni, Jiacheng Li, and Julian McAuley.
+\newblock Justifying recommendations using distantly-labeled reviews and
+  fine-grained aspects.
+\newblock In Kentaro Inui, Jing Jiang, Vincent Ng, and Xiaojun Wan, editors,
+  {\em Proceedings of the 2019 Conference on Empirical Methods in Natural
+  Language Processing and the 9th International Joint Conference on Natural
+  Language Processing (EMNLP-IJCNLP)}, pp. 188--197, Hong Kong, China, November
+  2019. Association for Computational Linguistics.
+
 \bibitem{Yu_Lin_Ge_Ou_Qin_2020_TDAR}
 Wenhui Yu, Xiao Lin, Junfeng Ge, Wenwu Ou, and Zheng Qin.
 \newblock Semi-supervised collaborative filtering by text-enhanced domain

@@ -3,6 +3,7 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Statistics of the Amazon Review datasets after preprocessing.}}{35}{}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces Rating prediction performance (RMSE and MAE) of baseline models and the proposed DUP-OT framework on different source--target domain pairs.}}{39}{}%
+\contentsline {table}{\numberline {6.1}{\ignorespaces Rating prediction performance (RMSE and MAE) of baseline models and the proposed DUP-OT framework on different source--target domain pairs.}}{40}{}%
 \addvspace {10\p@ }
