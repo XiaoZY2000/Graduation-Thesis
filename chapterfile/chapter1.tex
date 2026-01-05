@@ -1,4 +1,5 @@
-\chapter{Introduction}\label{chap:introduction}
+\chapter{Introduction}
+\label{chap:introduction}
 
 \section{Background}
 
@@ -6,86 +7,150 @@ Information overload has become a critical challenge for users on modern online
 platforms, including e-commerce websites, streaming services, and social
 media~\cite{Bawden_Robinson_2020_info_overload,Lv_Liu_2022_info_overload,Zhang_Cao_Liu_2023_info_overload}.
 Recommender systems play a crucial role in alleviating this problem by providing
-personalized guidance, selecting items with the highest predicted utility from a
-large pool of candidates~\cite{Resnick_Varian_1997_recommender,Burke_2002_hybrid_recommender,Burke_Felfernig_Göker_2011_recommender_overview}.
-By analyzing historical user-item interactions, recommender systems help users
-discover relevant content, products, or services, thereby improving user
-satisfaction and engagement.
+personalized guidance and selecting items with the highest predicted relevance
+from a large pool of candidates~\cite{Resnick_Varian_1997_recommender,Burke_2002_hybrid_recommender,Burke_Felfernig_Göker_2011_recommender_overview}.
+By analyzing historical user--item interactions, recommender systems enable
+users to efficiently discover relevant content, products, or services, thereby
+improving user satisfaction and engagement.
+
 Beyond enhancing user experience, recommender systems also generate substantial
 business value by increasing sales, customer retention, and overall platform
 activity~\cite{Jannach_Jugovac_2019_business_value_recommender}.
-As the scale and diversity of online content continue to grow, the importance of
-effective recommender systems becomes increasingly pronounced.
+As the scale, diversity, and dynamics of online content continue to grow, the
+importance of effective and robust recommender systems is increasingly
+recognized in both academia and industry.
 
 Despite their success, recommender systems face several fundamental challenges
 that limit their performance.
 One major challenge is data sparsity, where users interact with only a small
 fraction of available items, making it difficult to accurately infer user
 preferences.
-This issue is particularly severe in emerging or small-scale platforms with limited
-interaction data.
-Another critical challenge is the cold-start problem, which arises when new users
-or items enter the system and insufficient historical data is available to
-support reliable recommendations.
-Both data sparsity and cold-start problems arise from the limited availability of
-user-item interaction data and can significantly degrade recommendation quality.
+This issue is particularly severe in emerging platforms or newly established
+services with limited historical data.
+Another critical challenge is the cold-start problem, which arises when new
+users or items enter the system and insufficient interaction history is
+available to support reliable recommendations.
+These challenges stem from the limited availability of user--item interaction
+data and can significantly degrade recommendation quality.
 
 To address these challenges, cross-domain recommendation has emerged as a
 promising paradigm that leverages information from a related source domain to
 improve recommendation performance in a target domain.
-By transferring knowledge across domains, cross-domain recommendation is able to
+By transferring knowledge across domains, cross-domain recommendation can
 alleviate data sparsity and cold-start issues, particularly in data-scarce
 settings.
 However, most existing cross-domain recommendation methods rely on the
-assumption that users or items overlap between the source and target domains, and
-such overlaps are used as bridges for knowledge transfer during the training
-stage.
-In many real-world scenarios, however, this assumption does not hold, as domains
-may be entirely disjoint due to privacy constraints, system isolation, or
-independent platform design.
-Moreover, traditional recommender systems typically represent user preferences as
-point estimates in a latent space, which are often insufficient to capture the
-uncertainty and multi-faceted nature of real user behavior.
+assumption that users or items overlap between the source and target domains,
+and such overlapping entities are used as bridges for knowledge transfer during
+training.
+In many real-world scenarios, this assumption does not hold, as domains may be
+entirely disjoint due to privacy constraints, system isolation, or independent
+platform design.
 
-Motivated by these limitations, this thesis proposes a novel cross-domain
-recommendation framework that models user preferences as Gaussian Mixture Models
-(GMMs) and integrates optimal transport techniques to enable knowledge transfer
+Moreover, traditional recommender systems typically represent user preferences
+as point estimates in a latent space, such as embedding vectors.
+Such representations are widely used and can be effective in many scenarios.
+However, point embeddings may be often insufficient to capture the uncertainty,
+heterogeneity, and multi-faceted nature of real user behavior, especially under
+sparse data conditions.
+This limitation further motivates the exploration of more expressive preference
+representations for cross-domain recommendation.
+
+Motivated by these challenges, this thesis proposes a novel cross-domain
+recommendation framework that models user preferences as probabilistic distributions,
+specifically, Gaussian Mixture Models (GMMs), and integrates optimal transport techniques to enable knowledge transfer
 under non-overlapping training settings.
 By representing user preferences as probability distributions rather than point
 estimates, the proposed approach captures both the diversity and uncertainty of
 user interests.
-Furthermore, optimal transport provides a principled mechanism for aligning user
-preference distributions across domains, facilitating effective knowledge
-transfer without relying on overlapping users or items during the training
-phase.
+Furthermore, optimal transport provides a principled mechanism for aligning
+user preference representations across domains, facilitating effective
+knowledge transfer without relying on overlapping users or items during the
+training phase.
 
 The proposed framework consists of two key components:
 (1) modeling user preferences as Gaussian mixture distributions to capture the
 complex structure of user behavior within each domain, and
-(2) employing optimal transport to align these distributions between the source
-and target domains.
+(2) employing optimal transport to align these preference representations
+between the source and target domains.
 Together, these components enable robust cross-domain recommendation and improve
 recommendation accuracy in the target domain under strictly non-overlapping
 training settings.
 
+\paragraph{Training-time non-overlap and inference-time overlap.}
+It's important to clarify the assumptions regarding cross-domain user
+information that, in this work, we explicitly distinguish between the availability of cross-domain
+user information during training and inference.
+Specifically, we assume a \emph{non-overlapping setting during training}, where
+no explicit user or item correspondences between domains are available.
+This assumption reflects realistic deployment constraints, as it is often
+infeasible to obtain user-level cross-platform identity information for all
+users in advance due to privacy regulations, system isolation, or the lack of
+prior user consent.
+
+At inference time, however, the situation can be different.
+When users actively interact with a client application, platforms may request
+explicit authorization from individual users to link their accounts across
+domains.
+If such authorization is granted, cross-domain user correspondence becomes
+available for those users, enabling the system to leverage their historical
+preferences from multiple domains.
+In this case, the proposed framework can incorporate overlapping user
+information at inference time to further enhance recommendation performance.
+
+Importantly, the proposed DUP-OT framework does not rely on overlapping users or
+items during training.
+Cross-domain knowledge transfer is learned purely at the distribution level.
+When overlapping user information becomes available at inference time, it is
+used as an optional enhancement rather than a prerequisite, allowing the model
+to seamlessly adapt to different real-world deployment scenarios.
+
 \section{Contributions}
-The main contributions of this thesis are as follows:
+
+The main contributions of this thesis are summarized as follows:
 \begin{itemize}
-	\item We introduce a novel framework for cross-domain recommendation under non-overlapping settings by modeling
-	\item We propose representing user preferences as Gaussian Mixture Models (GMMs) to capture the uncertainty and diversity of user behavior more effectively.
-	\item We integrate optimal transport techniques to align user preference distributions across domains, enabling knowledge transfer
-	\item We conduct extensive experiments on Amazon datasets across multiple domains to evaluate the performance of our proposed method. The results demonstrate that our approach significantly outperforms existing cross-domain recommendation techniques and traditional single-domain methods in terms of recommendation accuracy.
-	\item We perform ablation studies to assess the effectiveness of representing user preferences as distributions and the impact of boosting target domain recommendation performance using source domain information.
-	\item We provide insights into the benefits of modeling user preferences as distributions and leveraging optimal transport for cross-domain knowledge transfer, highlighting the potential of our approach for addressing challenges in recommender systems.
+	\item We propose a novel cross-domain recommendation framework designed for
+	      non-overlapping training settings, where no shared users or items are
+	      available between domains.
+	\item We model user preferences as Gaussian Mixture Models (GMMs), enabling a
+	      distribution-based representation that captures uncertainty and
+	      multi-interest user preferences more effectively than conventional
+	      point-embedding approaches.
+	\item We integrate optimal transport techniques to align user preference
+	      representations across domains, enabling principled and interpretable
+	      cross-domain knowledge transfer without requiring overlapping entities
+	      during training.
+	\item We conduct extensive experiments on multiple Amazon Review datasets to
+	      evaluate the proposed framework under various cross-domain settings.
+	      The results demonstrate that the proposed method consistently
+	      outperforms both traditional single-domain recommenders and
+	      representative cross-domain baselines.
+	\item We perform ablation studies to analyze the effects of distribution-based
+	      preference modeling and cross-domain knowledge transfer, providing
+	      insights into the contributions of each component of the framework.
 \end{itemize}
 
 \section{Thesis Organization}
+
 The remainder of this thesis is organized as follows:
 \begin{itemize}
-	\item In Chapter~\ref{chap:preliminaries}, we provide an overview of the fundamental concepts and techniques relevant to this research, including recommender systems, cross-domain recommendation, Gaussian Mixture Models, and optimal transport.
-	\item In Chapter~\ref{chap:related_work}, we review related work on recommender systems, cross-domain recommendation, and optimal transport techniques.
-	\item In Chapter~\ref{chap:proposed_method}, we present our proposed framework for cross-domain recommendation under non-overlapping settings, detailing the modeling of user preferences as GMMs and the integration of optimal transport for knowledge transfer.
-	\item In Chapter~\ref{chap:experiments}, we describe the experimental setup, datasets, and evaluation metrics used to assess the performance of our proposed method.
-	\item In Chapter~\ref{chap:results}, we present and discuss the experimental results, including comparisons with existing methods and ablation studies.
-	\item Finally, in Chapter~\ref{chap:conclusion}, we summarize the main findings of this thesis and discuss potential directions for future research.
+	\item Chapter~\ref{chap:preliminaries} introduces the fundamental concepts and
+	      techniques relevant to this work, including recommender systems,
+	      cross-domain recommendation, Gaussian Mixture Models, and optimal
+	      transport.
+	\item Chapter~\ref{chap:related_work} reviews related work in recommender
+	      systems, cross-domain recommendation, distribution user preference
+	      modeling, and optimal transport for representation alignment.
+	\item Chapter~\ref{chap:proposed_method} presents the proposed DUP-OT
+	      framework in detail, including shared preprocessing stage, user GMM weights
+	      learning stage, and cross-domain rating prediction stage.
+	\item Chapter~\ref{chap:experiments} describes the experimental setup,
+	      datasets, baseline methods, and evaluation metrics used to assess the
+	      performance of the proposed framework. Also, implementation details
+	      are provided to facilitate reproducibility.
+	\item Chapter~\ref{chap:results} reports and analyzes the experimental
+	      results, including comparisons with baseline methods and ablation
+	      studies.
+	\item Chapter~\ref{chap:conclusion} concludes the thesis and discusses
+	      limitations and directions for future research.
 \end{itemize}

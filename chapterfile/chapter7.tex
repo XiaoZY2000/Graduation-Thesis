@@ -1,3 +1,107 @@
-\chapter{Conclusion} \label{chap:conclusion}
+\chapter{Conclusion}
+\label{chap:conclusion}
 
-We proposed DUP-OT, a distribution-based framework for non-overlapping cross-domain recommendation. By modeling user preferences as GMMs and aligning domains via Optimal Transport, DUP-OT enables expressive preference representation and effective cross-domain transfer without relying on shared users or items during the training stage. Experiments on Amazon Review datasets show that DUP-OT improves target-domain rating prediction, outperforms single-domain models even without source data, and achieves superior performance over a representative non-overlapping CDR baseline.
+This thesis investigated the problem of cross-domain recommendation under
+non-overlapping settings, where users and items are not shared across domains.
+Such scenarios are common in real-world applications, yet remain challenging
+for conventional recommendation methods that rely on shared entities or direct
+interaction overlap. To address this challenge, we proposed a novel framework,
+DUP-OT, which models user preferences as probability distributions and performs
+cross-domain knowledge transfer through optimal transport.
+
+\section{Summary of Findings}
+
+The core idea of DUP-OT is to represent user preferences as mixture weights over
+Gaussian components in a shared latent space, rather than as fixed-point
+embeddings. By fitting Gaussian Mixture Models on item representations in each
+domain, user preferences can be expressed as distributional representations that
+naturally capture uncertainty and multi-modal interest structures. Optimal
+transport is then employed to align preference weights across domains at the
+component level, enabling principled and interpretable cross-domain transfer.
+
+Extensive experiments conducted on multiple Amazon Review datasets demonstrate
+the effectiveness of the proposed framework. The experimental results show that
+DUP-OT consistently outperforms strong single-domain baselines as well as
+representative cross-domain recommendation methods under non-overlapping
+settings. In particular, incorporating source-domain preference information via
+optimal transport leads to substantial improvements in target-domain rating
+prediction accuracy. Even without leveraging source-domain data, the
+distribution-based preference modeling adopted in DUP-OT yields superior
+performance compared to conventional vector-based approaches, highlighting the
+importance of modeling uncertainty and preference heterogeneity.
+
+Additional analyses further indicate that the proposed framework is robust with
+respect to random initialization and training dynamics. The consistent
+performance across multiple random seeds suggests that the observed improvements
+are not due to incidental effects, but rather reflect the inherent advantages of
+the proposed modeling and transfer strategy.
+
+\section{Contributions and Implications}
+
+This thesis makes several contributions to the study of cross-domain
+recommendation. First, it introduces a distribution-based formulation of user
+preferences that departs from the dominant paradigm of point embeddings. By
+modeling preferences as mixture weights over latent components, the proposed
+approach provides a more expressive representation capable of capturing diverse
+and uncertain user behaviors.
+
+Second, this work demonstrates that optimal transport offers an effective and
+flexible mechanism for cross-domain preference transfer in non-overlapping
+scenarios. Unlike methods that rely on adversarial alignment or shared entities,
+DUP-OT performs explicit alignment at the distribution level, resulting in more
+stable and interpretable knowledge transfer. This perspective broadens the scope
+of optimal transport in recommender systems and highlights its potential for
+handling domain shift and data sparsity.
+
+From a practical standpoint, the proposed framework is particularly well-suited
+for real-world recommendation scenarios involving cold-start users or fragmented
+platform ecosystems. By leveraging auxiliary information from related domains
+without requiring shared users or items, DUP-OT can provide meaningful
+recommendations even when target-domain data are limited. This characteristic
+makes the framework applicable to a wide range of industrial settings, such as
+cross-platform content recommendation and emerging service deployment.
+
+\section{Limitations}
+
+Despite its effectiveness, the proposed approach has several limitations that
+should be acknowledged. First, the use of Gaussian Mixture Models introduces
+additional computational overhead compared to simple embedding-based methods,
+particularly when the number of mixture components is large. Although diagonal
+covariance matrices and dimensionality reduction are employed to improve
+efficiency, scalability to extremely large item sets remains a concern.
+
+Second, the current framework assumes that a shared latent representation space
+can be learned across domains through a common encoder. When the semantic gap
+between domains is extremely large, this assumption may not hold, potentially
+limiting the effectiveness of cross-domain alignment. In such cases, the quality
+of the learned transport plan may degrade.
+
+Finally, the temporal dynamics of user preferences are incorporated only through
+a lightweight timestamp encoding. While this design choice balances model
+complexity and performance, it does not explicitly model long-term sequential
+dependencies or evolving user interests over time.
+
+\section{Future Work}
+
+Several directions for future research can be explored to extend this work.
+One promising direction is to investigate more expressive distribution families
+for modeling user preferences, such as mixtures with full covariance structures
+or non-Gaussian components, which may capture richer interaction patterns.
+
+Another important direction is to integrate more advanced temporal modeling
+techniques into the framework. Incorporating sequential models or continuous-time
+dynamics could enable more accurate modeling of preference evolution and further
+improve recommendation quality.
+
+In addition, extending the proposed approach to multi-source or multi-target
+cross-domain scenarios would enhance its applicability in complex real-world
+environments. Finally, exploring more efficient optimal transport solvers and
+approximation techniques could further improve scalability and enable deployment
+on large-scale industrial datasets.
+
+In conclusion, this thesis demonstrates that modeling user preferences as
+distributions and transferring them via optimal transport provides a powerful
+and flexible solution to cross-domain recommendation under non-overlapping
+settings. The proposed DUP-OT framework offers both theoretical insights and
+practical benefits, and serves as a foundation for future research in
+distribution-based recommender systems.

@@ -1,108 +1,119 @@
-\chapter{Preliminaries}\label{chap:preliminaries}
+\chapter{Preliminaries}
+\label{chap:preliminaries}
 
-This chapter introduces the fundamental concepts and mathematical formulations
-that underpin our proposed method, including recommender systems,
-cross-domain recommendation, Gaussian mixture models, and optimal transport.
-These preliminaries provide the necessary background for understanding the
-distributional preference modeling and cross-domain alignment techniques
-presented in later chapters.
+To effectively present the proposed cross-domain recommendation framework,
+this chapter introduces the mathematical foundations and formal definitions
+required for the proposed framework.
+We first present a unified formulation of recommender systems and cross-domain
+recommendation, followed by probabilistic modeling using Gaussian Mixture Models
+(GMMs).
+Finally, we introduce optimal transport and the Wasserstein distance, which serve
+as the theoretical basis for distribution alignment across domains.
 
 \section{Recommender Systems}
 
-A recommender system aims to predict users' preferences for items and to provide
-personalized item rankings.
-Formally, let $U$ denote the set of users and $I$ denote the set of items.
-A recommender system can be modeled as a function
-\[
-R: U \times I \rightarrow S,
-\]
-where $S$ is the space of possible scores or ratings.
-Given a user $u \in U$ and an item $i \in I$, the system predicts a score
-$\hat{s}_{ui} = R(u, i)$ that reflects the user's preference for the item.
+Let $U$ denote a set of users and $I$ denote a set of items.
+A recommender system aims to estimate the preference of a user $u \in U$ for an
+item $i \in I$.
+In explicit-feedback scenarios, this preference is typically represented as a
+numerical rating.
 
-Based on the predicted scores, the recommender system produces a ranked list of
-items for each user.
-The primary objective is to rank items such that those with higher predicted
-utility are recommended earlier, thereby maximizing user satisfaction and
-engagement.
+Formally, a recommender system can be modeled as a function
+\begin{equation}
+	R: U \times I \rightarrow \mathbb{R},
+\end{equation}
+where $R(u,i)$ denotes the predicted score of user $u$ on item $i$.
+Given a user $u$, the recommendation task consists of ranking items in $I$
+according to their predicted scores $\{R(u,i)\}_{i \in I}$.
+
+Given a set of observed interactions
+\[
+	\mathcal{D} = \{(u, i, r_{ui}) \mid u \in U, i \in I\},
+\]
+the learning objective is to estimate a prediction function $\hat{R}$ that
+minimizes the discrepancy between predicted scores $\hat{r}_{ui}$ and ground-truth
+ratings $r_{ui}$ under appropriate loss functions, such as mean squared error.
 
 \section{Cross-Domain Recommendation}
 
-Cross-domain recommendation extends the standard recommendation setting by
-leveraging information from one or more source domains to improve recommendation
-performance in a target domain.
-Let $D_s = (U_s, I_s)$ denote a source domain with user set $U_s$ and item set
-$I_s$, and let $D_t = (U_t, I_t)$ denote a target domain with user set $U_t$ and
-item set $I_t$.
-The goal of cross-domain recommendation is to learn a target-domain recommendation
-function
-\[
-R_t: U_t \times I_t \rightarrow S
-\]
-by exploiting auxiliary information available in the source domain $D_s$.
+Cross-domain recommendation considers multiple domains with distinct user and
+item sets.
+Let $D_s = (U_s, I_s, \mathcal{D}_s)$ denote a source domain and
+$D_t = (U_t, I_t, \mathcal{D}_t)$ denote a target domain, where $\mathcal{D}_s$ and
+$\mathcal{D}_t$ represent the corresponding interaction datasets.
 
-The transferable information across domains may include user--item interaction
-data, user or item attributes, textual reviews, or latent representations learned
-from the source domain.
-A central challenge in cross-domain recommendation lies in effectively transferring
-useful knowledge while accounting for domain heterogeneity, data sparsity, and
-cold-start issues.
-In particular, many existing methods rely on overlapping users or items to
-establish correspondences between domains, an assumption that does not always
-hold in real-world applications.
+The objective of cross-domain recommendation is to improve the learning of a
+target-domain prediction function
+\begin{equation}
+	R_t: U_t \times I_t \rightarrow \mathbb{R},
+\end{equation}
+by leveraging auxiliary information from the source domain $D_s$.
+Such auxiliary information may include interaction patterns, textual content,
+or latent representations learned from $\mathcal{D}_s$.
 
-\section{Gaussian Mixture Models}
+A key challenge arises when there is no overlap between $U_s$ and $U_t$, nor
+between $I_s$ and $I_t$.
+In this non-overlapping setting, direct correspondence-based transfer becomes
+infeasible, and effective cross-domain recommendation requires learning
+domain-invariant or transferable representations.
 
-Gaussian Mixture Models (GMMs) are probabilistic models that represent complex
-distributions as weighted combinations of multiple Gaussian components.
-A GMM with $K$ components defines a probability density function of the form
-\[
-p(x) = \sum_{k=1}^{K} \pi_k \, \mathcal{N}(x \mid \boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k),
-\]
-where $\pi_k$ denotes the mixture weight of the $k$-th component, satisfying
+\section{Distributional Preference Modeling with Gaussian Mixture Models}
+
+To capture the heterogeneity and uncertainty of user preferences, probabilistic
+representations are often more expressive than point embeddings.
+Gaussian Mixture Models (GMMs) provide a flexible framework for modeling complex
+distributions as mixtures of simple components.
+
+A GMM with $K$ components defines a probability density function
+\begin{equation}
+	p(x) = \sum_{k=1}^{K} \pi_k \, \mathcal{N}(x \mid \boldsymbol{\mu}_k,
+	\boldsymbol{\Sigma}_k),
+\end{equation}
+where $\boldsymbol{\mu}_k \in \mathbb{R}^d$ and
+$\boldsymbol{\Sigma}_k \in \mathbb{R}^{d \times d}$ denote the mean vector and
+covariance matrix of the $k$-th Gaussian component, respectively.
+The mixture weights $\boldsymbol{\pi} = (\pi_1, \dots, \pi_K)$ satisfy
 $\pi_k \ge 0$ and $\sum_{k=1}^{K} \pi_k = 1$.
-Each component $\mathcal{N}(x \mid \boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)$ is a
-Gaussian distribution parameterized by a mean vector $\boldsymbol{\mu}_k$ and a
-covariance matrix $\boldsymbol{\Sigma}_k$.
 
-GMMs are capable of modeling multi-modal and heterogeneous data distributions,
-making them well suited for representing complex phenomena such as diverse and
-multi-faceted user preferences.
-In this thesis, GMMs are used to model user preferences as probability
-distributions rather than single point estimates.
+In the context of recommender systems, GMMs can be used to model the latent
+structure of items in an embedding space, where each component corresponds to a
+latent semantic cluster.
+User preferences can then be represented as distributions over these components,
+parameterized by user-specific mixture weights.
+Such representations naturally capture multi-modal interests and uncertainty in
+user behavior.
 
 \section{Optimal Transport and Wasserstein Distance}
 
-Optimal transport (OT) is a mathematical framework for comparing probability
-distributions by explicitly accounting for the cost of transporting probability
-mass between them.
-Given two probability measures $\mu$ and $\nu$ defined on spaces $X$ and $Y$,
-respectively, and a ground cost function $c(x,y)$ that measures the cost of moving
-mass from $x \in X$ to $y \in Y$, the Kantorovich formulation of optimal transport
-is defined as
-\[
-\inf_{\gamma \in \Pi(\mu, \nu)} \int_{X \times Y} c(x, y) \, d\gamma(x, y),
-\]
-where $\Pi(\mu, \nu)$ denotes the set of all joint probability measures whose
-marginals are $\mu$ and $\nu$.
+Optimal transport (OT) provides a principled framework for comparing and aligning
+probability distributions.
+Let $\mu$ and $\nu$ be two probability measures defined on metric spaces $X$ and
+$Y$, respectively.
+Given a cost function $c: X \times Y \rightarrow \mathbb{R}_{\ge 0}$, the
+Kantorovich formulation of the optimal transport problem is given by
+\begin{equation}
+	\min_{\gamma \in \Pi(\mu, \nu)}
+	\int_{X \times Y} c(x, y) \, d\gamma(x, y),
+\end{equation}
+where $\Pi(\mu, \nu)$ denotes the set of joint distributions with marginals $\mu$
+and $\nu$.
 
-A widely used metric derived from optimal transport is the Wasserstein distance.
-For $p \ge 1$, the $p$-Wasserstein distance between $\mu$ and $\nu$ is defined as
-\[
-W_p(\mu, \nu) =
-\left(
-\inf_{\gamma \in \Pi(\mu, \nu)}
-\int_{X \times Y} c(x, y)^p \, d\gamma(x, y)
-\right)^{1/p}.
-\]
-Unlike conventional pointwise distances such as the Euclidean distance, the
-Wasserstein distance captures the underlying geometric structure of probability
-distributions and provides meaningful comparisons even when the distributions
-have limited or no overlapping support.
+The solution $\gamma^\ast$ is referred to as an optimal transport plan, specifying
+how probability mass is transported from $\mu$ to $\nu$ at minimum cost.
+Based on this formulation, the $p$-Wasserstein distance between $\mu$ and $\nu$ is
+defined as
+\begin{equation}
+	W_p(\mu, \nu) =
+	\left(
+	\min_{\gamma \in \Pi(\mu, \nu)}
+	\int_{X \times Y} c(x, y)^p \, d\gamma(x, y)
+	\right)^{1/p},
+\end{equation}
+for $p \ge 1$.
 
-In this thesis, we adopt the Wasserstein distance as a fundamental tool for
-measuring discrepancies between distributional user preference representations
-across domains.
-By operating at the distribution level, optimal transport enables principled
-cross-domain alignment that is particularly suitable for non-overlapping
-recommendation settings.
+Compared to pointwise divergence measures, the Wasserstein distance explicitly
+accounts for the geometry of the underlying space and provides meaningful
+comparisons even when the supports of $\mu$ and $\nu$ do not overlap.
+These properties make optimal transport particularly suitable for aligning
+distributional representations across domains in non-overlapping recommendation
+settings.

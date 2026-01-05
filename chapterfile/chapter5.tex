@@ -231,4 +231,120 @@ To retrieve user and item embeddings from the interaction data, we utilize a pre
 Specifically, we use the \texttt{all-MiniLM-L6-v2} variant from the Sentence Transformers library~\cite{Reimers_Gurevych_2019_SBERT},
 which produces 384-dimensional embeddings.
 
-To
+To reduce computational costs, we trained an auto-encoder to compress the 384-dimensional BERT embeddings into 128-dimensional vectors.
+Specifically, to ensure both domains' embeddings remain in the same latent space, we train the auto-encoder
+on both source and target domain user and item embeddings together.
+The auto-encoder consists of an encoder with two linear layers (384 $\rightarrow$ 256 $\rightarrow$ 128),
+and a decoder with two linear layers (128 $\rightarrow$ 256 $\rightarrow$ 384). And we use
+ReLU as the activation function between layers.
+For training the auto-encoder, we use the Adam optimizer with a learning rate of 0.0002 and a batch size of 128.
+We set the number of training epochs to 500 and use Mean Squared Error (MSE) as the reconstruction loss.
+
+In the proposed \textbf{DUP-OT} framework, we fit Gaussian Mixture Models (GMMs)
+on item embeddings separately for each domain in order to capture the latent
+multi-modal structure of item representations.
+
+Specifically, we employ the \texttt{BayesianGaussianMixture} class from the
+\texttt{sklearn.mixture} module in Scikit-learn~\cite{scikit-learn}. For each
+domain, the maximum number of mixture components is set to the square root of
+the number of items in that domain, with a lower bound of 8 and an upper bound of
+128. This heuristic provides sufficient modeling capacity while avoiding
+excessive complexity in domains with large item sets. The final effective number
+of components is inferred automatically through variational Bayesian inference.
+
+We set the maximum number of iterations to 300 and adopt a diagonal covariance
+structure (\texttt{covariance\_type = 'diag'}), which offers a good trade-off
+between expressive power and computational efficiency. Diagonal covariances are
+sufficient to capture variations along individual embedding dimensions while
+maintaining numerical stability and scalability.
+
+To further ensure stable optimization, we add a small regularization term
+(\texttt{reg\_covar = 1e-5}) to the diagonal of each covariance matrix. The
+convergence tolerance is set to \texttt{tol = 1e-3}. We use the default setting
+for the weight concentration prior, and fix \texttt{random\_state = 42} to ensure
+reproducibility. Verbose output is disabled during model fitting.
+
+After obtaining the Gaussian Mixture Models for both the source and target
+domains, we compute a pairwise Wasserstein distance matrix between the Gaussian
+components across domains. This distance matrix serves as the cost matrix for
+cross-domain alignment.
+
+Based on this cost matrix, we formulate the optimal transport problem between
+source-domain and target-domain preference distributions. The optimal transport
+plan is computed using the Python Optimal Transport (POT) library~\cite{POT_2021}.
+
+In the next stage of our framework, we need to train two MLPs in each domain, one
+for learning the user preference weights over GMM components,
+and the other for predicting ratings based on user preference distributions and
+item embeddings.
+
+We train each domain's MLPs separately using the Adam optimizer with a learning rate of 0.0003 and a batch size of 256.
+To make the final result more convincing, we repeated each experiment 5 times with different random seeds and report the average performance.
+The random seed is set to 7, 11, 17, 33, 2025 for different runs.
+The total epochs for training are set to 50 for both source and target domains.
+For the MLP architecture, both MLPs consist of three linear layers with ReLU activation functions between layers.
+The first MLP takes dimensional-reduced user embeddings as input and outputs preference weights for each GMM component in the corresponding domain.
+The shape of the first MLP is (128, (128 +  number of GMM components)//2, number of GMM components).
+The second MLP takes as input the Mahalanobis distances between the item
+embedding and each Gaussian component, weighted by the corresponding
+user-specific mixture weights, together with a processed timestamp feature,
+and outputs the predicted rating.
+The shape of the second MLP is (number of GMM components + 1, (number of GMM components + 1)//2, 1).
+
+For the timestamp feature, we transform the original interaction time into a
+normalized recency-aware scalar to capture temporal effects in user behavior.
+Specifically, for each domain, we use the maximum timestamp observed in the
+training set as a reference time. Given an interaction occurring at time $t$,
+we first compute its temporal distance to the reference time in units of months.
+To avoid extreme values caused by very old interactions, this temporal distance
+is capped at a maximum of 36 months.
+
+We then apply an exponential decay function to model temporal recency, where the
+decay rate is chosen such that the weight decays to $0.5$ after six months.
+Formally, the decayed time value is computed as $\exp(-\lambda \Delta t)$, where
+$\Delta t$ denotes the clipped month-level time difference and $\lambda$ is the
+decay coefficient. Finally, the resulting value is passed through a squashing
+transformation $x / (1 + x)$ to obtain a bounded and smooth timestamp feature.
+
+The same reference time derived from the training set is used to process
+validation and test interactions, ensuring temporal consistency and preventing
+information leakage. The processed timestamp feature is then concatenated with
+the distance-based representation and fed into the rating prediction MLP.
+
+Finally, in the test phase, we consider different availability patterns of
+user preference information across the source and target domains. Specifically,
+test users are categorized into the following three cases:
+\begin{itemize}
+	\item Users who appear only in the target-domain test set.
+	\item Users who appear only in the source-domain test set.
+	\item Users who appear in both the source-domain and target-domain test sets.
+\end{itemize}
+
+For users who appear only in the target-domain test set, we directly use the
+trained target-domain model to infer their preference weights over the target
+GMM components and make rating predictions accordingly.
+
+For users who appear only in the source-domain test set, we first use the trained
+source-domain model to infer their preference weights over the source-domain GMM
+components. These source-domain mixture weights are then mapped to the target
+domain via the learned optimal transport plan, yielding transferred preference
+weights on the target-domain GMM components. The transferred weights are finally
+used by the target-domain rating predictor to make rating predictions.
+
+For users who appear in both source and target domains, we infer their
+domain-specific preference weights using the corresponding trained models.
+Specifically, let $\mathbf{w}_u^{tgt, raw}$ denote the preference weight vector
+over target-domain GMM components inferred from target-domain interactions, and
+let $\mathbf{w}_u^{tgt, trans}$ denote the preference weight vector transferred
+from the source domain via optimal transport. We then combine the two weight
+vectors as follows:
+\begin{equation}
+	\mathbf{w}_u^{tgt} = \alpha \mathbf{w}_u^{tgt, raw}
+	+ (1 - \alpha)\mathbf{w}_u^{tgt, trans},
+\end{equation}
+where $\alpha$ controls the relative contribution of target-domain and
+source-domain information. In our experiments, we set $\alpha = 0.5$ to assign
+equal importance to both sources. The combined preference weights
+$\mathbf{w}_u^{tgt}$ are subsequently normalized and fed into the trained
+target-domain rating prediction MLP to produce the final rating predictions, from
+which RMSE and MAE are computed.

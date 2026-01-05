@@ -434,4 +434,22 @@ Wenhui Yu, Xiao Lin, Junfeng Ge, Wenwu Ou, and Zheng Qin.
   on Knowledge Discovery \& Data Mining}, KDD '20, p. 2136^^e2^^80^^932144, New
   York, NY, USA, 2020. Association for Computing Machinery.
 
+\bibitem{scikit-learn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
+  M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
+  D.~Cournapeau, M.~Brucher, M.~Perrot, and E.~Duchesnay.
+\newblock Scikit-learn: Machine learning in {P}ython.
+\newblock {\em Journal of Machine Learning Research}, Vol.~12, pp. 2825--2830,
+  2011.
+
+\bibitem{POT_2021}
+R\'{e}mi Flamary, Nicolas Courty, Alexandre Gramfort, Mokhtar~Z. Alaya,
+  Aur\'{e}lie Boisbunon, Stanislas Chambon, Laetitia Chapel, Adrien Corenflos,
+  Kilian Fatras, Nemo Fournier, L\'{e}o Gautheron, Nathalie~T.H. Gayraud,
+  Hicham Janati, Alain Rakotomamonjy, Ievgen Redko, Antoine Rolet, Antony
+  Schutz, Vivien Seguy, Danica~J. Sutherland, Romain Tavenard, Alexander Tong,
+  and Titouan Vayer.
+\newblock Pot: Python optimal transport.
+\newblock {\em J. Mach. Learn. Res.}, Vol.~22, No.~1, January 2021.
+
 \end{thebibliography}
