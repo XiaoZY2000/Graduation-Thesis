@@ -1,61 +1,154 @@
 \chapter{Preliminaries}
 \label{chap:preliminaries}
 
-To effectively present the proposed cross-domain recommendation framework,
-this chapter introduces the mathematical foundations and formal definitions
-required for the proposed framework.
-We first present a unified formulation of recommender systems and cross-domain
-recommendation, followed by probabilistic modeling using Gaussian Mixture Models
-(GMMs).
-Finally, we introduce optimal transport and the Wasserstein distance, which serve
-as the theoretical basis for distribution alignment across domains.
-
 \section{Recommender Systems}
+\subsection{Problem Definition}
+The core objective of recommender systems is to predict user preferences for items
+that they have not yet interacted with. And based on these preference predictions,
+the system generates personalized recommendations for each user.
 
-Let $U$ denote a set of users and $I$ denote a set of items.
-A recommender system aims to estimate the preference of a user $u \in U$ for an
-item $i \in I$.
-In explicit-feedback scenarios, this preference is typically represented as a
-numerical rating.
+Mathmatically, recommendation tasks are often formulated as a mapping function that
+maps user--item interaction pairs to ratings or preference scores.
 
-Formally, a recommender system can be modeled as a function
+\paragraph{Definition of Basic Symbols}
+We first define the following basic sets and symbols:
+\begin{itemize}
+	\item $\mathcal{U} = \{u_1, u_2, \dots, u_M\}$: the set of users, where $M$ is
+	      the total number of users.
+	\item $\mathcal{V} = \{v_1, v_2, \dots, v_N\}$: the set of items, where $N$ is
+	      the total number of items.
+	\item $\mathcal{R} \subseteq \mathbb{R}$: the space of possible ratings (in explicit
+	      feedback) or preference scores (in implicit feedback).
+\end{itemize}
+In explicit feedback scenarios, $\mathcal{R}$ is usually a set of finite discrete
+values, e.g., $\{1, 2, 3, 4, 5\}$ for a 5-star rating system.
+In implicit feedback settings, user preferences are inferred from observed
+behavioral signals such as clicks, views, or purchases rather than explicit
+ratings.
+A common practice is to binarize such interactions, where
+$\mathcal{R} = \{0,1\}$ indicates whether an interaction is observed.
+More generally, implicit feedback can also be modeled as non-negative real-valued
+signals representing interaction strength or confidence, i.e.,
+$\mathcal{R} \subseteq \mathbb{R}_{\ge 0}$.
+
+\paragraph{Formulated Recommender System}
+The target of a recommender system can be formulated as learning a prediction function:
 \begin{equation}
-	R: U \times I \rightarrow \mathbb{R},
+	f: \mathcal{U} \times \mathcal{V} \to \mathcal{R},
 \end{equation}
-where $R(u,i)$ denotes the predicted score of user $u$ on item $i$.
-Given a user $u$, the recommendation task consists of ranking items in $I$
-according to their predicted scores $\{R(u,i)\}_{i \in I}$.
+where $f(u_i, v_j)$ predicts the rating or preference score of user
+$u_i$ for item $v_j$.
+In explicit feedback scenarios, $\hat{r}_{ij} = f(u_i, v_j)$ represents the estimation of real rating $r_{ij} $.
 
-Given a set of observed interactions
-\[
-	\mathcal{D} = \{(u, i, r_{ui}) \mid u \in U, i \in I\},
-\]
-the learning objective is to estimate a prediction function $\hat{R}$ that
-minimizes the discrepancy between predicted scores $\hat{r}_{ui}$ and ground-truth
-ratings $r_{ui}$ under appropriate loss functions, such as mean squared error.
+In test time, for each user $u_i$, the recommender system generates a ranked list of top-$K$ items
+based on the predicted scores to generate personalized recommendations.
+
+\subsection{User--Item Interaction Matrix}
+In most recommender systems, user--item interactions can be represented as a
+user--item interaction matrix:
+
+\begin{equation}
+	\mathbf{R} \in \mathbb{R}^{|\mathcal{U}| \times |\mathcal{I}|}, \quad
+	R_{ui} =
+	\begin{cases}
+		r_{ui},            & \text{if $(u,i)$ is observed}, \\
+		\text{unobserved}, & \text{otherwise}.
+	\end{cases}
+\end{equation}
+
+This matrix typically has following characteristics:
+\begin{itemize}
+	\item \textbf{Highly Sparse}: In real-world applications, users usually interact
+	      with only a small fraction of available items, leading to a sparse
+	      interaction matrix.
+	\item \textbf{Long-Tail Distribution}: A small number of popular items receive the majority
+	      of interactions, while many items have very few interactions.
+	\item \textbf{Noise and Uncertainty}: User interactions can be noisy and uncertain due to various factors
+	      such as changing preferences, context, and external influences.
+\end{itemize}
+
+Intuitively, the essential task of recommender systems is: how to reasonably fill the
+unobserved entries in the user--item interaction matrix based on the observed ones in such a
+sparse, long-tailed, and noisy matrix.
+
+\subsection{Prediction vs. Recommendation Objectives}
+In recommender systems, there are two primary objectives: rating prediction and
+top-$N$ recommendation.
+
+\paragraph{(1) Rating Prediction}
+The rating prediction task focuses on accurately estimating the numerical ratings
+to make the predictions as close as possible to the actual user ratings.
+The task can be formulated as:
+\begin{equation}
+	\min_{\Theta} \sum_{(u,i) \in \mathcal{D}_{\text{train}}}
+	\mathcal{L}\bigl(r_{ui}, \hat{r}_{ui}\bigr),
+\end{equation}
+where $\Theta$ denotes the model parameters, and $\mathcal{L}(\cdot, \cdot)$ usually represents
+the Mean Squared Error (MSE) loss or Mean Absolute Error (MAE) loss.
+
+This objective is commonly used in rating datasets where explicit user ratings are
+available, such as the MovieLens, Amazon Reviews, etc.
+And the evaluation metrics typically include Root Mean Square Error (RMSE) and Mean Absolute Error (MAE)
+in rating prediction tasks.
+
+\paragraph{(2) Top-$N$ Recommendation}
+In many real-world applications, the primary goal of recommender systems is not to
+predict exact ratings but to generate a ranked list of top-$N$ items for each user:
+\begin{equation}
+	\pi_u = \operatorname{rank}\bigl( \{ \hat{r}_{ui} \}_{i \in \mathcal{I}} \bigr),
+\end{equation}
+where $\pi_u$ denotes the ranked list of items for user $u$ based on the predicted scores $\hat{r}_{ui}$.
+
+This objective usually utilizes ranking-based loss functions, such as
+Pairwise Ranking Loss (e.g., BPR loss) or Listwise Ranking Loss.
+
+The evaluation metrics for top-$N$ recommendation tasks often include
+Precision@N, Recall@N, Normalized Discounted Cumulative Gain (NDCG)@N, and Mean Average Precision (MAP)@N.
+
+\subsection{Latent Representation Learning}
+The core idea of modern recommender systems is mapping users and items into a shared
+low-dimensional latent space, where user preferences can be effectively captured
+through interactions in this space.
+This process is known as latent representation learning or embedding learning.
+
+\paragraph{Latent Vector Representations}
+In latent representation learning, each user and item is represented by a dense
+vector in a low-dimensional space:
+\begin{equation}
+	\mathbf{p}_u \in \mathbb{R}^{d}, \quad \mathbf{q}_i \in \mathbb{R}^{d}.
+\end{equation}
+
+And the prediction function is often defined as:
+\begin{equation}
+	\hat{r}_{ui} = g(\mathbf{p}_u, \mathbf{q}_i),
+\end{equation}
+where $g(\cdot, \cdot)$ is a similarity function, can be:
+\begin{itemize}
+	\item \textbf{Dot Product}: $g(\mathbf{p}_u, \mathbf{q}_i) = \mathbf{p}_u^\top
+		      \mathbf{q}_i$.
+	\item \textbf{MLP}: $g(\mathbf{p}_u, \mathbf{q}_i) = \text{MLP}([\mathbf{p}_u;
+			      \mathbf{q}_i])$.
+	\item \textbf{Other Non-linear Functions}: e.g., cosine similarity, neural
+	      attention mechanisms, etc.
+\end{itemize}
+
+\paragraph{The Intuitive Understanding of Representation Learning}
+The users' latent vectors $$\mathbf{p}_u$$ can be interpreted as the user's preferences
+over various latent factors, while the items' latent vectors $$\mathbf{q}_i$$
+represent the item's attributes in the same latent factor space.
+
+Similar users or items are expected to have similar latent representations,
+which means their representation vectors should be close in the latent space.
+
+However, this modeling approach has a implicit assumption that users' preferences
+can be fully captured by a single point in the latent space.
+This assumption may not hold in practice, as user preferences are often complex,
+diverse, and uncertain. That's the motivation for us to explore distributional
+representations of user preferences in this thesis.
+
+\subsection{Challenges of Recommender Systems}
 
 \section{Cross-Domain Recommendation}
-
-Cross-domain recommendation considers multiple domains with distinct user and
-item sets.
-Let $D_s = (U_s, I_s, \mathcal{D}_s)$ denote a source domain and
-$D_t = (U_t, I_t, \mathcal{D}_t)$ denote a target domain, where $\mathcal{D}_s$ and
-$\mathcal{D}_t$ represent the corresponding interaction datasets.
-
-The objective of cross-domain recommendation is to improve the learning of a
-target-domain prediction function
-\begin{equation}
-	R_t: U_t \times I_t \rightarrow \mathbb{R},
-\end{equation}
-by leveraging auxiliary information from the source domain $D_s$.
-Such auxiliary information may include interaction patterns, textual content,
-or latent representations learned from $\mathcal{D}_s$.
-
-A key challenge arises when there is no overlap between $U_s$ and $U_t$, nor
-between $I_s$ and $I_t$.
-In this non-overlapping setting, direct correspondence-based transfer becomes
-infeasible, and effective cross-domain recommendation requires learning
-domain-invariant or transferable representations.
 
 \section{Distributional Preference Modeling with Gaussian Mixture Models}
 
@@ -75,45 +168,4 @@ covariance matrix of the $k$-th Gaussian component, respectively.
 The mixture weights $\boldsymbol{\pi} = (\pi_1, \dots, \pi_K)$ satisfy
 $\pi_k \ge 0$ and $\sum_{k=1}^{K} \pi_k = 1$.
 
-In the context of recommender systems, GMMs can be used to model the latent
-structure of items in an embedding space, where each component corresponds to a
-latent semantic cluster.
-User preferences can then be represented as distributions over these components,
-parameterized by user-specific mixture weights.
-Such representations naturally capture multi-modal interests and uncertainty in
-user behavior.
-
 \section{Optimal Transport and Wasserstein Distance}
-
-Optimal transport (OT) provides a principled framework for comparing and aligning
-probability distributions.
-Let $\mu$ and $\nu$ be two probability measures defined on metric spaces $X$ and
-$Y$, respectively.
-Given a cost function $c: X \times Y \rightarrow \mathbb{R}_{\ge 0}$, the
-Kantorovich formulation of the optimal transport problem is given by
-\begin{equation}
-	\min_{\gamma \in \Pi(\mu, \nu)}
-	\int_{X \times Y} c(x, y) \, d\gamma(x, y),
-\end{equation}
-where $\Pi(\mu, \nu)$ denotes the set of joint distributions with marginals $\mu$
-and $\nu$.
-
-The solution $\gamma^\ast$ is referred to as an optimal transport plan, specifying
-how probability mass is transported from $\mu$ to $\nu$ at minimum cost.
-Based on this formulation, the $p$-Wasserstein distance between $\mu$ and $\nu$ is
-defined as
-\begin{equation}
-	W_p(\mu, \nu) =
-	\left(
-	\min_{\gamma \in \Pi(\mu, \nu)}
-	\int_{X \times Y} c(x, y)^p \, d\gamma(x, y)
-	\right)^{1/p},
-\end{equation}
-for $p \ge 1$.
-
-Compared to pointwise divergence measures, the Wasserstein distance explicitly
-accounts for the geometry of the underlying space and provides meaningful
-comparisons even when the supports of $\mu$ and $\nu$ do not overlap.
-These properties make optimal transport particularly suitable for aligning
-distributional representations across domains in non-overlapping recommendation
-settings.

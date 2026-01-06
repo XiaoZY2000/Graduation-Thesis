@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.uptex) (TeX Live 2025) (preloaded format=uplatex 2025.6.4)  5 JAN 2026 15:29
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.uptex) (TeX Live 2025) (preloaded format=uplatex 2025.6.4)  6 JAN 2026 12:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -537,42 +537,57 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 
 ]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 82.
+(Font)              No change on input line 84.
 
 
 [2]) (./chapterfile/chapter2.tex
 
 [3]
 Chapter 2.
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 5.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 5.
+LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <12> not available
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 5.
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 5.
+LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <12> not available
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 5.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 5.
 
 
 [4
 
 ]
-
-[5]) (./chapterfile/chapter3.tex
-
-[6]
-Chapter 3.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 7.
+(Font)              scaled to size 6.73553pt on input line 54.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 7.
-LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 7.
-LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 7.
-LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 7.
-LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 7.
+(Font)              scaled to size 6.73553pt on input line 54.
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 4.8111pt on input line 54.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 4.8111pt on input line 54.
 
 
-[7
+[5]
+Overfull \hbox (2.38022pt too wide) in paragraph at lines 109--113
+\OT1/cmr/m/n/10 The core idea of mod-ern rec-om-mender sys-tems is map-ping use
+rs and items into a shared low-dimensional
+ []
+
+
+
+[6]) (./chapterfile/chapter3.tex
+
+[7]
+Chapter 3.
+
+
+[8
 
 ]
-
-[8]
 
 [9]
 
@@ -585,18 +600,20 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 [13]
 
 [14]
-LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 196.
-LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 196.
-
 
 [15]
+LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
+(Font)              No change on input line 196.
+LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
+(Font)              No change on input line 196.
+
+
+[16]
 File: figures/WCDR.pdf Graphic file (type pdf)
 <figures/WCDR.pdf>
 
 
-[16]
+[17]
 File: figures/JPEDET.pdf Graphic file (type pdf)
 <figures/JPEDET.pdf>
 
@@ -605,21 +622,21 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[17]
-
 [18]
 
 [19]
 
-[20]) (./chapterfile/chapter4.tex
+[20]
 
-[21]
+[21]) (./chapterfile/chapter4.tex
 
 [22]
+
+[23]
 Chapter 4.
 
 
-[23
+[24
 
 ]
 File: figures/overall_structure.pdf Graphic file (type pdf)
@@ -630,30 +647,21 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[24]
-
 [25]
-LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 6.73553pt on input line 57.
-LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 6.73553pt on input line 57.
-LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 4.8111pt on input line 57.
-LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 4.8111pt on input line 57.
-
 
 [26]
+
+[27]
 File: figures/domain_discrepancy.pdf Graphic file (type pdf)
 <figures/domain_discrepancy.pdf>
 
 
-[27]
+[28]
 File: figures/autoencoder_structure.pdf Graphic file (type pdf)
 <figures/autoencoder_structure.pdf>
 
 
-[28]
+[29]
 File: figures/GMM_1D.pdf Graphic file (type pdf)
 <figures/GMM_1D.pdf>
 File: figures/GMM_2D.pdf Graphic file (type pdf)
@@ -664,39 +672,39 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[29]
-
 [30]
 
 [31]
+
+[32]
 File: figures/cost_matrix_calculation.pdf Graphic file (type pdf)
 <figures/cost_matrix_calculation.pdf>
 
 
-[32]) (./chapterfile/chapter5.tex
+[33]) (./chapterfile/chapter5.tex
 
-[33]
+[34]
 Chapter 5.
 
 
-[34
+[35
 
 ]
 
-[35]
-
 [36]
+
+[37]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 184.
 
 
-[37]
-
 [38]
 
-[39]) (./chapterfile/chapter6.tex
+[39]
 
-[40]
+[40]) (./chapterfile/chapter6.tex
+
+[41]
 Chapter 6.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
 (Font)              scaled to size 8.65997pt on input line 34.
@@ -709,23 +717,23 @@ Overfull \hbox (28.8578pt too wide) in paragraph at lines 35--63
 
 
 
-[41
+[42
 
 ]
 
-[42]) (./chapterfile/chapter7.tex
+[43]) (./chapterfile/chapter7.tex
 
-[43]
+[44]
 Chapter 7.
 
 
-[44
+[45
 
 ]
 
-[45]) (./main.bbl
+[46]) (./main.bbl
 
-[46]
+[47]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 6.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -750,7 +758,7 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 71.
 
 
-[47
+[48
 
 ]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -783,7 +791,7 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 162.
 
 
-[48]
+[49]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 169.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -812,7 +820,7 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 246.
 
 
-[49]
+[50]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 254.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -835,7 +843,7 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 321.
 
 
-[50]
+[51]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 334.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -860,7 +868,7 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 404.
 
 
-[51]
+[52]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 416.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -873,17 +881,17 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 453.
 ) (./chapterfile/chapter_appendix.tex
 
-[52]) (./chapterfile/chapter_publication.tex
-
-[53
-
-]) (./chapterfile/chapter_acknowledgement.tex
+[53]) (./chapterfile/chapter_publication.tex
 
 [54
 
-])
+]) (./chapterfile/chapter_acknowledgement.tex
 
 [55
+
+])
+
+[56
 
 ] (./main.aux)
  ***********
@@ -893,12 +901,12 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 12456 strings out of 475292
- 273959 string characters out of 5766798
+ 12458 strings out of 475292
+ 274013 string characters out of 5766798
  624501 words of memory out of 5000000
- 35423 multiletter control sequences out of 15000+600000
+ 35425 multiletter control sequences out of 15000+600000
  579003 words of font info for 126 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  73i,12n,80p,1118b,655s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (61 pages, 232756 bytes).
+Output written on main.dvi (62 pages, 237788 bytes).
