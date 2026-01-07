@@ -7,7 +7,7 @@ The core objective of recommender systems is to predict user preferences for ite
 that they have not yet interacted with. And based on these preference predictions,
 the system generates personalized recommendations for each user.
 
-Mathmatically, recommendation tasks are often formulated as a mapping function that
+Mathematically, recommendation tasks are often formulated as a mapping function that
 maps user--item interaction pairs to ratings or preference scores.
 
 \paragraph{Definition of Basic Symbols}
@@ -36,11 +36,12 @@ The target of a recommender system can be formulated as learning a prediction fu
 \begin{equation}
 	f: \mathcal{U} \times \mathcal{V} \to \mathcal{R},
 \end{equation}
-where $f(u_i, v_j)$ predicts the rating or preference score of user
-$u_i$ for item $v_j$.
-In explicit feedback scenarios, $\hat{r}_{ij} = f(u_i, v_j)$ represents the estimation of real rating $r_{ij} $.
+where $f(u, v)$ predicts the rating or preference score of user
+$u \in \mathcal{U}$ for item $v \in \mathcal{V}$.
+In explicit feedback scenarios, $\hat{r}_{uv} = f(u, v)$ represents an estimation
+of the true rating $r_{uv}$.
 
-In test time, for each user $u_i$, the recommender system generates a ranked list of top-$K$ items
+At test time, for each user $u \in \mathcal{U}$, the recommender system generates a ranked list of top-$K$ items
 based on the predicted scores to generate personalized recommendations.
 
 \subsection{User--Item Interaction Matrix}
@@ -48,10 +49,10 @@ In most recommender systems, user--item interactions can be represented as a
 user--item interaction matrix:
 
 \begin{equation}
-	\mathbf{R} \in \mathbb{R}^{|\mathcal{U}| \times |\mathcal{I}|}, \quad
-	R_{ui} =
+	\mathbf{R} \in \mathbb{R}^{|\mathcal{U}| \times |\mathcal{V}|}, \quad
+	R_{uv} =
 	\begin{cases}
-		r_{ui},            & \text{if $(u,i)$ is observed}, \\
+		r_{uv},            & \text{if $(u,v)$ is observed}, \\
 		\text{unobserved}, & \text{otherwise}.
 	\end{cases}
 \end{equation}
@@ -73,15 +74,15 @@ sparse, long-tailed, and noisy matrix.
 
 \subsection{Prediction vs. Recommendation Objectives}
 In recommender systems, there are two primary objectives: rating prediction and
-top-$N$ recommendation.
+top-$K$ recommendation.
 
 \paragraph{(1) Rating Prediction}
 The rating prediction task focuses on accurately estimating the numerical ratings
 to make the predictions as close as possible to the actual user ratings.
 The task can be formulated as:
 \begin{equation}
-	\min_{\Theta} \sum_{(u,i) \in \mathcal{D}_{\text{train}}}
-	\mathcal{L}\bigl(r_{ui}, \hat{r}_{ui}\bigr),
+	\min_{\Theta} \sum_{(u,v) \in \mathcal{D}_{\text{train}}}
+	\mathcal{L}\bigl(r_{uv}, \hat{r}_{uv}\bigr),
 \end{equation}
 where $\Theta$ denotes the model parameters, and $\mathcal{L}(\cdot, \cdot)$ usually represents
 the Mean Squared Error (MSE) loss or Mean Absolute Error (MAE) loss.
@@ -91,19 +92,19 @@ available, such as the MovieLens, Amazon Reviews, etc.
 And the evaluation metrics typically include Root Mean Square Error (RMSE) and Mean Absolute Error (MAE)
 in rating prediction tasks.
 
-\paragraph{(2) Top-$N$ Recommendation}
+\paragraph{(2) Top-$K$ Recommendation}
 In many real-world applications, the primary goal of recommender systems is not to
-predict exact ratings but to generate a ranked list of top-$N$ items for each user:
+predict exact ratings but to generate a ranked list of top-$K$ items for each user:
 \begin{equation}
-	\pi_u = \operatorname{rank}\bigl( \{ \hat{r}_{ui} \}_{i \in \mathcal{I}} \bigr),
+	\pi_u = \operatorname{rank}\bigl( \{ \hat{r}_{uv} \}_{v \in \mathcal{V}} \bigr),
 \end{equation}
-where $\pi_u$ denotes the ranked list of items for user $u$ based on the predicted scores $\hat{r}_{ui}$.
+where $\pi_u$ denotes the ranked list of items for user $u$ based on the predicted scores $\hat{r}_{uv}$.
 
 This objective usually utilizes ranking-based loss functions, such as
 Pairwise Ranking Loss (e.g., BPR loss) or Listwise Ranking Loss.
 
-The evaluation metrics for top-$N$ recommendation tasks often include
-Precision@N, Recall@N, Normalized Discounted Cumulative Gain (NDCG)@N, and Mean Average Precision (MAP)@N.
+The evaluation metrics for top-$K$ recommendation tasks often include
+Precision@K, Recall@K, Normalized Discounted Cumulative Gain (NDCG)@K, and Mean Average Precision (MAP)@K.
 
 \subsection{Latent Representation Learning}
 The core idea of modern recommender systems is mapping users and items into a shared
@@ -115,57 +116,442 @@ This process is known as latent representation learning or embedding learning.
 In latent representation learning, each user and item is represented by a dense
 vector in a low-dimensional space:
 \begin{equation}
-	\mathbf{p}_u \in \mathbb{R}^{d}, \quad \mathbf{q}_i \in \mathbb{R}^{d}.
+	\mathbf{p}_u \in \mathbb{R}^{d}, \quad \mathbf{q}_v \in \mathbb{R}^{d}.
 \end{equation}
 
 And the prediction function is often defined as:
 \begin{equation}
-	\hat{r}_{ui} = g(\mathbf{p}_u, \mathbf{q}_i),
+	\hat{r}_{uv} = g(\mathbf{p}_u, \mathbf{q}_v),
 \end{equation}
 where $g(\cdot, \cdot)$ is a similarity function, can be:
 \begin{itemize}
-	\item \textbf{Dot Product}: $g(\mathbf{p}_u, \mathbf{q}_i) = \mathbf{p}_u^\top
-		      \mathbf{q}_i$.
-	\item \textbf{MLP}: $g(\mathbf{p}_u, \mathbf{q}_i) = \text{MLP}([\mathbf{p}_u;
-			      \mathbf{q}_i])$.
+	\item \textbf{Dot Product}: $g(\mathbf{p}_u, \mathbf{q}_v) = \mathbf{p}_u^\top
+		      \mathbf{q}_v$.
+	\item \textbf{MLP}: $g(\mathbf{p}_u, \mathbf{q}_v) = \text{MLP}([\mathbf{p}_u;
+			      \mathbf{q}_v])$.
 	\item \textbf{Other Non-linear Functions}: e.g., cosine similarity, neural
 	      attention mechanisms, etc.
 \end{itemize}
 
 \paragraph{The Intuitive Understanding of Representation Learning}
-The users' latent vectors $$\mathbf{p}_u$$ can be interpreted as the user's preferences
-over various latent factors, while the items' latent vectors $$\mathbf{q}_i$$
+The users' latent vectors $\mathbf{p}_u$ can be interpreted as the user's preferences
+over various latent factors, while the items' latent vectors $\mathbf{q}_v$
 represent the item's attributes in the same latent factor space.
 
 Similar users or items are expected to have similar latent representations,
 which means their representation vectors should be close in the latent space.
 
-However, this modeling approach has a implicit assumption that users' preferences
+However, this modeling approach has an implicit assumption that users' preferences
 can be fully captured by a single point in the latent space.
 This assumption may not hold in practice, as user preferences are often complex,
 diverse, and uncertain. That's the motivation for us to explore distributional
 representations of user preferences in this thesis.
 
 \subsection{Challenges of Recommender Systems}
+Despite the significant advancements in recommender systems, several challenges
+remain that hinder their effectiveness and user satisfaction:
+\begin{itemize}
+	\item \textbf{Data Sparsity}: The user--item interaction matrix is often
+	      extremely sparse, making it difficult to learn accurate user preferences.
+	\item \textbf{Cold Start Problem}: New users or items with little to no
+	      interaction history pose challenges for recommendation accuracy.
+	\item \textbf{Preference Uncertainty and Diversity}: Users' preferences can be
+	      diverse and uncertain, making it challenging to capture their true
+	      interests with point embeddings.
+\end{itemize}
 
-\section{Cross-Domain Recommendation}
+\subsection{Connections to This Thesis}
+The recommendation problem focused in this thesis can be seen as an extension
+of the conventional recommender systems, which:
+\begin{itemize}
+	\item Does not model user preferences as deterministic point embeddings,
+	      but as probability distributions to capture the uncertainty and
+	      diversity of user preferences.
+	\item Conducts structured alignment and transfer of user preference
+	      distributions across different domains to address data sparsity
+	      and cold-start issues.
+\end{itemize}
 
-\section{Distributional Preference Modeling with Gaussian Mixture Models}
+So, in the following sections, we will introduce Cross-Domain Recommendation Systems,
+and formally define the fundamental settings of multi-domain recommendation tasks.
 
-To capture the heterogeneity and uncertainty of user preferences, probabilistic
-representations are often more expressive than point embeddings.
-Gaussian Mixture Models (GMMs) provide a flexible framework for modeling complex
-distributions as mixtures of simple components.
+\section{Cross-Domain Recommendation Systems}
 
-A GMM with $K$ components defines a probability density function
+The goal of Cross-Domain Recommendation (CDR) systems is to improve recommendation
+performance in a target domain by leveraging knowledge from one or more source
+domains.
+
+Compared to traditional single-domain recommender systems, CDR systems explicitly
+consider the relationships and knowledge transfer between different domains, and enable
+knowledge transfer across domains to alleviate data sparsity and cold-start problems.
+
+\subsection{Definition of Domains}
+
+To formally define CDR, we first introduce the concept of a domain. A domain $\mathcal{D}$ can be defined as a tuple:
 \begin{equation}
-	p(x) = \sum_{k=1}^{K} \pi_k \, \mathcal{N}(x \mid \boldsymbol{\mu}_k,
-	\boldsymbol{\Sigma}_k),
+	\mathcal{D} = (\mathcal{U}, \mathcal{V}, \mathcal{R}, \mathcal{X}),
 \end{equation}
-where $\boldsymbol{\mu}_k \in \mathbb{R}^d$ and
-$\boldsymbol{\Sigma}_k \in \mathbb{R}^{d \times d}$ denote the mean vector and
-covariance matrix of the $k$-th Gaussian component, respectively.
-The mixture weights $\boldsymbol{\pi} = (\pi_1, \dots, \pi_K)$ satisfy
-$\pi_k \ge 0$ and $\sum_{k=1}^{K} \pi_k = 1$.
+where $\mathcal{U}$ is the set of users, $\mathcal{V}$ is the set of items,
+$\mathcal{R}$ is the user--item interaction matrix within that domain, and
+$\mathcal{X}$ represents any auxiliary information (e.g., user profiles, item
+attributes, contextual data) available in that domain.
 
-\section{Optimal Transport and Wasserstein Distance}
+In CDR, we consider at least two domains:
+\begin{itemize}
+	\item \textbf{Source Domain} $\mathcal{D}_s = (\mathcal{U}_s, \mathcal{V}_s,
+		      \mathcal{R}_s, \mathcal{X}_s)$: The domain from which knowledge is
+	      transferred.
+	\item \textbf{Target Domain} $\mathcal{D}_t = (\mathcal{U}_t, \mathcal{V}_t,
+		      \mathcal{R}_t, \mathcal{X}_t)$: The domain where we want to improve
+	      recommendation performance.
+\end{itemize}
+
+The primary objective of CDR is to leverage the information from the source domain $\mathcal{D}_s$
+to enhance the recommendation quality in the target domain $\mathcal{D}_t$, especially when
+the target domain suffers from data sparsity or cold-start issues.
+
+\subsection{Learning Objectives in CDR}
+Given observed user--item interactions in both source and target domains,
+cross-domain recommendation systems aim to learn a prediction function for the target domain:
+\begin{equation}
+	f_t: \mathcal{U}_t \times \mathcal{V}_t \to \mathcal{R}_t,
+\end{equation}
+such that the learned function $f_t$ benefits from the knowledge transferred from the source domain $\mathcal{D}_s$.
+
+In general, this process can be formulated as a joint learning problem:
+\begin{equation}
+	\min_{\Theta_s, \Theta_t} \mathcal{L}_t(\mathcal{R}_t; \Theta_t) +
+	\lambda \, \mathcal{L}_transfer(\mathcal{R}_s, \mathcal{R}_t; \Theta_s, \Theta_t),
+\end{equation}
+where $\Theta_s$ and $\Theta_t$ denote the model parameters for the source and
+target domains, respectively.
+
+The first term $\mathcal{L}_t$ represents the loss function for the target domain,
+which measures the prediction error on the target domain interactions. In explicit feedback
+scenarios, this can be the Mean Squared Error (MSE) loss between the predicted
+ratings and the true ratings in the target domain. In implicit feedback settings, ranking-based loss functions
+such as Bayesian Personalized Ranking (BPR) loss can be employed.
+
+The second term $\mathcal{L}_transfer$ captures the knowledge transfer between
+the source and target domains, encouraging the model to leverage useful information
+from the source domain to improve performance in the target domain. This term can be
+seen as a regularization that aligns the representations or distributions of users/items
+across domains.
+
+The hyperparameter $\lambda$ controls the balance between fitting the target
+domain data and transferring knowledge from the source domain.
+
+The specific design of the transfer loss $\mathcal{L}_transfer$ can vary
+depending on the chosen transfer learning strategy, such as shared latent factors,
+domain adaptation techniques, or distributional alignment methods.
+
+\subsection{Overlapping Cross-Domain Recommendation}
+The overlapping CDR scenario is widely assumed in many relative research works.
+In this setting, the source and target domains share some common entities, which can be either users or items.
+
+\paragraph{Shared Users or Items}
+Typical overlapping settings include:
+\begin{itemize}
+	\item \textbf{User-Overlapping}: $\mathcal{U}_s \cap \mathcal{U}_t \neq \emptyset$
+	\item \textbf{Item-Overlapping}: $\mathcal{V}_s \cap \mathcal{V}_t \neq \emptyset$
+\end{itemize}
+
+In these scenarios, the shared users or items serve as natural bridges for knowledge transfer.
+Leveraging these overlapping entities can facilitate the alignment of user preferences
+or item characteristics across domains, thereby enhancing the recommendation performance
+in the target domain.
+
+For example, shared users provide direct supervision signals for cross-domain preference consistency,
+enabling the alignment of user latent representations via contrastive learning,
+or serving as bridging nodes that connect multiple domains in GNN-based models.
+
+\paragraph{Characteristics of Overlapping CDR}
+Overlapping cross-domain recommendation typically exhibits the following
+properties:
+\begin{itemize}
+	\item Knowledge transfer is facilitated by explicitly shared entities.
+	\item Cross-domain alignment is often achieved by parameter sharing or
+	      regularization on shared embeddings.
+	\item Performance strongly depends on the number and quality of overlapping
+	      users or items.
+\end{itemize}
+
+While effective in many applications, these approaches are limited when
+overlapping entities are scarce or entirely unavailable.
+
+\subsection{Non-Overlapping Cross-Domain Recommendation}
+In contrast, \textbf{non-overlapping cross-domain recommendation} considers a
+more challenging setting where no users or items are shared across domains:
+
+\begin{equation}
+	\mathcal{U}_s \cap \mathcal{U}_t = \emptyset, \quad
+	\mathcal{V}_s \cap \mathcal{V}_t = \emptyset.
+\end{equation}
+
+This setting naturally arises in practical scenarios such as:
+\begin{itemize}
+	\item Recommendation across different platforms or services,
+	\item Cold-start deployment of a new domain,
+	\item Privacy-preserving or federated environments.
+\end{itemize}
+
+\paragraph{Challenges in the Non-Overlapping Setting}
+Without shared entities, cross-domain knowledge transfer becomes significantly
+more difficult due to:
+\begin{itemize}
+	\item The absence of explicit correspondence between users or items,
+	\item Domain-specific item distributions and feature spaces,
+	\item Inherent discrepancies in user behavior patterns across domains.
+\end{itemize}
+
+As a result, non-overlapping cross-domain recommendation requires transferring
+\emph{higher-level structural knowledge}, rather than relying on direct entity
+matching.
+
+\subsection{Distribution-Level Knowledge Transfer}
+To address the lack of overlapping entities, recent research has shifted from
+instance-level transfer to \textbf{distribution-level} or \textbf{structure-level}
+knowledge transfer.
+
+Instead of aligning individual users or items, these approaches focus on:
+\begin{itemize}
+	\item Modeling user preferences as distributions over the item space,
+	\item Capturing global or population-level structures shared across domains,
+	\item Aligning preference distributions under appropriate metrics.
+\end{itemize}
+
+This perspective naturally motivates the use of probabilistic models and
+distance measures between distributions, which form the foundation of the
+methods introduced in the subsequent sections.
+
+\subsection{Connection to This Thesis}
+This thesis focuses on the non-overlapping cross-domain recommendation setting,
+where neither users nor items are shared across domains.
+To enable effective knowledge transfer under this challenging scenario, we
+adopt a distributional view of user preferences and seek principled methods to
+align such distributions across domains.
+
+In the following sections, we introduce Gaussian Mixture Models for modeling
+user preference distributions, and Optimal Transport-based distance measures
+for aligning these distributions in a mathematically grounded manner.
+
+\section{Gaussian Mixture Models for User Preference Modeling}
+
+Gaussian Mixture Models (GMMs) provide a flexible probabilistic framework for
+modeling complex and multi-modal data distributions.
+In the context of recommender systems, GMMs are particularly suitable for
+capturing users' diverse interests and the uncertainty arising from sparse
+interaction data.
+In this thesis, GMMs are employed to model user preference distributions over
+the item embedding space, serving as the foundation for cross-domain knowledge
+transfer.
+
+\subsection{Motivation: From Point Embeddings to Distributional Preferences}
+
+Conventional recommender systems typically represent each user by a single
+deterministic latent vector.
+While effective in dense settings, this point-based representation implicitly
+assumes that a user's preference can be summarized by a single mode in the
+latent space.
+
+However, in real-world scenarios, user preferences are often:
+\begin{itemize}
+	\item \textbf{Multi-faceted}: users may exhibit interest in multiple distinct
+	      types of items;
+	\item \textbf{Uncertain}: limited interactions lead to ambiguous preference
+	      estimation;
+	\item \textbf{Domain-dependent}: preference expressions may vary across
+	      domains.
+\end{itemize}
+
+These characteristics motivate modeling user preferences as probability
+distributions rather than point embeddings.
+
+\subsection{Gaussian Mixture Model Definition}
+
+Let $\mathbf{v} \in \mathbb{R}^{d}$ denote an item embedding in the latent space.
+A Gaussian Mixture Model represents a probability distribution over $\mathbf{v}$
+as a weighted sum of $K$ Gaussian components:
+\begin{equation}
+	p(\mathbf{v})
+	=
+	\sum_{k=1}^{K}
+	\pi_k \,
+	\mathcal{N}(\mathbf{v} \mid \boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k),
+\end{equation}
+where:
+\begin{itemize}
+	\item $K$ is the number of mixture components,
+	\item $\pi_k \ge 0$ and $\sum_{k=1}^{K} \pi_k = 1$ are mixture weights,
+	\item $\boldsymbol{\mu}_k \in \mathbb{R}^{d}$ denotes the mean vector,
+	\item $\boldsymbol{\Sigma}_k \in \mathbb{R}^{d \times d}$ denotes the covariance matrix.
+\end{itemize}
+
+Each Gaussian component captures a latent preference mode, while the mixture
+weights reflect the relative importance of different interests.
+
+\subsection{User Preference Modeling with GMMs}
+
+In this thesis, the preference of a user $u$ is modeled as a Gaussian mixture
+distribution over the item embedding space:
+\begin{equation}
+	p(\mathbf{v} \mid u)
+	=
+	\sum_{k=1}^{K}
+	\pi_{u,k} \,
+	\mathcal{N}(\mathbf{v} \mid \boldsymbol{\mu}_{k}, \boldsymbol{\Sigma}_{k}),
+\end{equation}
+where $\{\pi_{u,k}\}_{k=1}^{K}$ denotes the user-specific mixture weights.
+
+Notably, the Gaussian components $\{\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k\}$
+are shared across users within the same domain, while only the mixture weights
+are personalized.
+This design enables consistent semantic interpretation of preference components
+and facilitates cross-domain alignment.
+
+\subsection{Discrete Approximation of Preference Distributions}
+
+In practice, user preference distributions are supported by a finite set of item
+embeddings.
+Thus, $p(\mathbf{v} \mid u)$ can be approximated by a discrete measure:
+\begin{equation}
+	p(\mathbf{v} \mid u)
+	\approx
+	\sum_{k=1}^{K}
+	\pi_{u,k} \,
+	\delta\bigl(\mathbf{v} = \boldsymbol{\mu}_{k}\bigr),
+\end{equation}
+where $\delta(\cdot)$ denotes the Dirac delta function.
+
+This discrete representation plays a crucial role in enabling efficient optimal
+transport computation between user preference distributions.
+
+\subsection{Parameter Estimation and Practical Considerations}
+
+The Gaussian components can be learned by fitting a GMM to item embeddings within
+each domain, using standard likelihood-based estimation methods.
+Once the component parameters are fixed, user-specific mixture weights can be
+estimated based on observed interactions.
+
+This separation between global component estimation and user-level weight
+learning provides a stable and scalable framework for modeling user preferences,
+especially in sparse recommendation settings.
+
+\subsection{Connection to Optimal Transport}
+
+Modeling user preferences as GMMs allows cross-domain alignment to be formulated
+as a distribution matching problem.
+Given two user preference distributions from different domains, their discrepancy
+can be naturally measured using Optimal Transport.
+
+In particular, when preference distributions are represented as discrete mixtures
+over Gaussian components, the optimal transport problem reduces to transporting
+mass between Gaussian components under an appropriate cost function.
+This formulation directly motivates the use of Wasserstein distance and
+Optimal Transport techniques introduced in the next section.
+
+\section{Optimal Transport for Distribution Alignment}
+
+Optimal Transport (OT) provides a principled framework for comparing probability
+distributions by explicitly modeling the cost of transporting probability mass.
+In this thesis, OT is employed as a distribution-level alignment mechanism for
+user preference distributions modeled by Gaussian Mixture Models.
+
+\subsection{General Formulation}
+
+Let $\mu, \nu \in \mathcal{P}(\mathcal{X})$ be two probability measures defined on
+a metric space $(\mathcal{X}, d)$.
+The Kantorovich formulation of optimal transport seeks a transport plan
+$\gamma \in \Pi(\mu, \nu)$ that minimizes the expected transportation cost:
+\begin{equation}
+\min_{\gamma \in \Pi(\mu, \nu)}
+\int_{\mathcal{X} \times \mathcal{X}} d(x, y) \, d\gamma(x, y),
+\end{equation}
+where $\Pi(\mu, \nu)$ denotes the set of joint distributions whose marginals are
+$\mu$ and $\nu$.
+
+Based on this formulation, the $p$-Wasserstein distance between $\mu$ and $\nu$ is
+defined as:
+\begin{equation}
+W_p(\mu, \nu)
+=
+\left(
+\min_{\gamma \in \Pi(\mu, \nu)}
+\int_{\mathcal{X} \times \mathcal{X}} d(x, y)^p \, d\gamma(x, y)
+\right)^{\frac{1}{p}}.
+\end{equation}
+
+\subsection{Discrete Optimal Transport}
+
+In practice, user preference distributions are represented by discrete measures.
+Let:
+\begin{equation}
+\mu = \sum_{i=1}^{m} a_i \, \delta_{x_i},
+\quad
+\nu = \sum_{j=1}^{n} b_j \, \delta_{y_j},
+\end{equation}
+where $a_i, b_j \ge 0$ and $\sum_i a_i = \sum_j b_j = 1$.
+
+The discrete optimal transport problem can be written as:
+\begin{equation}
+\min_{\mathbf{T} \in \mathbb{R}_{+}^{m \times n}}
+\sum_{i=1}^{m} \sum_{j=1}^{n}
+T_{ij} \, c(x_i, y_j),
+\end{equation}
+subject to:
+\begin{equation}
+\mathbf{T} \mathbf{1}_n = \mathbf{a},
+\quad
+\mathbf{T}^\top \mathbf{1}_m = \mathbf{b},
+\end{equation}
+where $\mathbf{T}$ is the transport matrix and $c(x_i, y_j)$ denotes the ground
+cost.
+
+\subsection{Optimal Transport Between Gaussian Mixture Models}
+
+In this thesis, user preferences are modeled as Gaussian Mixture Models (GMMs).
+For a user $u$, the preference distribution is given by:
+\begin{equation}
+p(\mathbf{v} \mid u)
+=
+\sum_{k=1}^{K}
+\pi_{u,k}
+\mathcal{N}(\mathbf{v} \mid \boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k).
+\end{equation}
+
+A GMM can be viewed as a discrete distribution over Gaussian components, where
+each component represents a latent preference mode.
+Accordingly, the optimal transport problem between two GMMs can be formulated at
+the component level.
+
+Specifically, given two GMMs with mixture weights
+$\boldsymbol{\pi}^{(s)}$ and $\boldsymbol{\pi}^{(t)}$, the optimal transport
+problem reduces to:
+\begin{equation}
+\min_{\mathbf{T} \in \mathbb{R}_{+}^{K \times K}}
+\sum_{k=1}^{K} \sum_{l=1}^{K}
+T_{kl} \, c\!\left(
+\mathcal{N}(\boldsymbol{\mu}_k^{(s)}, \boldsymbol{\Sigma}_k^{(s)}),
+\mathcal{N}(\boldsymbol{\mu}_l^{(t)}, \boldsymbol{\Sigma}_l^{(t)})
+\right),
+\end{equation}
+subject to:
+\begin{equation}
+\mathbf{T} \mathbf{1} = \boldsymbol{\pi}^{(s)},
+\quad
+\mathbf{T}^\top \mathbf{1} = \boldsymbol{\pi}^{(t)},
+\end{equation}
+where $c(\cdot,\cdot)$ denotes the cost between Gaussian components.
+
+A common choice for $c(\cdot,\cdot)$ is the squared $2$-Wasserstein distance
+between Gaussian distributions, which admits a closed-form expression.
+The resulting transport matrix $\mathbf{T}$ characterizes how preference mass is
+aligned across mixture components.
+
+\subsection{Connection to This Thesis}
+
+By formulating user preference alignment as an optimal transport problem between
+Gaussian mixture models, this thesis enables distribution-level knowledge transfer
+across domains.
+This approach avoids reliance on overlapping users or items and provides a
+geometrically meaningful mechanism for cross-domain preference alignment.

@@ -102,97 +102,6 @@ Ruslan Salakhutdinov and Andriy Mnih.
   Learning}, ICML '08, p. 880^^e2^^80^^93887, New York, NY, USA, 2008.
   Association for Computing Machinery.
 
-\bibitem{Hofmann_2004_PLSA_recommender}
-Thomas Hofmann.
-\newblock Latent semantic models for collaborative filtering.
-\newblock {\em ACM Trans. Inf. Syst.}, Vol.~22, No.~1, p. 89^^e2^^80^^93115,
-  January 2004.
-
-\bibitem{Marlin_2003_user_rating_profiles}
-Benjamin~M Marlin.
-\newblock Modeling user rating profiles for collaborative filtering.
-\newblock In S.~Thrun, L.~Saul, and B.~Sch\"{o}lkopf, editors, {\em Advances in
-  Neural Information Processing Systems}, Vol.~16. MIT Press, 2003.
-
-\bibitem{Blei_Ng_Jordan_2003_LDA}
-David~M Blei, Andrew~Y Ng, and Michael~I Jordan.
-\newblock Latent dirichlet allocation.
-\newblock {\em Journal of machine Learning research}, Vol.~3, No. Jan, pp.
-  993--1022, 2003.
-
-\bibitem{Salton_Buckley_Fox_1983_auto_query_formulation}
-Gerard Salton, Chris Buckley, and Edward~A Fox.
-\newblock Automatic query formulations in information retrieval.
-\newblock {\em Journal of the American society for information science},
-  Vol.~34, No.~4, pp. 262--280, 1983.
-
-\bibitem{Pazzani_Billsus_1997_user_profiles}
-Michael Pazzani and Daniel Billsus.
-\newblock Learning and revising user profiles: The identification of
-  interesting web sites.
-\newblock {\em Machine learning}, Vol.~27, No.~3, pp. 313--331, 1997.
-
-\bibitem{Pazzani_1999_framework_CDR}
-Michael~J Pazzani.
-\newblock A framework for collaborative, content-based and demographic
-  filtering.
-\newblock {\em Artificial intelligence review}, Vol.~13, No.~5, pp. 393--408,
-  1999.
-
-\bibitem{Melville_Mooney_Nagarajan_2002_content_boosted_CF}
-Prem Melville, Raymond~J Mooney, Ramadass Nagarajan, et~al.
-\newblock Content-boosted collaborative filtering for improved recommendations.
-\newblock {\em Aaai/iaai}, Vol.~23, pp. 187--192, 2002.
-
-\bibitem{Billsus_Pazzani_2000_user_modeling}
-Daniel Billsus and Michael~J Pazzani.
-\newblock User modeling for adaptive news access.
-\newblock {\em User modeling and user-adapted interaction}, Vol.~10, No.~2, pp.
-  147--180, 2000.
-
-\bibitem{Basilico_Hofmann_2004_unifying_CF_content}
-Justin Basilico and Thomas Hofmann.
-\newblock Unifying collaborative and content-based filtering.
-\newblock In {\em Proceedings of the twenty-first international conference on
-  Machine learning}, p.~9, 2004.
-
-\bibitem{Rendle_2010_factorization_machines}
-Steffen Rendle.
-\newblock Factorization machines.
-\newblock In {\em 2010 IEEE International conference on data mining}, pp.
-  995--1000. IEEE, 2010.
-
-\bibitem{Burges_Shaked_Renshaw_Lazier_Deeds_Hamilton_Hullender_2005_LTR}
-Chris Burges, Tal Shaked, Erin Renshaw, Ari Lazier, Matt Deeds, Nicole
-  Hamilton, and Greg Hullender.
-\newblock Learning to rank using gradient descent.
-\newblock In {\em Proceedings of the 22nd international conference on Machine
-  learning}, pp. 89--96, 2005.
-
-\bibitem{Burges_2010_ranknet_lambdarank_lambdamart}
-Christopher~JC Burges.
-\newblock From ranknet to lambdarank to lambdamart: An overview.
-\newblock {\em Learning}, Vol.~11, No. 23-581, p.~81, 2010.
-
-\bibitem{He_Pan_Jin_Xu_Liu_Xu_Shi_Atallah_Herbrich_Bowers_2014_facebook_ads}
-Xinran He, Junfeng Pan, Ou~Jin, Tianbing Xu, Bo~Liu, Tao Xu, Yanxin Shi,
-  Antoine Atallah, Ralf Herbrich, Stuart Bowers, et~al.
-\newblock Practical lessons from predicting clicks on ads at facebook.
-\newblock In {\em Proceedings of the eighth international workshop on data
-  mining for online advertising}, pp. 1--9, 2014.
-
-\bibitem{Chen_2016_XGBoost}
-Tianqi Chen.
-\newblock Xgboost: A scalable tree boosting system.
-\newblock {\em Cornell University}, 2016.
-
-\bibitem{Ke_Meng_Finley_Wang_Chen_Ma_Ye_Liu_2017_LightGBM}
-Guolin Ke, Qi~Meng, Thomas Finley, Taifeng Wang, Wei Chen, Weidong Ma, Qiwei
-  Ye, and Tie-Yan Liu.
-\newblock Lightgbm: A highly efficient gradient boosting decision tree.
-\newblock {\em Advances in neural information processing systems}, Vol.~30, ,
-  2017.
-
 \bibitem{He_Liao_Zhang_Nie_Hu_Chua_2017_NCF}
 Xiangnan He, Lizi Liao, Hanwang Zhang, Liqiang Nie, Xia Hu, and Tat-Seng Chua.
 \newblock Neural collaborative filtering.
@@ -287,6 +196,79 @@ Wenjie Wang, Yiyan Xu, Fuli Feng, Xinyu Lin, Xiangnan He, and Tat-Seng Chua.
   832^^e2^^80^^93841, New York, NY, USA, 2023. Association for Computing
   Machinery.
 
+\bibitem{Salton_Buckley_Fox_1983_auto_query_formulation}
+Gerard Salton, Chris Buckley, and Edward~A Fox.
+\newblock Automatic query formulations in information retrieval.
+\newblock {\em Journal of the American society for information science},
+  Vol.~34, No.~4, pp. 262--280, 1983.
+
+\bibitem{Pazzani_Billsus_1997_user_profiles}
+Michael Pazzani and Daniel Billsus.
+\newblock Learning and revising user profiles: The identification of
+  interesting web sites.
+\newblock {\em Machine learning}, Vol.~27, No.~3, pp. 313--331, 1997.
+
+\bibitem{He_Pan_Jin_Xu_Liu_Xu_Shi_Atallah_Herbrich_Bowers_2014_facebook_ads}
+Xinran He, Junfeng Pan, Ou~Jin, Tianbing Xu, Bo~Liu, Tao Xu, Yanxin Shi,
+  Antoine Atallah, Ralf Herbrich, Stuart Bowers, et~al.
+\newblock Practical lessons from predicting clicks on ads at facebook.
+\newblock In {\em Proceedings of the eighth international workshop on data
+  mining for online advertising}, pp. 1--9, 2014.
+
+\bibitem{Chen_2016_XGBoost}
+Tianqi Chen.
+\newblock Xgboost: A scalable tree boosting system.
+\newblock {\em Cornell University}, 2016.
+
+\bibitem{Ke_Meng_Finley_Wang_Chen_Ma_Ye_Liu_2017_LightGBM}
+Guolin Ke, Qi~Meng, Thomas Finley, Taifeng Wang, Wei Chen, Weidong Ma, Qiwei
+  Ye, and Tie-Yan Liu.
+\newblock Lightgbm: A highly efficient gradient boosting decision tree.
+\newblock {\em Advances in neural information processing systems}, Vol.~30, ,
+  2017.
+
+\bibitem{Pazzani_1999_framework_CDR}
+Michael~J Pazzani.
+\newblock A framework for collaborative, content-based and demographic
+  filtering.
+\newblock {\em Artificial intelligence review}, Vol.~13, No.~5, pp. 393--408,
+  1999.
+
+\bibitem{Melville_Mooney_Nagarajan_2002_content_boosted_CF}
+Prem Melville, Raymond~J Mooney, Ramadass Nagarajan, et~al.
+\newblock Content-boosted collaborative filtering for improved recommendations.
+\newblock {\em Aaai/iaai}, Vol.~23, pp. 187--192, 2002.
+
+\bibitem{Billsus_Pazzani_2000_user_modeling}
+Daniel Billsus and Michael~J Pazzani.
+\newblock User modeling for adaptive news access.
+\newblock {\em User modeling and user-adapted interaction}, Vol.~10, No.~2, pp.
+  147--180, 2000.
+
+\bibitem{Basilico_Hofmann_2004_unifying_CF_content}
+Justin Basilico and Thomas Hofmann.
+\newblock Unifying collaborative and content-based filtering.
+\newblock In {\em Proceedings of the twenty-first international conference on
+  Machine learning}, p.~9, 2004.
+
+\bibitem{Rendle_2010_factorization_machines}
+Steffen Rendle.
+\newblock Factorization machines.
+\newblock In {\em 2010 IEEE International conference on data mining}, pp.
+  995--1000. IEEE, 2010.
+
+\bibitem{Burges_Shaked_Renshaw_Lazier_Deeds_Hamilton_Hullender_2005_LTR}
+Chris Burges, Tal Shaked, Erin Renshaw, Ari Lazier, Matt Deeds, Nicole
+  Hamilton, and Greg Hullender.
+\newblock Learning to rank using gradient descent.
+\newblock In {\em Proceedings of the 22nd international conference on Machine
+  learning}, pp. 89--96, 2005.
+
+\bibitem{Burges_2010_ranknet_lambdarank_lambdamart}
+Christopher~JC Burges.
+\newblock From ranknet to lambdarank to lambdamart: An overview.
+\newblock {\em Learning}, Vol.~11, No. 23-581, p.~81, 2010.
+
 \bibitem{Singh_Gordon_2008_CMF}
 Ajit~P Singh and Geoffrey~J Gordon.
 \newblock Relational learning via collective matrix factorization.
@@ -363,6 +345,24 @@ Yukuo Cen, Jianwei Zhang, Xu~Zou, Chang Zhou, Hongxia Yang, and Jie Tang.
 \newblock Controllable multi-interest framework for recommendation.
 \newblock In {\em Proceedings of the 26th ACM SIGKDD international conference
   on knowledge discovery \& data mining}, pp. 2942--2951, 2020.
+
+\bibitem{Hofmann_2004_PLSA_recommender}
+Thomas Hofmann.
+\newblock Latent semantic models for collaborative filtering.
+\newblock {\em ACM Trans. Inf. Syst.}, Vol.~22, No.~1, p. 89^^e2^^80^^93115,
+  January 2004.
+
+\bibitem{Marlin_2003_user_rating_profiles}
+Benjamin~M Marlin.
+\newblock Modeling user rating profiles for collaborative filtering.
+\newblock In S.~Thrun, L.~Saul, and B.~Sch\"{o}lkopf, editors, {\em Advances in
+  Neural Information Processing Systems}, Vol.~16. MIT Press, 2003.
+
+\bibitem{Blei_Ng_Jordan_2003_LDA}
+David~M Blei, Andrew~Y Ng, and Michael~I Jordan.
+\newblock Latent dirichlet allocation.
+\newblock {\em Journal of machine Learning research}, Vol.~3, No. Jan, pp.
+  993--1022, 2003.
 
 \bibitem{Vilnis_McCallum_2015_Gaussian_embeddings}
 Luke Vilnis and Andrew McCallum.

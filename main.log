@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.uptex) (TeX Live 2025) (preloaded format=uplatex 2025.6.4)  6 JAN 2026 12:59
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.uptex) (TeX Live 2025) (preloaded format=uplatex 2025.6.4)  7 JAN 2026 17:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -491,7 +491,13 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 [1
 
 
-])
+]
+
+LaTeX Font Info:    Kanji font shape `JY2/mc/m/sl' undefined
+(Font)              No change on input line 95.
+LaTeX Font Info:    Kanji font shape `JY2/mc/m/sl' undefined
+(Font)              No change on input line 95.
+[2])
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
@@ -501,13 +507,13 @@ LaTeX Font Info:    Kanji font shape `JY2/mc/m/sl' undefined
 (Font)              No change on input line 117.
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/sl' undefined
 (Font)              No change on input line 117.
-[2] (./main.lof)
+[3] (./main.lof)
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
 
 
-[3
+[4
 
 ] (./main.lot)
 \tf@lot=\write6
@@ -515,7 +521,7 @@ LaTeX Font Info:    Kanji font shape `JY2/mc/m/sl' undefined
 
 
 
-[4
+[5
 
 ] (./chapterfile/chapter1.tex
 Chapter 1.
@@ -562,32 +568,31 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 
 ]
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 6.73553pt on input line 54.
+(Font)              scaled to size 6.73553pt on input line 55.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 6.73553pt on input line 54.
+(Font)              scaled to size 6.73553pt on input line 55.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 4.8111pt on input line 54.
+(Font)              scaled to size 4.8111pt on input line 55.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 4.8111pt on input line 54.
+(Font)              scaled to size 4.8111pt on input line 55.
 
 
 [5]
-Overfull \hbox (2.38022pt too wide) in paragraph at lines 109--113
+Overfull \hbox (2.38022pt too wide) in paragraph at lines 110--114
 \OT1/cmr/m/n/10 The core idea of mod-ern rec-om-mender sys-tems is map-ping use
 rs and items into a shared low-dimensional
  []
 
 
 
-[6]) (./chapterfile/chapter3.tex
+[6]
 
 [7]
-Chapter 3.
 
+[8]
+LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
+(Font)              No change on input line 308.
 
-[8
-
-]
 
 [9]
 
@@ -595,48 +600,60 @@ Chapter 3.
 
 [11]
 
-[12]
+[12]) (./chapterfile/chapter3.tex
 
 [13]
+Chapter 3.
 
-[14]
+
+[14
+
+]
 
 [15]
-LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 196.
-LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 196.
-
 
 [16]
-File: figures/WCDR.pdf Graphic file (type pdf)
-<figures/WCDR.pdf>
-
 
 [17]
-File: figures/JPEDET.pdf Graphic file (type pdf)
-<figures/JPEDET.pdf>
+
+[18]
+
+[19]
+LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
+(Font)              No change on input line 197.
+LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
+(Font)              No change on input line 197.
+
+
+[20]
+File: figures/WCDR.pdf Graphic file (type pdf)
+<figures/WCDR.pdf>
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[18]
-
-[19]
-
-[20]
-
-[21]) (./chapterfile/chapter4.tex
+[21]
 
 [22]
+File: figures/JPEDET.pdf Graphic file (type pdf)
+<figures/JPEDET.pdf>
+
 
 [23]
+
+[24]
+
+[25]
+
+[26]) (./chapterfile/chapter4.tex
+
+[27]
 Chapter 4.
 
 
-[24
+[28
 
 ]
 File: figures/overall_structure.pdf Graphic file (type pdf)
@@ -647,21 +664,21 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[25]
+[29]
 
-[26]
+[30]
 
-[27]
+[31]
 File: figures/domain_discrepancy.pdf Graphic file (type pdf)
 <figures/domain_discrepancy.pdf>
 
 
-[28]
+[32]
 File: figures/autoencoder_structure.pdf Graphic file (type pdf)
 <figures/autoencoder_structure.pdf>
 
 
-[29]
+[33]
 File: figures/GMM_1D.pdf Graphic file (type pdf)
 <figures/GMM_1D.pdf>
 File: figures/GMM_2D.pdf Graphic file (type pdf)
@@ -672,39 +689,39 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[30]
+[34]
 
-[31]
+[35]
 
-[32]
+[36]
 File: figures/cost_matrix_calculation.pdf Graphic file (type pdf)
 <figures/cost_matrix_calculation.pdf>
 
 
-[33]) (./chapterfile/chapter5.tex
+[37]) (./chapterfile/chapter5.tex
 
-[34]
+[38]
 Chapter 5.
 
 
-[35
+[39
 
 ]
 
-[36]
+[40]
 
-[37]
+[41]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 184.
 
 
-[38]
+[42]
 
-[39]
+[43]
 
-[40]) (./chapterfile/chapter6.tex
+[44]) (./chapterfile/chapter6.tex
 
-[41]
+[45]
 Chapter 6.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
 (Font)              scaled to size 8.65997pt on input line 34.
@@ -717,23 +734,23 @@ Overfull \hbox (28.8578pt too wide) in paragraph at lines 35--63
 
 
 
-[42
+[46
 
 ]
 
-[43]) (./chapterfile/chapter7.tex
+[47]) (./chapterfile/chapter7.tex
 
-[44]
+[48]
 Chapter 7.
 
 
-[45
+[49
 
 ]
 
-[46]) (./main.bbl
+[50]) (./main.bbl
 
-[47]
+[51]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 6.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -758,7 +775,7 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 71.
 
 
-[48
+[52
 
 ]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -774,82 +791,82 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 114.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 120.
+(Font)              No change on input line 119.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 126.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 133.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 139.
+(Font)              No change on input line 140.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 145.
+(Font)              No change on input line 146.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 150.
-LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 156.
-LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 162.
+(Font)              No change on input line 155.
 
 
-[49]
+[53]
+LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
+(Font)              No change on input line 163.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 169.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 175.
-LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 181.
+(Font)              No change on input line 178.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 187.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 193.
+(Font)              No change on input line 194.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 199.
+(Font)              No change on input line 202.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 205.
+(Font)              No change on input line 209.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 210.
+(Font)              No change on input line 215.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 217.
+(Font)              No change on input line 221.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 224.
+(Font)              No change on input line 227.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 231.
-LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 237.
-LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 246.
+(Font)              No change on input line 234.
 
 
-[50]
+[54]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 254.
+(Font)              No change on input line 240.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 260.
+(Font)              No change on input line 245.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 269.
+(Font)              No change on input line 251.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 278.
+(Font)              No change on input line 257.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 285.
+(Font)              No change on input line 264.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 293.
+(Font)              No change on input line 270.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 300.
+(Font)              No change on input line 275.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 306.
+(Font)              No change on input line 282.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 313.
+(Font)              No change on input line 288.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 321.
+(Font)              No change on input line 295.
+LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
+(Font)              No change on input line 303.
+LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
+(Font)              No change on input line 316.
+LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
+(Font)              No change on input line 324.
 
 
-[51]
+[55]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 334.
+(Font)              No change on input line 332.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 342.
+(Font)              No change on input line 340.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 350.
+(Font)              No change on input line 346.
+LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
+(Font)              No change on input line 352.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 358.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -864,11 +881,11 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 391.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 397.
+
+
+[56]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 404.
-
-
-[52]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 416.
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
@@ -881,17 +898,19 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 (Font)              No change on input line 453.
 ) (./chapterfile/chapter_appendix.tex
 
-[53]) (./chapterfile/chapter_publication.tex
+[57]) (./chapterfile/chapter_publication.tex
 
-[54
+[58
 
-]) (./chapterfile/chapter_acknowledgement.tex
+]
 
-[55
+[59]) (./chapterfile/chapter_acknowledgement.tex
+
+[60
 
 ])
 
-[56
+[61
 
 ] (./main.aux)
  ***********
@@ -901,12 +920,12 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 12458 strings out of 475292
- 274013 string characters out of 5766798
- 624501 words of memory out of 5000000
- 35425 multiletter control sequences out of 15000+600000
+ 12462 strings out of 475292
+ 274129 string characters out of 5766798
+ 627634 words of memory out of 5000000
+ 35429 multiletter control sequences out of 15000+600000
  579003 words of font info for 126 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 73i,12n,80p,1118b,655s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 73i,12n,80p,948b,655s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (62 pages, 237788 bytes).
+Output written on main.dvi (68 pages, 268404 bytes).

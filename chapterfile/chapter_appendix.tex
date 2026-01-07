@@ -16,3 +16,50 @@
 \renewcommand{\thetable}{\Alph{section}.\arabic{table}}
 
 \section{Additional Experimental Results}
+
+This section reports the complete experimental results on all domain pairs,
+including RMSE and MAE under different random seeds.
+
+\begin{table}[t] 
+\centering 
+\caption{Additional experimental results of the full DUP-OT (w/ s) model under different random seeds on three domain pairs, with Electronics as the target domain.} 
+\label{tab:appendix:vg2books} 
+\begin{tabular}{c|cc|cc|cc} 
+\hline 
+& \multicolumn{2}{c|}{\textbf{Digital Music}} & \multicolumn{2}{c|}{\textbf{Movies \& TV}} & \multicolumn{2}{c}{\textbf{Video Games}} \\ 
+\hline 
+\textbf{Random Seed} & \textbf{RMSE} & \textbf{MAE} & \textbf{RMSE} & \textbf{MAE} & \textbf{RMSE} & \textbf{MAE} \\ 
+\hline
+7  & 1.3467 & 0.7717 & 1.3471 & 0.7897 & 1.4132 & 1.2789 \\
+11 & 1.2291 & 0.9498 & 1.2779 & 0.9621 & 1.3148 & 1.0666 \\
+17 & 1.3111 & 0.8496 & 1.3402 & 0.7805 & 1.3023 & 1.0907 \\
+33 & 1.2683 & 1.0250 & 1.2493 & 0.8626 & 1.3610 & 0.7569 \\
+2025 & 1.3043 & 0.8866 & 1.2390 & 0.9920 & 1.2965 & 0.8227 \\
+\hline
+\textbf{Mean} & 1.2919 & 0.8965 & 1.2907 & 0.8774 & 1.3376 & 1.0032 \\
+\textbf{Variance} & 0.0016 & 0.0074 & 0.0020 & 0.0075 & 0.0019 & 0.0362 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[t] 
+\centering 
+\caption{Additional experimental results of the DUP-OT (w/o s) variant under different random seeds on three domain pairs, with Electronics as the target domain.} 
+\label{tab:appendix:vg2books_noside} 
+\begin{tabular}{c|cc|cc|cc} 
+\hline 
+& \multicolumn{2}{c|}{\textbf{Digital Music}} & \multicolumn{2}{c|}{\textbf{Movies \& TV}} & \multicolumn{2}{c}{\textbf{Video Games}} \\ 
+\hline 
+\textbf{Random Seed} & \textbf{RMSE} & \textbf{MAE} & \textbf{RMSE} & \textbf{MAE} & \textbf{RMSE} & \textbf{MAE} \\ 
+\hline
+7  & 1.3445 & 0.9046 & 1.3835 & 0.9677 & 1.3818 & 0.9886 \\
+11 & 1.3523 & 0.9336 & 1.3798 & 0.9763 & 1.3647 & 0.9348 \\
+17 & 1.3757 & 0.9595 & 1.3928 & 0.9615 & 1.3974 & 0.9764 \\
+33 & 1.3719 & 0.9298 & 1.3793 & 0.9335 & 1.3508 & 0.9259 \\
+2025 & 1.4052 & 1.0041 & 1.3668 & 0.9624 & 1.3635 & 0.9150 \\
+\hline
+\textbf{Mean} & 1.3699 & 0.9463 & 1.3805 & 0.9603 & 1.3716 & 0.9481 \\
+\textbf{Variance} & 0.0004 & 0.0011 & 0.0001 & 0.0002 & 0.0003 & 0.0008 \\
+\hline
+\end{tabular}
+\end{table}

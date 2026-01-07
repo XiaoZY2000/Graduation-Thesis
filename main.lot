@@ -3,7 +3,9 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Statistics of the Amazon Review datasets after preprocessing.}}{36}{}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Statistics of the Amazon Review datasets after preprocessing.}}{40}{}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces Rating prediction performance of baseline models and the proposed DUP-OT framework.}}{43}{}%
+\contentsline {table}{\numberline {6.1}{\ignorespaces Rating prediction performance of baseline models and the proposed DUP-OT framework.}}{47}{}%
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {A.1}{\ignorespaces Additional experimental results of the full DUP-OT (w/ s) model under different random seeds on three domain pairs, with Electronics as the target domain.}}{59}{}%
+\contentsline {table}{\numberline {A.2}{\ignorespaces Additional experimental results of the DUP-OT (w/o s) variant under different random seeds on three domain pairs, with Electronics as the target domain.}}{59}{}%
