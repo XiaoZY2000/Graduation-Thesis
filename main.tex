@@ -76,7 +76,7 @@
 	Most existing cross-domain recommendation methods, however, assume that users or
 	items overlap across domains during training, an assumption that is often
 	unrealistic in practice.
-	In addition, user preferences are usually represented as fixed vectors, which
+	In addition, user preferences are usually represented as point embeddings, which
 	makes it difficult to capture the uncertainty and diversity of real user
 	interests.
 
@@ -90,14 +90,14 @@
 	knowledge transfer at inference time when cross-domain user correspondence is
 	available.
 	Importantly, the proposed method does not rely on overlapping users or items
-	during training, and can flexibly incorporate overlapping user information at
+	during training, but can flexibly incorporate overlapping user information at
 	inference time when such information is available.
 
 	Extensive experiments on multiple Amazon Review datasets show that the proposed
 	approach consistently outperforms strong single-domain baselines and
 	representative cross-domain recommendation methods.
-	Additional ablation studies further confirm the effectiveness of distribution-
-	based user preference modeling and the benefits of leveraging source-domain
+	Additional ablation studies further confirm the effectiveness of distribution-based 
+	user preference modeling and the benefits of leveraging source-domain
 	information for improving target-domain recommendation performance.
 \end{abstract}
 

@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.uptex) (TeX Live 2025) (preloaded format=uplatex 2025.6.4)  7 JAN 2026 17:14
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.uptex) (TeX Live 2025) (preloaded format=uplatex 2025.6.4)  8 JAN 2026 22:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -543,7 +543,7 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 
 ]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 84.
+(Font)              No change on input line 86.
 
 
 [2]) (./chapterfile/chapter2.tex
@@ -568,17 +568,17 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 
 ]
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 6.73553pt on input line 55.
+(Font)              scaled to size 6.73553pt on input line 52.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 6.73553pt on input line 55.
+(Font)              scaled to size 6.73553pt on input line 52.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 4.8111pt on input line 55.
+(Font)              scaled to size 4.8111pt on input line 52.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 4.8111pt on input line 55.
+(Font)              scaled to size 4.8111pt on input line 52.
 
 
 [5]
-Overfull \hbox (2.38022pt too wide) in paragraph at lines 110--114
+Overfull \hbox (2.38022pt too wide) in paragraph at lines 106--110
 \OT1/cmr/m/n/10 The core idea of mod-ern rec-om-mender sys-tems is map-ping use
 rs and items into a shared low-dimensional
  []
@@ -591,7 +591,7 @@ rs and items into a shared low-dimensional
 
 [8]
 LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 308.
+(Font)              No change on input line 304.
 
 
 [9]
@@ -724,11 +724,11 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 [45]
 Chapter 6.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 8.65997pt on input line 34.
+(Font)              scaled to size 8.65997pt on input line 36.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 8.65997pt on input line 34.
+(Font)              scaled to size 8.65997pt on input line 36.
 
-Overfull \hbox (28.8578pt too wide) in paragraph at lines 35--63
+Overfull \hbox (28.8578pt too wide) in paragraph at lines 37--65
  []|  [] 
  []
 
@@ -928,4 +928,4 @@ Here is how much of TeX's memory you used:
  36 hyphenation exceptions out of 8191
  73i,12n,80p,948b,655s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (68 pages, 268404 bytes).
+Output written on main.dvi (68 pages, 270848 bytes).

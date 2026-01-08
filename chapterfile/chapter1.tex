@@ -30,7 +30,7 @@ services with limited historical data.
 Another critical challenge is the cold-start problem, which arises when new
 users or items enter the system and insufficient interaction history is
 available to support reliable recommendations.
-These challenges stem from the limited availability of user--item interaction
+These challenges arise from the limited availability of user--item interaction
 data and can significantly degrade recommendation quality.
 
 To address these challenges, cross-domain recommendation has emerged as a
@@ -62,7 +62,8 @@ specifically, Gaussian Mixture Models (GMMs), and integrates optimal transport t
 under non-overlapping training settings.
 By representing user preferences as probability distributions rather than point
 estimates, the proposed approach captures both the diversity and uncertainty of
-user interests.
+user interests. And the multi-peaked structure of GMMs allows for modeling
+multiple distinct user preferences effectively.
 Furthermore, optimal transport provides a principled mechanism for aligning
 user preference representations across domains, facilitating effective
 knowledge transfer without relying on overlapping users or items during the
@@ -78,9 +79,10 @@ recommendation accuracy in the target domain under strictly non-overlapping
 training settings.
 
 \paragraph{Training-time non-overlap and inference-time overlap.}
-It's important to clarify the assumptions regarding cross-domain user
-information that, in this work, we explicitly distinguish between the availability of cross-domain
-user information during training and inference.
+
+It is important to clarify our assumptions regarding cross-domain user
+information. In this work, we explicitly distinguish between its availability
+during training and inference.
 Specifically, we assume a \emph{non-overlapping setting during training}, where
 no explicit user or item correspondences between domains are available.
 This assumption reflects realistic deployment constraints, as it is often
@@ -96,14 +98,16 @@ If such authorization is granted, cross-domain user correspondence becomes
 available for those users, enabling the system to leverage their historical
 preferences from multiple domains.
 In this case, the proposed framework can incorporate overlapping user
-information at inference time to further enhance recommendation performance.
+information at inference time to enhance recommendation performance.
 
 Importantly, the proposed DUP-OT framework does not rely on overlapping users or
-items during training.
-Cross-domain knowledge transfer is learned purely at the distribution level.
-When overlapping user information becomes available at inference time, it is
-used as an optional enhancement rather than a prerequisite, allowing the model
-to seamlessly adapt to different real-world deployment scenarios.
+items during training. User preferences are modeled as structured distributions
+to enhance expressive capacity, while cross-domain knowledge transfer under
+non-overlapping settings is achieved through optimal transport based on semantic
+alignment. When overlapping user information becomes available at inference
+time, it can be incorporated as an optional enhancement rather than a
+prerequisite, allowing the model to flexibly adapt to different real-world
+deployment scenarios.
 
 \section{Contributions}
 
@@ -139,7 +143,7 @@ The remainder of this thesis is organized as follows:
 	      cross-domain recommendation, Gaussian Mixture Models, and optimal
 	      transport.
 	\item Chapter~\ref{chap:related_work} reviews related work in recommender
-	      systems, cross-domain recommendation, distribution user preference
+	      systems, cross-domain recommendation, distributional user preference
 	      modeling, and optimal transport for representation alignment.
 	\item Chapter~\ref{chap:proposed_method} presents the proposed DUP-OT
 	      framework in detail, including shared preprocessing stage, user GMM weights
