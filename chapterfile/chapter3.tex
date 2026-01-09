@@ -4,19 +4,33 @@
 Recommender systems aim to alleviate information overload by modeling user preferences and predicting the relevance of items from large candidate sets. 
 Over the past decades, a wide range of recommendation techniques have been proposed, which can be broadly categorized into collaborative filtering-based methods, 
 content-based methods, and hybrid approaches. These paradigms differ in how user preferences are represented, how item relevance is estimated, and how auxiliary information is exploited. 
-In this section, we briefly review representative recommender system techniques that form the foundation of modern recommendation models.
+Figure~\ref{fig:recommender_systems} presents a conceptual overview of recommender systems, illustrating how different sources of user- and item-side signals are leveraged by various modeling paradigms to produce recommendation outputs.
+In this section, we review representative recommender system techniques that form the foundation of modern recommendation models.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figures/recommender_systems.pdf}
+	\caption{A Conceptual Overview of Recommender Systems}
+	\label{fig:recommender_systems}
+\end{figure}
 
 \subsection{Collaborative Filtering}
 
 Collaborative Filtering (CF) is one of the most widely studied paradigms in recommender systems~\cite{Bobadilla_Ortega_Hernando_Gutiérrez_2013_recommender_survey,Su_Khoshgoftaar_2009_CF_survey}. 
 CF methods rely solely on historical user-item interaction data to infer user preferences, under the assumption that users with similar interaction patterns tend to exhibit similar tastes. 
-By abstracting away explicit item content, 
+By relying solely on user--item interaction data,
 CF techniques are particularly effective in capturing collective behavioral patterns 
 and have been extensively applied in rating prediction and top-$K$ recommendation tasks.
 
 \subsubsection{Memory-based CF}
-By user or item similarities, memory-based CF can be further categorized into user-based and item-based approaches. 
-User-based CF recommends items to a user based on the preferences of similar users, while item-based CF suggests items similar to those the user has previously liked.
+Memory-based collaborative filtering (CF) methods generate recommendations
+directly from observed user--item interactions by exploiting similarity
+relationships among users or items.
+Depending on whether similarity is computed between users or items, these
+methods are commonly divided into user-based and item-based approaches.
+User-based CF recommends items based on the preferences of similar users, while
+item-based CF suggests items similar to those the user has previously interacted
+with.
 
 GroupLens~\cite{Resnick_1994_grouplens} is one of the earliest and most influential memory-based CF systems, 
 which introduced user-based collaborative filtering using Pearson correlation to compute user similarities. 
@@ -202,6 +216,19 @@ In contrast, non-overlapping CDR methods address more challenging scenarios wher
 These approaches generally rely on content features, latent representations, or learned mappings between domains to enable preference transfer without explicit entity overlap.
 Non-overlapping CDR is particularly relevant in practical applications, but remains challenging due to the lack of direct correspondence between domains.
 
+Figure~\ref{fig:CDR} illustrates representative cross-domain recommendation
+paradigms under different overlap assumptions, highlighting how knowledge
+transfer is achieved either through shared entities or via shared latent spaces.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figures/CDR.pdf}
+	\caption{Conceptual comparison between overlapping and non-overlapping cross-domain
+recommendation paradigms, illustrating how two domains are connected for
+knowledge transfer.}
+	\label{fig:CDR}
+\end{figure}
+
 \subsection{Overlapping CDR}
 Overlapping cross-domain recommendation assumes the existence of shared entities, 
 such as users or items, across domains. 
@@ -222,65 +249,66 @@ Pan et al.~\cite{Pan_Xiang_Liu_Yang_2010_transfer_learning_CF} proposed a transf
 Their method discovers shared latent structures of users and items in auxiliary data through matrix factorization and adapts these structures to the target domain via a principled regularization scheme.
 By exploiting overlapping users or items across domains, this approach effectively captures transferable preference patterns and improves recommendation performance in sparse target domains.
 
-%需要添加可以扩展画图的方法
 Zhu et al.~\cite{Zhu_Jin_Zhang_Meng_Zhang_Li_2024_WCDR} proposed WCDR, a dual-target cross-domain recommendation framework that models users and items as probability distributions to explicitly capture uncertainty across domains.
 Unlike prior embedding-based overlapping CDR methods that rely on deterministic representations, WCDR represents user and item behaviors as elliptical Gaussian distributions and decouples them into local-intrinsic and global-domain components.
 To facilitate effective knowledge transfer between overlapping domains, WCDR further adopts a shared-specific paradigm for global-domain distributions and introduces a Masked Domain-aware Sub-distribution Aggregation (MDSA) module in the Wasserstein space.
 This design enables adaptive aggregation of domain-shared knowledge while alleviating negative transfer caused by domain imbalance.
 Extensive experiments demonstrate that modeling domain-level uncertainty and distributional relationships can significantly improve recommendation performance in both source and target domains.
-Their proposed method can be illustrated as in Figure~\ref{fig:WCDR}.
-
-%这里放图
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{figures/WCDR.pdf}
-	\caption{Illustration of the WCDR framework~\cite{Zhu_Jin_Zhang_Meng_Zhang_Li_2024_WCDR}, which models users and items as probability distributions to capture uncertainty in overlapping cross-domain recommendation.}
-	\label{fig:WCDR}
-\end{figure}
-
-WCDR models users and items as probability distributions to capture uncertainty in overlapping cross-domain recommendation.
-By contrast, our work considers a more challenging non-overlapping CDR scenario without any shared users or items, where direct entity-level alignment is unavailable in the training stage and cross-domain transfer must rely on distribution-level modeling.
 
 \subsection{Non-overlapping CDR}
 In contrast, non-overlapping cross-domain recommendation addresses a more challenging setting where no shared users or items exist between domains. 
 Without explicit entity-level correspondences, knowledge transfer must rely on higher-level structural, semantic, or distributional similarities across domains. 
 This setting better reflects real-world scenarios involving independent platforms or privacy constraints, and has recently attracted increasing research attention due to its practical significance and methodological difficulty.
 
-Man et al.~\cite{Man_Shen_Jin_Cheng_2017_CDR_embedding_mapping} proposed EMCDR, an embedding-and-mapping framework for cross-domain recommendation.
-The framework first learns latent user and item representations independently in each domain, and then learns a cross-domain mapping function to project embeddings from the source domain into the target domain.
-By transferring preferences through latent space mapping, EMCDR enables effective knowledge transfer in non-overlapping and cold-start scenarios.
+Man et al.~\cite{Man_Shen_Jin_Cheng_2017_CDR_embedding_mapping} proposed EMCDR, an
+early embedding-and-mapping framework for non-overlapping cross-domain
+recommendation.
+EMCDR first learns latent user and item representations independently in each
+domain and then transfers preferences by learning a mapping function between
+embedding spaces, enabling cross-domain recommendation under non-overlapping
+and cold-start scenarios.
 
-Beyond latent embedding mapping, several works investigate cross-domain knowledge transfer by aligning heterogeneous feature spaces.
-Kusano and Oyamada~\cite{Kusano_Oyamada_2023_ATP} proposed ATP, which formulates non-overlapping cross-domain recommendation as an attribute transportation problem.
-ATP focuses on scenarios where neither users nor attributes are shared across domains, and aims to estimate cross-domain user similarity by aligning heterogeneous attribute spaces.
-Specifically, ATP leverages optimal transport to learn a soft correspondence between source and target domain attributes, enabling users to be re-described in a unified attribute space for similarity computation and recommendation.
-By operating at the attribute level, ATP provides an interpretable and feature-driven solution for non-overlapping cross-domain recommendation.
+Beyond embedding mapping, several works leverage auxiliary semantic features as
+implicit bridges between domains.
+Tang et al.~\cite{Tang_Wang_Zhang_2018_TDAR} proposed TDAR, a text-driven
+adversarial recommendation framework that exploits review text information to
+learn domain-invariant user and item representations.
+By aligning representations at the semantic level rather than relying on shared
+entities, TDAR enables effective knowledge transfer under strict non-overlapping
+settings.
 
-Liu et al.~\cite{Liu_Chen_Liao_Hu_Tan_Wang_Zheng_Ong_2024_JPEDET} proposed JPEDET, a joint preference exploration and dynamic embedding transportation framework for non-overlapping cross-domain recommendation.
-JPEDET addresses the absence of overlapped users and items by learning transferable user representations from both rating and review information, and further aligning user embeddings across domains through a dynamic transportation mechanism.
+From a feature-level perspective, Kusano and Oyamada~\cite{Kusano_Oyamada_2023_ATP}
+formulated non-overlapping cross-domain recommendation as an attribute
+transportation problem.
+ATP aligns heterogeneous attribute spaces across domains using optimal
+transport, allowing users to be re-described in a unified attribute space for
+cross-domain similarity estimation and recommendation.
+This attribute-level alignment paradigm provides an interpretable and
+feature-driven alternative to latent embedding mapping methods.
 
-Specifically, JPEDET first employs a joint preference exploration module to fuse rating-based and review-based user representations, aiming to capture more robust and generalizable user preferences within each domain.
-To bridge the embedding discrepancy across domains, the model introduces a dynamic embedding transportation module based on neural ordinary differential equations (Neural ODEs), which enables continuous and bidirectional transformation between source and target user embedding spaces.
-Moreover, JPEDET incorporates optimal transport-based matching regularization and barycentric Wasserstein interpolation to guide the transportation trajectories, leading to smoother and more stable cross-domain alignment.
+More recent studies explore non-overlapping CDR from distribution-aware
+perspectives by moving beyond static embedding mapping.
+Liu et al.~\cite{Liu_Chen_Liao_Hu_Tan_Wang_Zheng_Ong_2024_JPEDET} proposed JPEDET, a
+joint preference exploration and dynamic embedding transportation framework for
+non-overlapping cross-domain recommendation.
+JPEDET leverages both rating and review information to learn transferable user
+representations within each domain, and models cross-domain adaptation as a
+continuous embedding transportation process.
+By enabling dynamic and bidirectional transformation between source and target
+embedding spaces, JPEDET captures richer cross-domain preference shifts than
+static or adversarial alignment methods.
 
-By modeling cross-domain adaptation as a dynamic and invertible embedding transformation process, JPEDET advances non-overlapping CDR beyond static embedding mapping or adversarial alignment methods, and demonstrates superior performance on multiple real-world benchmark datasets.
-The overall framework of JPEDET can be illustrated as in Figure~\ref{fig:JPEDET}.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.6\textwidth]{figures/JPEDET.pdf}
-	\caption{Illustration of the JPEDET framework~\cite{Liu_Chen_Liao_Hu_Tan_Wang_Zheng_Ong_2024_JPEDET}, which employs joint preference exploration and dynamic embedding transportation for non-overlapping cross-domain recommendation.}
-	\label{fig:JPEDET}
-\end{figure}
-
-In addition to embedding-level alignment methods, several recent works explore cross-domain recommendation from a distributional perspective.
-Liu et al.~\cite{Li_Qiu_Zhao_Wang_Zhang_Xing_Wu_2022_GWCDR} proposed GWCDR, which addresses non-overlapping cross-domain recommendation by aligning user-item interaction patterns at the distribution level.
-
-Instead of relying on overlapped users or items, GWCDR constructs rating pattern distributions based on observed positive interactions, where each interaction is represented by the element-wise product of the corresponding user and item embeddings.
-To bridge the discrepancy between domains without assuming a shared embedding space, the model employs Gromov--Wasserstein optimal transport to align the structural relationships within the interaction distributions of the source and target domains.
-
-By preserving the relative geometry of interaction patterns across domains, GWCDR enables effective knowledge transfer under strict non-overlapping settings.
-This distribution-level alignment paradigm provides a complementary perspective to embedding mapping, attribute transportation, and dynamic embedding transportation methods, and demonstrates strong performance across multiple real-world cross-domain recommendation benchmarks.
+From a complementary distributional perspective, Liu et
+al.~\cite{Li_Qiu_Zhao_Wang_Zhang_Xing_Wu_2022_GWCDR} proposed GWCDR, which performs
+cross-domain knowledge transfer by aligning user--item interaction pattern
+distributions.
+Instead of explicitly mapping individual user or item embeddings, GWCDR
+constructs interaction pattern distributions and employs
+Gromov--Wasserstein optimal transport to preserve the relational geometry of
+interactions across domains.
+This relational distribution alignment paradigm enables effective knowledge
+transfer under strict non-overlapping settings and provides a distinct
+alternative to embedding- or attribute-level alignment approaches.
 
 \section{Distributional User Preference Modeling}
 
@@ -296,7 +324,6 @@ Multi-interest user modeling aims to capture the fact that a single user may exh
 Instead of learning a single latent representation per user, these methods explicitly model multiple interest vectors or components, allowing recommender systems to better reflect diverse and dynamic user behaviors. 
 Such approaches have been shown to improve recommendation accuracy, especially in scenarios with heterogeneous user preferences.
 
-% DIN, MIND, ComiRec可以扩展画图
 Zhou et al.~\cite{Zhou_Zhu_Song_Fan_Zhu_Ma_Yan_Jin_Li_Gai_2018_DIN} proposed the Deep Interest Network (DIN), which models users’ diverse interests through a target-aware attention mechanism.
 Instead of compressing all historical behaviors into a fixed-length representation, DIN dynamically aggregates user behavior embeddings conditioned on the target item, allowing different interests to be activated for different recommendation candidates.
 This adaptive representation enables DIN to capture the multi-faceted nature of user preferences and has been shown to achieve strong performance in large-scale industrial recommender systems.
@@ -324,7 +351,6 @@ Blei, Ng, and Jordan~\cite{Blei_Ng_Jordan_2003_LDA} proposed Latent Dirichlet Al
 Although originally developed for text modeling, LDA has been extended to collaborative filtering by treating users as documents and items as words. Under this formulation, user preferences are modeled as probability distributions over latent topics, allowing each user–item interaction to be explained by different latent factors. This distributional representation enables LDA to capture heterogeneous user interests more flexibly than single-vector latent representations.
 
 Salakhutdinov and Mnih~\cite{Salakhutdinov_Mnih_2008_Bayesian_PMF} further advanced this direction by introducing Bayesian Probabilistic Matrix Factorization (BPMF), which models user and item latent factors as Gaussian distributions and performs Bayesian inference to explicitly account for uncertainty in preference estimation.
-%这里还可以加
 
 VAE-based methods provide another probabilistic framework for modeling uncertainty in user preferences. Liang et al.~\cite{Liang_Krishnan_Hoffman_Jebara_2018_VAE_CF} extended variational autoencoders to collaborative filtering by modeling user preferences as latent random variables and performing variational inference. By representing users with posterior distributions in the latent space, VAE-based recommender systems are able to capture both the variability and uncertainty inherent in user behavior, leading to more robust recommendation performance under sparse interaction data.
 

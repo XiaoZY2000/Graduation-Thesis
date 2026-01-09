@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.uptex) (TeX Live 2025) (preloaded format=uplatex 2025.6.4)  8 JAN 2026 22:13
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.uptex) (TeX Live 2025) (preloaded format=uplatex 2025.6.4)  9 JAN 2026 19:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -494,9 +494,9 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 ]
 
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/sl' undefined
-(Font)              No change on input line 95.
+(Font)              No change on input line 93.
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/sl' undefined
-(Font)              No change on input line 95.
+(Font)              No change on input line 93.
 [2])
 \tf@toc=\write4
 \openout4 = `main.toc'.
@@ -604,6 +604,8 @@ LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
 
 [13]
 Chapter 3.
+File: figures/recommender_systems.pdf Graphic file (type pdf)
+<figures/recommender_systems.pdf>
 
 
 [14
@@ -619,15 +621,14 @@ Chapter 3.
 [18]
 
 [19]
-LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 197.
-LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
-(Font)              No change on input line 197.
-
 
 [20]
-File: figures/WCDR.pdf Graphic file (type pdf)
-<figures/WCDR.pdf>
+LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
+(Font)              No change on input line 211.
+LaTeX Font Info:    Kanji font shape `JY2/gt/m/it' undefined
+(Font)              No change on input line 211.
+File: figures/CDR.pdf Graphic file (type pdf)
+<figures/CDR.pdf>
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -637,17 +638,19 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [21]
 
 [22]
-File: figures/JPEDET.pdf Graphic file (type pdf)
-<figures/JPEDET.pdf>
+
+LaTeX Warning: Citation `Tang_Wang_Zhang_2018_TDAR' on page 23 undefined on inp
+ut line 273.
+
 
 
 [23]
 
 [24]
 
-[25]
+[25]) (./chapterfile/chapter4.tex
 
-[26]) (./chapterfile/chapter4.tex
+[26]
 
 [27]
 Chapter 4.
@@ -918,14 +921,18 @@ pLaTeX2e <2023-02-14u04>+1, based on
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
  12462 strings out of 475292
- 274129 string characters out of 5766798
+ 274225 string characters out of 5766798
  627634 words of memory out of 5000000
  35429 multiletter control sequences out of 15000+600000
  579003 words of font info for 126 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  73i,12n,80p,948b,655s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (68 pages, 270848 bytes).
+Output written on main.dvi (68 pages, 267464 bytes).

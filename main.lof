@@ -1,8 +1,8 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Illustration of the WCDR framework~\cite {Zhu_Jin_Zhang_Meng_Zhang_Li_2024_WCDR}, which models users and items as probability distributions to capture uncertainty in overlapping cross-domain recommendation.}}{22}{}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Illustration of the JPEDET framework~\cite {Liu_Chen_Liao_Hu_Tan_Wang_Zheng_Ong_2024_JPEDET}, which employs joint preference exploration and dynamic embedding transportation for non-overlapping cross-domain recommendation.}}{23}{}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces A Conceptual Overview of Recommender Systems}}{14}{}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Conceptual comparison between overlapping and non-overlapping cross-domain recommendation paradigms, illustrating how two domains are connected for knowledge transfer.}}{22}{}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Architecture of the DUP-OT Framework}}{30}{}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Item Embeddings after Aggregation}}{32}{}%
