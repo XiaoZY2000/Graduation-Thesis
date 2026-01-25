@@ -302,6 +302,14 @@ Tong Man, Huawei Shen, Xiaolong Jin, and Xueqi Cheng.
 \newblock Cross-domain recommendation: An embedding and mapping approach.
 \newblock In {\em Ijcai}, Vol.~17, pp. 2464--2470, 2017.
 
+\bibitem{Yu_Lin_Ge_Ou_Qin_2020_TDAR}
+Wenhui Yu, Xiao Lin, Junfeng Ge, Wenwu Ou, and Zheng Qin.
+\newblock Semi-supervised collaborative filtering by text-enhanced domain
+  adaptation.
+\newblock In {\em Proceedings of the 26th ACM SIGKDD International Conference
+  on Knowledge Discovery \& Data Mining}, KDD '20, p. 2136^^e2^^80^^932144, New
+  York, NY, USA, 2020. Association for Computing Machinery.
+
 \bibitem{Kusano_Oyamada_2023_ATP}
 Genki Kusano and Masafumi Oyamada.
 \newblock Cross-domain user similarity without overlapping attributes via
@@ -425,14 +433,6 @@ Jianmo Ni, Jiacheng Li, and Julian McAuley.
   Language Processing and the 9th International Joint Conference on Natural
   Language Processing (EMNLP-IJCNLP)}, pp. 188--197, Hong Kong, China, November
   2019. Association for Computational Linguistics.
-
-\bibitem{Yu_Lin_Ge_Ou_Qin_2020_TDAR}
-Wenhui Yu, Xiao Lin, Junfeng Ge, Wenwu Ou, and Zheng Qin.
-\newblock Semi-supervised collaborative filtering by text-enhanced domain
-  adaptation.
-\newblock In {\em Proceedings of the 26th ACM SIGKDD International Conference
-  on Knowledge Discovery \& Data Mining}, KDD '20, p. 2136^^e2^^80^^932144, New
-  York, NY, USA, 2020. Association for Computing Machinery.
 
 \bibitem{scikit-learn}
 F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
