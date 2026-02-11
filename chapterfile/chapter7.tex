@@ -100,6 +100,11 @@ meaningful shared representation space becomes challenging, which may limit the
 effectiveness of distribution-level alignment and degrade the quality of the
 resulting transport plan.
 
+In addition, the experimental evaluation in this work has certain limitations.
+Specifically, we focus primarily on rating prediction and do not include ranking-based metrics such as NDCG or Hit@K, which are widely used in top-$K$ recommendation settings.
+Furthermore, although we compare against several representative baselines, some of them are not the most recent state-of-the-art methods.
+A more comprehensive evaluation with stronger and more up-to-date baselines, together with ranking-oriented metrics, is left for future work.
+
 Finally, the temporal dynamics of user preferences are incorporated only through
 a lightweight timestamp encoding. While this design choice balances model
 complexity and performance, it does not explicitly model long-term sequential
@@ -117,9 +122,13 @@ techniques into the framework. Incorporating sequential models or continuous-tim
 dynamics could enable more accurate modeling of preference evolution and further
 improve recommendation quality.
 
+Another important direction is to broaden the evaluation protocol of the proposed framework.
+In particular, extending the experiments to top-$K$ recommendation settings with ranking-based metrics such as NDCG and Hit@K would provide a more comprehensive assessment of practical performance.
+Moreover, comparing against stronger and more recent state-of-the-art baselines on larger and more diverse benchmarks would further clarify the advantages and limitations of the proposed approach.
+
 In addition, extending the proposed approach to multi-source or multi-target
 cross-domain scenarios would enhance its applicability in complex real-world
-environments. 
+environments.
 
 In conclusion, this thesis demonstrates that modeling user preferences as
 distributions and transferring them via optimal transport provides a powerful

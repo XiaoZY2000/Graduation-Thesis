@@ -45,13 +45,16 @@ and such overlapping entities are used as bridges for knowledge transfer during
 training.
 In many real-world scenarios, this assumption does not hold, as domains may be
 entirely disjoint due to privacy constraints, system isolation, or independent
-platform design.
+platform design. What's more, even when some overlapping users exist, they often
+constitute only a small fraction of the overall user base, limiting their
+effectiveness for knowledge transfer and increasing the risk of overfitting to
+these few entities.
 
 Moreover, traditional recommender systems typically represent user preferences
 as point estimates in a latent space, such as embedding vectors.
 Such representations are widely used and can be effective in many scenarios.
-However, point embeddings may be often insufficient to capture the uncertainty,
-heterogeneity, and multi-faceted nature of real user behavior, especially under
+However, point embeddings may be often insufficient to capture the uncertainty
+and multi-faceted nature of real user behavior, especially under
 sparse data conditions.
 This limitation further motivates the exploration of more expressive preference
 representations for cross-domain recommendation.
@@ -67,7 +70,8 @@ multiple distinct user preferences effectively.
 Furthermore, optimal transport provides a principled mechanism for aligning
 user preference representations across domains, facilitating effective
 knowledge transfer without relying on overlapping users or items during the
-training phase.
+training phase, thereby mitigating the risk of overfitting caused
+by scarce overlapping entities.
 
 The proposed framework consists of two key components:
 (1) modeling user preferences as Gaussian mixture distributions to capture the
@@ -85,29 +89,21 @@ information. In this work, we explicitly distinguish between its availability
 during training and inference.
 Specifically, we assume a \emph{non-overlapping setting during training}, where
 no explicit user or item correspondences between domains are available.
-This assumption reflects realistic deployment constraints, as it is often
-infeasible to obtain user-level cross-platform identity information for all
-users in advance due to privacy regulations, system isolation, or the lack of
-prior user consent.
+This design choice helps avoid the risk of overfitting to scarce overlapping entities,
+and also reflects realistic industrial scenarios in which overlapping users or items
+across different domains are typically very sparse (e.g., across different categories on Amazon).
 
 At inference time, however, the situation can be different.
-When users actively interact with a client application, platforms may request
-explicit authorization from individual users to link their accounts across
-domains.
-If such authorization is granted, cross-domain user correspondence becomes
-available for those users, enabling the system to leverage their historical
-preferences from multiple domains.
-In this case, the proposed framework can incorporate overlapping user
-information at inference time to enhance recommendation performance.
+Since model parameters are fixed during inference,
+incorporating additional cross-domain user correspondence does not introduce the risk of training-time overfitting.
+Therefore, when such correspondence is available, the proposed framework can exploit overlapping user information at inference time to further enhance recommendation performance.
 
-Importantly, the proposed DUP-OT framework does not rely on overlapping users or
-items during training. User preferences are modeled as structured distributions
-to enhance expressive capacity, while cross-domain knowledge transfer under
-non-overlapping settings is achieved through optimal transport based on semantic
-alignment. When overlapping user information becomes available at inference
-time, it can be incorporated as an optional enhancement rather than a
-prerequisite, allowing the model to flexibly adapt to different real-world
-deployment scenarios.
+Overall, the proposed DUP-OT framework is designed to operate under non-overlapping settings by
+modeling user preferences as structured distributions to enhance expressive capacity,
+while achieving cross-domain knowledge transfer through optimal transport based on semantic alignment.
+When overlapping user information becomes available at inference time,
+it can be incorporated as an optional enhancement rather than a prerequisite,
+allowing the model to flexibly adapt to different real-world scenarios.
 
 \section{Contributions}
 
@@ -142,7 +138,7 @@ The remainder of this thesis is organized as follows:
 	      techniques relevant to this work, including recommender systems,
 	      cross-domain recommendation, Gaussian Mixture Models, and optimal
 	      transport.
-	\item Chapter~\ref{chap:related_work} reviews related work in recommender
+	\item Chapter~\ref{chap:related_work} reviews related work in conventional recommender
 	      systems, cross-domain recommendation, distributional user preference
 	      modeling, and optimal transport for representation alignment.
 	\item Chapter~\ref{chap:proposed_method} presents the proposed DUP-OT

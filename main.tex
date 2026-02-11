@@ -73,9 +73,9 @@
 	cold-start problems, which limit their performance.
 	Cross-domain recommendation has therefore been proposed as a way to improve
 	recommendation quality by utilizing information from related domains.
-	Most existing cross-domain recommendation methods, however, assume that users or
-	items overlap across domains during training, an assumption that is often
-	unrealistic in practice.
+	Most existing cross-domain recommendation methods, however,
+	rely on a limited number of overlapping entities during training,
+	which may lead to overfitting.
 	In addition, user preferences are usually represented as point embeddings, which
 	makes it difficult to capture the uncertainty and diversity of real user
 	interests.
@@ -96,7 +96,7 @@
 	Extensive experiments on multiple Amazon Review datasets show that the proposed
 	approach consistently outperforms strong single-domain baselines and
 	representative cross-domain recommendation methods.
-	Additional ablation studies further confirm the effectiveness of distribution-based 
+	Additional ablation studies further confirm the effectiveness of distribution-based
 	user preference modeling and the benefits of leveraging source-domain
 	information for improving target-domain recommendation performance.
 \end{abstract}

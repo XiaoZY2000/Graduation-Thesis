@@ -285,10 +285,10 @@ The total epochs for training are set to 50 for both source and target domains.
 For the MLP architecture, both MLPs consist of three linear layers with ReLU activation functions between layers.
 The first MLP takes dimensional-reduced user embeddings as input and outputs preference weights for each GMM component in the corresponding domain.
 The shape of the first MLP is (128, (128 +  number of GMM components)//2, number of GMM components).
-The second MLP takes as input the Mahalanobis distances between the item
-embedding and each Gaussian component, weighted by the corresponding
-user-specific mixture weights, together with a processed timestamp feature,
-and outputs the predicted rating.
+The second MLP takes as input the negative Mahalanobis distances between the item embedding and each Gaussian component,
+weighted by the corresponding user-specific mixture weights.
+In addition, a processed timestamp feature is concatenated to the input.
+The MLP then outputs the predicted rating.
 The shape of the second MLP is (number of GMM components + 1, (number of GMM components + 1)//2, 1).
 
 For the timestamp feature, we transform the original interaction time into a
